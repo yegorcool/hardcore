@@ -111,7 +111,6 @@
                                         Обратиться к легенде теперь может каждый.
                                     </p>
                                     <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                                        <a href="/login" class="theme-btn">Войти<i class="far fa-arrow-right"></i></a>
                                         <a href="/register" class="theme-btn theme-btn2">Зарегистрироваться<i class="far fa-arrow-right"></i></a>
                                     </div>
                                 </div>
