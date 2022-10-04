@@ -35,6 +35,51 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+//            Route::middleware([
+//                'web',
+//                'verified',
+//                'check_user_role:admin',
+//            ])
+//                ->as('admin.')
+//                ->prefix('/admin')
+//                ->group(base_path('routes/web_admin.php'));
+
+            Route::middleware([
+                'web',
+                'verified',
+                'check_user_role:producer',
+            ])
+                ->as('producer.')
+                ->prefix('/producer')
+                ->group(base_path('routes/web_producer.php'));
+
+            Route::middleware([
+                'web',
+                'verified',
+                'check_user_role:support',
+            ])
+                ->as('support.')
+                ->prefix('/support')
+                ->group(base_path('routes/web_support.php'));
+
+            Route::middleware([
+                'web',
+                'verified',
+                'check_user_role:fighter',
+            ])
+                ->as('fighter.')
+                ->prefix('/fighter')
+                ->group(base_path('routes/web_fighter.php'));
+
+            Route::middleware([
+                'web',
+                'verified',
+                'check_user_role:buyer',
+            ])
+                ->as('buyer.')
+                ->prefix('/buyer')
+                ->group(base_path('routes/web_buyer.php'));
+//
         });
     }
 
