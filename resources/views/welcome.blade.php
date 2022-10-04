@@ -94,7 +94,7 @@
     <main class="main">
 
         <div class="hero-section">
-            <div>
+            <div class="hero-slider owl-carousel owl-theme">
                 <div class="hero-single" style="background-image: url(/images/slider-1.jpg)">
                     <div class="container">
                         <div class="row align-items-center">
@@ -118,8 +118,8 @@
                         </div>
                     </div>
                 </div>
-                {{--
-                <div class="hero-single d-none" style="background-image: url(/images/slider-2.jpg)">
+
+                <div class="hero-single" style="background-image: url(/images/slider-3.jpg)">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-md-7 col-lg-7">
@@ -128,22 +128,21 @@
                                         Поддержи бойцов
                                     </h6>
                                     <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                                        Вступай<br/><span>в лигу</span> Победителей
+                                        Записывай<br/><span>интерактивные</span> обращения
                                     </h1>
                                     <p class="wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                                        There are many variations of passages available but the majority have suffered
-                                        alteration in some form by injected humour or randomised words.
+                                        Уникальная возможность стать частью исторического поединка:<br/>
+                                        Обратиться к легенде теперь может каждый.
                                     </p>
                                     <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                                        <a href="#" class="theme-btn">Join With Us<i class="far fa-arrow-right"></i></a>
-                                        <a href="#" class="theme-btn theme-btn2">About Us<i class="far fa-arrow-right"></i></a>
+                                        <a href="/register" class="theme-btn theme-btn2">Зарегистрироваться<i class="far fa-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                --}}
+
             </div>
             <div class="hero-social-wrapper">
                 <div class="hero-social">
