@@ -71,7 +71,7 @@
                                 <a href="#" class="search-box-outer"><i class="far fa-search"></i></a>
                             </div>
                             <div class="header-btn">
-                                <a href="#" class="theme-btn">Войти<i class="far fa-arrow-right"></i></a>
+                                <a href="/login" class="theme-btn">Войти<i class="far fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
