@@ -22,6 +22,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/hello', function () {
-    return view('producer/hello');
+    return view('welcome');
 });
 require __DIR__.'/auth.php';
