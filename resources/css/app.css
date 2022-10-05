@@ -1,0 +1,32 @@
+@import 'blocks/all-fontawesome.min.css';
+@import "blocks/animate.min.css";
+@import "blocks/flaticon.css";
+@import "blocks/magnific-popup.min.css";
+@import "blocks/owl.carousel.min.css";
+@import "blocks/style.css";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'TTSquaresCondensed-BlackItalic';
+    font-display: swap;
+    src: url('../fonts/TTSquaresCondensed-BlackItalic/font.ttf');
+}
+@font-face {
+    font-family: 'TTSquaresCondensed-Italic';
+    font-display: swap;
+    src: url('../fonts/TTSquaresCondensed-Italic/font.ttf');
+}
+@font-face {
+    font-family: 'TTSquaresCondensed-BoldItalic';
+    font-display: swap;
+    src: url('../fonts/TTSquaresCondensed-BoldItalic/font.ttf');
+}
+body {
+    font-family: 'Nunito', sans-serif;
+}
