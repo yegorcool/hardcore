@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a  href="/">
+                <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
             </a>
         </x-slot>
 
@@ -14,7 +14,7 @@
 
             <!-- Email Address -->
             <div>
-                <x-input-label for="email" :value="__('Email')" />
+                <x-input-label for="email" :value="__('Электронная почта')" />
 
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
 
@@ -23,7 +23,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                <x-input-label for="password" :value="__('Пароль')" />
 
                 <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
 
@@ -32,7 +32,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input-label for="password_confirmation" :value="__('Подтверждение пароля')" />
 
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                     type="password"
@@ -41,11 +41,9 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Reset Password') }}
-                </x-primary-button>
-            </div>
+            <x-theme-button class="bg-themeRed">
+                    {{ __('Сбросить пароль') }}
+            </x-theme-button>
         </form>
     </x-auth-card>
 </x-guest-layout>

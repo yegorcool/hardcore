@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="/css/style.css">
 
         <!-- Scripts -->
-{{--         @todo надо настроить брейкпоинты в tailwind - сделать такими как в бутстрап--}}
-{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body class="home-3">
