@@ -18,13 +18,14 @@
                                 Уникальная возможность стать частью исторического поединка:<br/>
                                 Обратиться к легенде теперь может каждый.
                             </p>
-
-                            <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
-                                 data-wow-delay="1s" >
-                                <a  href="/register"  class="theme-btn theme-btn2" data-bs-toggle="modal"
-                                   data-bs-target="#registerModal">Зарегистрироваться<i
-                                        class="far fa-arrow-right"></i></a>
-                            </div>
+                            @guest
+                                <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                     data-wow-delay="1s">
+                                    <a href="/register" class="theme-btn theme-btn2" data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">Зарегистрироваться<i
+                                            class="far fa-arrow-right"></i></a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -49,12 +50,14 @@
                                 Уникальная возможность стать частью исторического поединка:<br/>
                                 Обратиться к легенде теперь может каждый.
                             </p>
-                            <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
-                                 data-wow-delay="1s">
-                                <a href="/register" class="theme-btn theme-btn2 " data-bs-toggle="modal"
-                                   data-bs-target="#registerModal">Зарегистрироваться<i
-                                        class="far fa-arrow-right"></i></a>
-                            </div>
+                            @guest
+                                <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                     data-wow-delay="1s">
+                                    <a href="/register" class="theme-btn theme-btn2 " data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">Зарегистрироваться<i
+                                            class="far fa-arrow-right"></i></a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>

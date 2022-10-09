@@ -3,13 +3,13 @@
     "file": "assets/font.5541169c.ttf",
     "src": "resources/fonts/TTSquaresCondensed-BlackItalic/font.ttf"
   },
-  "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
-    "file": "assets/font.590917bd.ttf",
-    "src": "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
-  },
   "resources/fonts/TTSquaresCondensed-Italic/font.ttf": {
     "file": "assets/font.6903fa87.ttf",
     "src": "resources/fonts/TTSquaresCondensed-Italic/font.ttf"
+  },
+  "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
+    "file": "assets/font.590917bd.ttf",
+    "src": "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
   },
   "resources/js/app.js": {
     "file": "assets/app.d225c007.js",
@@ -17,7 +17,7 @@
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.5eab8f18.css",
+    "file": "assets/app.a017d7da.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

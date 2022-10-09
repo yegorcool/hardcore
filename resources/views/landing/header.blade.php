@@ -19,8 +19,8 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <div class="">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="#">Бойцы</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Расписание</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#team-area">Бойцы</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#timetable">Расписание</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Турниры</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>
@@ -30,6 +30,15 @@
                                     <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>
                                 </ul>
                             </li>
+                            @auth
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="{{ route(Auth::user()->role . '.report') }}">
+                                    <i class="fa fa-folder-plus"></i>
+                                    ЛК
+                                </a>
+                            </li>
+                            @endauth
                         </ul>
                         <li class="nav-item lg:hidden border-top border-t-gray-100">
                             @auth

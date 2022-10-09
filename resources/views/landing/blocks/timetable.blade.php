@@ -1,4 +1,4 @@
-<div class="class-timetable pb-120">
+<div id="timetable" class="class-timetable pb-120">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mx-auto">

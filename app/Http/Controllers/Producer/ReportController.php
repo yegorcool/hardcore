@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Producer;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -15,9 +16,11 @@ class ReportController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $fighters = User::where('role', '=', 'fighter')->get();
 
         return response()->view($user->role . '.report', [
             'user' => $user,
+            'fighters' => $fighters,
         ]);
     }
 
