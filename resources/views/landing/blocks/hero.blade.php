@@ -5,19 +5,27 @@
                 <div class="row align-items-center">
                     <div class="col-md-7 col-lg-7">
                         <div class="hero-content">
-                            <h6 class="hero-sub-title wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                            <h6 class="hero-sub-title wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                data-wow-delay=".25s">
                                 Поддержи бойцов
                             </h6>
-                            <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
+                            <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                data-wow-delay=".50s">
                                 Вступай<br/><span>в лигу</span> Победителей
                             </h1>
-                            <p class="wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
+                            <p class="wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                               data-wow-delay=".75s">
                                 Уникальная возможность стать частью исторического поединка:<br/>
                                 Обратиться к легенде теперь может каждый.
                             </p>
-                            <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                                <a href="/register" class="theme-btn theme-btn2">Зарегистрироваться<i class="far fa-arrow-right"></i></a>
-                            </div>
+                            @guest
+                                <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                     data-wow-delay="1s">
+                                    <a href="/register" class="theme-btn theme-btn2" data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">Зарегистрироваться<i
+                                            class="far fa-arrow-right"></i></a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -29,19 +37,27 @@
                 <div class="row align-items-center">
                     <div class="col-md-7 col-lg-7">
                         <div class="hero-content">
-                            <h6 class="hero-sub-title wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                            <h6 class="hero-sub-title wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                data-wow-delay=".25s">
                                 Поддержи бойцов
                             </h6>
-                            <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
+                            <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                data-wow-delay=".50s">
                                 Записывай<br/><span>интерактивные</span> обращения
                             </h1>
-                            <p class="wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
+                            <p class="wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                               data-wow-delay=".75s">
                                 Уникальная возможность стать частью исторического поединка:<br/>
                                 Обратиться к легенде теперь может каждый.
                             </p>
-                            <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                                <a href="/register" class="theme-btn theme-btn2">Зарегистрироваться<i class="far fa-arrow-right"></i></a>
-                            </div>
+                            @guest
+                                <div class="hero-btn wow animate__animated animate__fadeInUp" data-wow-duration="1s"
+                                     data-wow-delay="1s">
+                                    <a href="/register" class="theme-btn theme-btn2 " data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">Зарегистрироваться<i
+                                            class="far fa-arrow-right"></i></a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>

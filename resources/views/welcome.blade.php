@@ -48,8 +48,10 @@
         @include('landing.blocks.video-area')
 
         @include('landing.blocks.team-area')
-
-        @include('landing.blocks.cta-area')
+        
+        @guest()
+            @include('landing.blocks.cta-area')
+        @endguest
 
     </main>
 

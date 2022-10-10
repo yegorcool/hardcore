@@ -34,7 +34,15 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="/register" class="theme-btn">Зарегистрироваться <i class="far fa-arrow-right"></i></a>
+                    @guest
+                        <a href="/register"
+                           class="theme-btn"
+                           data-bs-toggle="modal"
+                           data-bs-target="#registerModal">
+                            Зарегистрироваться
+                            <i class="far fa-arrow-right"></i>
+                        </a>
+                    @endguest
                 </div>
             </div>
         </div>
