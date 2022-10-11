@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Producer\FighterController;
 use App\Http\Controllers\Producer\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +10,4 @@ Route::get('/hello', function () {
 Route::middleware(['welcome'])->group(function () {
     Route::get('/report', [ReportController::class, 'index'])->name('report');
 });
+Route::resource('/fighters',FighterController::class);
