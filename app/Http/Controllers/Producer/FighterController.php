@@ -20,7 +20,7 @@ class FighterController extends Controller
      */
     public function index()
     {
-        $fighters = User::where('role', '=', 'fighter');
+        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
 
         return response()->view('producer.report', [
             'fighter' => $fighters,

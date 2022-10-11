@@ -59,6 +59,7 @@
                     <tfoot class="bg-white/10"></tfoot>
                 </table>
             </div>
+            <div class="bg-black text-themeOrange "> {{ $fighters->links() }}</div>
         </div>
     </section>
 @endsection
