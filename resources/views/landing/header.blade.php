@@ -19,6 +19,7 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <div class="">
                         <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
                             <li class="nav-item"><a class="nav-link" href="#team-area">Бойцы</a></li>
                             <li class="nav-item"><a class="nav-link" href="#timetable">Расписание</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Турниры</a></li>

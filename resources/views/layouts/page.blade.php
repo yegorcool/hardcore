@@ -7,10 +7,7 @@
 
     <title>{{ config('app.name', 'Hardcore') }}-PageTitle</title>
 
-    <link rel="shortcut icon" href="/hardcore-fight-icon.png" type="image/x-icon">
-    <!-- Fonts -->
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    @include('layouts.assets.external-css')
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -51,18 +48,7 @@
     </main>
 </div>
 
-<script src="/js/jquery-3.6.0.min.js"></script>
-<script src="/js/modernizr.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/imagesloaded.pkgd.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/isotope.pkgd.min.js"></script>
-<script src="/js/jquery.appear.min.js"></script>
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/counter-up.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
-<script src="/js/wow.min.js"></script>
-<script src="/js/main.js"></script>
+@include('layouts.assets.external-js')
+
 </body>
 </html>

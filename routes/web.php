@@ -23,4 +23,7 @@ Route::get('/dashboard', function () {
 Route::get('/hello', function () {
     return view('welcome');
 });
+Route::get('/fighter', function () {
+    return view('pages.fighter-single');
+})->name('fighter');
 require __DIR__.'/auth.php';
