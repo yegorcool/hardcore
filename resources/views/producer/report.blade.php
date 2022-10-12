@@ -50,7 +50,12 @@
                             <td class="min-w-[300px] max-w-[500px]">{{$fighter->description}}</td>
                             <td><a href="{{ route('producer.fighters.edit', $fighter) }}"
                                    class="theme-btn bg-white/50 mx-2 text-sm">Редактировать</a></td>
-                            <td><a href="#" class="theme-btn mx-2  text-sm">Удалить</a></td>
+                            <td><form action="{{ route('producer.fighters.destroy', $fighter) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                <button type="submit" class="theme-btn mx-2 text-sm bg-themeRed">Удалить</button>
+                                </form >
+                            </td>
                         </tr>
                     @empty
                         <p>No users</p>

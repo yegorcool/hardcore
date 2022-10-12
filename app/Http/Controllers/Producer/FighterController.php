@@ -108,6 +108,8 @@ class FighterController extends Controller
      */
     public function destroy(User $fighter)
     {
-        //
+        $fighter->delete();
+
+        return redirect()->route('producer.report')->with('success', ['Боец успешно удален!']);
     }
 }
