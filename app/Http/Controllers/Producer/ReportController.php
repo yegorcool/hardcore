@@ -16,7 +16,7 @@ class ReportController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $fighters = User::where('role', '=', 'fighter')->get();
+        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->paginate(50);
 
         return response()->view($user->role . '.report', [
             'user' => $user,

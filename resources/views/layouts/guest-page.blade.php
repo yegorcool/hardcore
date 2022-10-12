@@ -18,7 +18,7 @@
     @include('landing.header')
 
     <!-- Page Content -->
-    <main class="bg-black min-h-[calc(100vh-85px)] flex flex-col justify-between">
+    <main class="bg-black pt-[85px] lg:pt-0 min-h-[calc(100vh-85px)] flex flex-col justify-between">
         <div class="container-fluid p-0">
             @yield('content')
         </div>
