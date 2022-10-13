@@ -1,0 +1,74 @@
+.heading {
+
+    background-image: url('../images/boxing-2-991.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    //background-position: center bottom;
+    background-position: center center;
+    background-attachment: fixed;
+    position: relative;
+
+    @include customBP(768px) {
+        background-image: url('../images/slider-boxing-2.jpg');
+
+        background-size: auto 100%;
+    }
+
+    @include customBP(992px) {
+        background-size: cover;
+        background-position: right 10% top;
+    }
+}
+
+.heading__title-block {
+
+}
+
+.heading__title-block::after {
+    content: "";
+    width: 100%;
+    height: 300px;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: block;
+    background-image: url('../images/el-white.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include customBP(768px) {
+        content: "";
+        width: 100%;
+        height: 350px;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+    }
+    @include customBP(992px) {
+        content: "";
+        width: 100%;
+        height: 300px;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+    }
+}
+
+.heading__title {
+    font-size: 50px;
+    font-weight: 600;
+    text-transform: none;
+    color: #ffffff;
+
+    @include customBP(992px) {
+        font-size: 60px;
+    }
+}
+
+.heading__sub-title {
+    font-size: 22px;
+    font-weight: 400;
+    color: #ffffff;
+}

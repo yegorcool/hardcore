@@ -1,24 +1,28 @@
 {
-  "resources/images/el-white.svg": {
-    "file": "assets/el-white.fb0bffa0.svg",
-    "src": "resources/images/el-white.svg"
-  },
-  "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
+  "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
     "file": "assets/font.590917bd.ttf",
-    "src": "resources/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
+    "src": "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
   },
-  "resources/images/04.jpg": {
-    "file": "assets/04.d07b2f2a.jpg",
-    "src": "resources/images/04.jpg"
+  "resources/assets/images/boxing-2-991.jpg": {
+    "file": "assets/boxing-2-991.9249f505.jpg",
+    "src": "resources/assets/images/boxing-2-991.jpg"
+  },
+  "resources/assets/images/el-white.svg": {
+    "file": "assets/el-white.fb0bffa0.svg",
+    "src": "resources/assets/images/el-white.svg"
+  },
+  "resources/assets/images/slider-boxing-2.jpg": {
+    "file": "assets/slider-boxing-2.9822b16d.jpg",
+    "src": "resources/assets/images/slider-boxing-2.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.6f7059b9.js",
+    "file": "assets/app.d225c007.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/css/app.css": {
-    "file": "assets/app.0f6b98d7.css",
-    "src": "resources/css/app.css",
+  "resources/assets/scss/app.scss": {
+    "file": "assets/app.afe8b52f.css",
+    "src": "resources/assets/scss/app.scss",
     "isEntry": true
   }
 }

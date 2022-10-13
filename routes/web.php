@@ -24,6 +24,6 @@ Route::get('/hello', function () {
     return view('welcome');
 });
 Route::get('/fighter', function () {
-    return view('pages.fighter-single');
+    return view('pages.fighter-single.index');
 })->name('fighter');
 require __DIR__.'/auth.php';
