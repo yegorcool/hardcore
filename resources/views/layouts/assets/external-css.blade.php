@@ -8,6 +8,4 @@
 <link rel="stylesheet" href="/css/magnific-popup.min.css">
 <link rel="stylesheet" href="/css/owl.carousel.min.css">
 <link rel="stylesheet" href="/css/swiper-bundle.min.css">
-<link rel="stylesheet" href="/css/fg-style.min.css">
-<link rel="stylesheet" href="/css/big.css">
 <link rel="stylesheet" href="/css/style.css">

@@ -1,5 +1,5 @@
 .fighter-about__title {
-    font-family: "TTSquaresCondensed-BlackItalic", sans-serif;
+    font-family: "TTSquaresCondensed-Italic", sans-serif;
     line-height: 48px;
     font-size: 40px;
     font-weight: 600;
@@ -10,7 +10,18 @@
         font-size: 50px;
     }
 }
+.fighter-about__subtitle {
+    font-family: "TTSquaresCondensed-Italic", sans-serif;
+    line-height: 40px;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: none;
+    color: #ffffff;
 
+    @include customBP(992px) {
+        font-size: 30px;
+    }
+}
 .fighter-about__text {
     font-family: "TTSquaresCondensed-Italic", sans-serif;
     font-size: 17px;
