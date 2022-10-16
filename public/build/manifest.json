@@ -1,11 +1,11 @@
 {
-  "resources/assets/images/el-white.svg": {
-    "file": "assets/el-white.fb0bffa0.svg",
-    "src": "resources/assets/images/el-white.svg"
-  },
   "resources/assets/images/boxing-2-991.jpg": {
     "file": "assets/boxing-2-991.9249f505.jpg",
     "src": "resources/assets/images/boxing-2-991.jpg"
+  },
+  "resources/assets/images/el-white.svg": {
+    "file": "assets/el-white.fb0bffa0.svg",
+    "src": "resources/assets/images/el-white.svg"
   },
   "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
     "file": "assets/font.590917bd.ttf",
@@ -16,12 +16,12 @@
     "src": "resources/assets/images/slider-boxing-2.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.e2cfe365.js",
+    "file": "assets/app.a992d6d0.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/assets/scss/app.scss": {
-    "file": "assets/app.23716429.css",
+    "file": "assets/app.60d355ea.css",
     "src": "resources/assets/scss/app.scss",
     "isEntry": true
   }
