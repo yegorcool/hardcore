@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Role\UserRole;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreFighterRequest extends FormRequest
+class StoreGameRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,18 @@ class StoreFighterRequest extends FormRequest
      */
     public function rules()
     {
-        $roles = array_keys(UserRole::getRoleList());
+        $fighters = User::query()
+            ->where('deleted_at', '=', null)
+            ->where('role', '=', 'fighter')
+            ->get()
+            ->pluck('id');
 
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', Rule::in($roles)],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'member_one_id' => ['required', 'numeric', Rule::in($fighters)],
+            'member_two_id' => ['required', 'numeric', Rule::in($fighters), 'different:member_one_id'],
+            'datetime' => ['required', 'date', 'after:today'],
             'city' => ['nullable', 'string', 'max:255'],
-            'height' => ['nullable', 'numeric'],
-            'weight' => ['nullable', 'numeric'],
+            'place' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
         ];
     }

@@ -19,53 +19,74 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <div class="">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#team-area">Бойцы</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#timetable">Расписание</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Турниры</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>
-                                <ul class="dropdown-menu fade-up">
-                                    <li><a class="dropdown-item" href="#">Hardcore FC</a></li>
-                                    <li><a class="dropdown-item" href="#">Hardcore MMA</a></li>
-                                    <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>
-                                </ul>
-                            </li>
                             @auth
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ route(Auth::user()->role . '.report') }}">
-                                    <i class="fa fa-folder-plus"></i>
-                                    ЛК
-                                </a>
-                            </li>
-                            @endauth
-                        </ul>
-                        <li class="nav-item lg:hidden border-top border-t-gray-100">
-                            @auth
-                                <!-- Settings Dropdown -->
-                                <div class="flex items-center py-2">
-                                    <div
-                                        class="flex items-center text-base font-medium duration-150 ease-in-out mr-3 ">
-                                        <div>{{ Auth::user()->name }}</div>
-                                    </div>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-
-                                        <a class="nav-link" href="{{route('logout')}}"
-                                           onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </a>
-                                    </form>
-                                </div>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{ route(Auth::user()->role . '.fighters.index') }}">Бойцы</a>
+                                </li>
+                                <li class="nav-item current"><a class="nav-link"
+                                                                href="{{ route(Auth::user()->role . '.games.index') }}">Расписание</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{ route(Auth::user()->role . '.games.index') }}">Турниры</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>
+                                    <ul class="dropdown-menu fade-up">
+                                        <li><a class="dropdown-item" href="#">Hardcore FC</a></li>
+                                        <li><a class="dropdown-item" href="#">Hardcore MMA</a></li>
+                                        <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       href="{{ route(Auth::user()->role . '.report') }}">
+                                        <i class="fa fa-folder-plus"></i>
+                                        ЛК
+                                    </a>
+                                </li>
                             @else
-                                <div class=" py-2">
-                                    <a class="theme-btn text-white" data-bs-target="#loginModal" data-bs-toggle="modal">Войти<i
-                                            class="far fa-arrow-right"></i></a>
-                                </div>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#team-area">Бойцы</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#timetable">Расписание</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Турниры</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>
+                                    <ul class="dropdown-menu fade-up">
+                                        <li><a class="dropdown-item" href="#">Hardcore FC</a></li>
+                                        <li><a class="dropdown-item" href="#">Hardcore MMA</a></li>
+                                        <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>
+                                    </ul>
+                                </li>
                             @endauth
-                        </li>
+
+                            <li class="nav-item lg:hidden border-top border-t-gray-100">
+                                @auth
+                                    <!-- Settings Dropdown -->
+                                    <div class="flex items-center py-2">
+                                        <div
+                                            class="flex items-center text-base font-medium duration-150 ease-in-out mr-3 ">
+                                            <div>{{ Auth::user()->name }}</div>
+                                        </div>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+
+                                            <a class="nav-link" href="{{route('logout')}}"
+                                               onclick="event.preventDefault();
+                                                                            this.closest('form').submit();">
+                                                {{ __('Log Out') }}
+                                            </a>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class=" py-2">
+                                        <a class="theme-btn text-white" data-bs-target="#loginModal"
+                                           data-bs-toggle="modal">Войти<i
+                                                class="far fa-arrow-right"></i></a>
+                                    </div>
+                                @endauth
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="header-nav-right">

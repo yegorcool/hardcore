@@ -22,8 +22,8 @@ class FighterController extends Controller
     {
         $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
 
-        return response()->view('producer.report', [
-            'fighter' => $fighters,
+        return response()->view('producer.fighters.index', [
+            'fighters' => $fighters,
         ]);
     }
 
