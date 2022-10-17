@@ -10,7 +10,7 @@
 @include('layouts.assets.external-css')
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/assets/scss/app.scss', 'resources/js/app.js'])
     </head>
 
     <body class="home-3">

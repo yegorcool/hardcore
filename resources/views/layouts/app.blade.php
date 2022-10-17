@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/assets/scss/app.scss', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased home-3">
         <div class="min-h-screen bg-gray-100">
