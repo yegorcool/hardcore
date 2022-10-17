@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateGameRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +25,19 @@ class UpdateGameRequest extends FormRequest
      */
     public function rules()
     {
+        $fighters = User::query()
+            ->where('deleted_at', '=', null)
+            ->where('role', '=', 'fighter')
+            ->get()
+            ->pluck('id');
+
         return [
-            //
+            'member_one_id' => ['required', 'numeric', Rule::in($fighters)],
+            'member_two_id' => ['required', 'numeric', Rule::in($fighters), 'different:member_one_id'],
+            'datetime' => ['required', 'date', 'after:today'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'place' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
         ];
     }
 }

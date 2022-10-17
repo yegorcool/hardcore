@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('title')
-    {{ __('Список боев') }}
+    {{ __('Турниры') }}
 @endsection
 
 @section('titlebutton')
@@ -17,8 +17,8 @@
         <div class="w-full ">
             <div class="row">
                 <div class="col-lg-6">
-                    <span class="site-title-tagline">Бойцы</span>
-                    <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Список бойцов</h3>
+                    <span class="site-title-tagline">Турниры</span>
+                    <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Список боёв</h3>
                 </div>
             </div>
             <div class="my-4 overflow-x-auto">

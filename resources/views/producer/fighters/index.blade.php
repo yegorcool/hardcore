@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('title')
-    {{ __('Producer Centre') }}
+    {{ __('Бойцы') }}
 @endsection
 @section('titlebutton')
     <div class="theme-btn ">
