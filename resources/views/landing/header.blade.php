@@ -20,12 +20,10 @@
                     <div class="">
                         <ul class="navbar-nav">
                             @auth
-                                <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{ route(Auth::user()->role . '.fighters.index') }}">Бойцы</a>
                                 </li>
-                                <li class="nav-item current"><a class="nav-link"
-                                                                href="{{ route(Auth::user()->role . '.games.index') }}">Расписание</a>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link"
                                                         href="{{ route(Auth::user()->role . '.games.index') }}">Турниры</a>
@@ -46,10 +44,9 @@
                                     </a>
                                 </li>
                             @else
-                                <li class="nav-item"><a class="nav-link" href="{{ route('fighter') }}">1 боец</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#team-area">Бойцы</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#timetable">Расписание</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Турниры</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('guest.fighters') }}">Бойцы</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('guest.games') }}">Турниры</a></li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>
                                     <ul class="dropdown-menu fade-up">

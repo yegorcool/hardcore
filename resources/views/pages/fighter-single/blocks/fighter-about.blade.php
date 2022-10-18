@@ -15,15 +15,15 @@
                     <tbody>
                     <tr>
                         <td class="w-60"><span >Вес</span></td>
-                        <td>110 кг</td>
+                        <td>{{ $fighter->weight }}</td>
                     </tr>
                     <tr>
                         <td><span >Рост</span></td>
-                        <td>188 см</td>
+                        <td>{{ $fighter->height }}</td>
                     </tr>
                     <tr>
                         <td><span >Город</span></td>
-                        <td>Верхние Луки</td>
+                        <td>{{ $fighter->city }}</td>
                     </tr>
                     <tr>
                         <td><span >Национальность</span></td>
@@ -34,8 +34,8 @@
         </div>
 
         <figure class="flex flex-col align-items-center md:w-1/3 mx-auto">
-            <img class="fighter-about__image block" src="/images/02.jpg" width="360" height="414" alt="" >
-            <figcaption class="fighter-about__caption text-left">Иван Кулаков</figcaption>
+            <img class="fighter-about__image block" src="/images/boxing-{{ $num }}.jpg" width="360" height="414" alt="" >
+            <figcaption class="fighter-about__caption text-left">{{ $fighter->name }}</figcaption>
         </figure>
     </div>
 </section>

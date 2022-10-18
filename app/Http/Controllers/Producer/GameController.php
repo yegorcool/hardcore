@@ -84,7 +84,9 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return response()->view('producer.games.show', [
+            'game' => $game,
+        ]);
     }
 
     /**

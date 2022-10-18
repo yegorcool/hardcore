@@ -1,17 +1,17 @@
 .heading {
 
-    background-image: url('../images/boxing-2-991.jpg');
+    //background-image: url('../images/boxing-2-991.jpg');
 
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto 100%;
     //background-position: center bottom;
-    background-position: center center;
+    background-position: right 30% center;
     background-attachment: fixed;
     position: relative;
 
     @include customBP(768px) {
-        background-image: url('../images/slider-boxing-2.jpg');
-
+        //background-image: url('../images/slider-boxing-2.jpg');
+        background-position: center center;
         background-size: auto 100%;
     }
 
@@ -72,3 +72,17 @@
     font-weight: 400;
     color: #ffffff;
 }
+
+.game-heading {
+    background-repeat: no-repeat;
+    background-size: 100% auto ;
+    background-position: top 80px center;
+    background-attachment: fixed;
+    position: relative;
+
+    @include customBP(1366px) {
+        background-position: top center;
+        background-size: auto 100%;
+    }
+}
+

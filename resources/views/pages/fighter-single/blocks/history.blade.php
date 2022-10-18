@@ -8,7 +8,7 @@
 
         {{--        timeline--}}
         <div class="relative timeline__wrapper timeline__animate wow animate__fadeInUp animate__animated"
-             data-wow-duration="2000ms" data-wow-delay="150ms" data-wow-offset="50"
+             data-wow-duration="2000ms" data-wow-delay=100ms" data-wow-offset="50"
         >
             <ul class="timeline__list ">
                 <li class="timeline__row">

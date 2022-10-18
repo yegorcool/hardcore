@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,6 +15,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+        $games = Game::query()
+            ->with('members')
+            ->orderByDesc('id')
+            ->get();
+
+        return view('welcome', [
+            'fighters' => $fighters,
+            'games' => $games,
+        ]);
     }
 }

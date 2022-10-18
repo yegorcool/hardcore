@@ -1,1 +1,29 @@
 /* Стили общих компонентов */
+/* ===================
+scroll-top-page css
+====================== */
+
+#scroll-top-page {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background: #da1d25;
+    color: #fff;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+    transition: all .5s ease-in-out;
+}
+
+#scroll-top-page:hover{
+    background: #F69323;
+    color: #fff;
+}

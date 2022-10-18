@@ -13,7 +13,7 @@
 </head>
 <body class="font-sans antialiased home-3">
 
-<div class="min-h-screen bg-black">
+<div class="min-h-screen bg-black relative">
 
     @include('landing.header')
 
@@ -46,6 +46,7 @@
 
         @include('landing.footer')
     </main>
+    <a href="#" id="scroll-top-page"><i class="far fa-long-arrow-up"></i></a>
 </div>
 
 {{--@include('layouts.assets.external-js')--}}
