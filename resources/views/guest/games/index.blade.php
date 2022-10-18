@@ -3,15 +3,6 @@
     {{ __('Турниры') }}
 @endsection
 
-@section('titlebutton')
-    <div class="theme-btn ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.games.create') }}" class=""><i
-                class="fa fa-plus mr-2"></i>
-            {{ __(' Добавить бой') }}
-        </a>
-    </div>
-@endsection
-
 @section('content')
     <section class="container-fluid  px-lg-5 mx-auto sm:px-6 lg:px-8">
         <div class="w-full ">
@@ -26,37 +17,36 @@
                     class="table table-responsive table-dark table-sm table-hover bg-black align-middle text-gray-200 min-w-[900px] ">
                     <thead class="table-group-divider border-top-color-themeRed">
                     <tr class="uppercase text-themeRed font-semibold">
-                        <th scope="col">Id</th>
                         <th scope="col">Дата</th>
                         <th scope="col" class="min-w-20">Боец 1</th>
                         <th scope="col" class="min-w-20">Боец 2</th>
                         <th scope="col">Место</th>
                         <th scope="col">Город</th>
                         <th scope="col">Описание</th>
-                        <th scope="col">Изменить</th>
-                        <th scope="col">Удалить</th>
+                        <th scope="col">Действие</th>
                     </tr>
                     </thead>
                     <tbody class="table-group-divider">
                     @forelse($games as $game )
                         <tr>
-                            <th scope="row"><a href="{{ route('guest.game', $game) }}" class="hover:text-themeOrange">{{$game->id}}</a></th>
                             <td>{{$game->datetime->format('d.m.Y H:i')}}</td>
-                            <td class="min-w-20"><a href="{{ route('guest.fighter', $game->member_one_id) }}" class="hover:text-themeOrange">#{{$game->member_one_id}} </a>
-                                {{$game->members[0]->name}}, {{$game->members[0]->city}}
+                            <td class="min-w-20">
+                                <a href="{{ route('guest.fighter', $game->member_one_id) }}"
+                                   class="hover:text-themeOrange">
+                                    {{$game->members[0]->name}}, {{$game->members[0]->city}}
+                                </a>
                             </td>
-                            <td class="min-w-20"><a href="{{ route('guest.fighter', $game->member_two_id) }}" class="hover:text-themeOrange">#{{$game->member_two_id}} </a>
-                                {{$game->members[1]->name}}, {{$game->members[1]->city}}</td>
+                            <td class="min-w-20">
+                                <a href="{{ route('guest.fighter', $game->member_two_id) }}"
+                                   class="hover:text-themeOrange">
+                                    {{$game->members[1]->name}}, {{$game->members[1]->city}}
+                                </a>
+                            </td>
                             <td>{{$game->place}}</td>
                             <td>{{$game->city}}</td>
                             <td class="min-w-[300px] max-w-[500px]">{{$game->description}}</td>
-                            <td><a href="{{ route('producer.games.edit', $game) }}"
-                                   class="theme-btn bg-white/50 mx-2 text-sm">Редактировать</a></td>
-                            <td><form action="{{ route('producer.games.destroy', $game) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="theme-btn mx-2 text-sm bg-themeRed">Удалить</button>
-                                </form >
+                            <td>
+                                <a href="{{ route('guest.game', $game) }}" class="theme-btn">Подробнее</a>
                             </td>
                         </tr>
                     @empty
@@ -66,7 +56,7 @@
                     <tfoot class="bg-white/10"></tfoot>
                 </table>
             </div>
-{{--            <div class="bg-black text-themeOrange "> {{ $game->links() }}</div>--}}
+            {{--            <div class="bg-black text-themeOrange "> {{ $game->links() }}</div>--}}
         </div>
     </section>
 @endsection

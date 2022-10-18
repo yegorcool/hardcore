@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Guest\FighterController;
+use App\Http\Controllers\Guest\GameController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,8 @@ Route::get('/dashboard', function () {
 Route::get('/hello', function () {
     return view('welcome');
 });
-Route::get('/fighter', function () {
-    return view('pages.fighter-single.index');
-})->name('fighter');
+
+Route::resource('/fighters',FighterController::class)->only(['index', 'show'])->name('index', 'guest.fighters')->name('show', 'guest.fighter');
+Route::resource('/games',GameController::class)->only(['index', 'show'])->name('index', 'guest.games')->name('show', 'guest.game');
+
 require __DIR__.'/auth.php';

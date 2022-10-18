@@ -69,7 +69,9 @@ class FighterController extends Controller
      */
     public function show(User $fighter)
     {
-        //
+        return response()->view('producer.fighters.show', [
+            'fighter' => $fighter,
+        ]);
     }
 
     /**
