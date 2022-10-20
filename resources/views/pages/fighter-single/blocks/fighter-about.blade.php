@@ -6,9 +6,7 @@
             </h2>
             <div class="fighter-about__text text-gray-50">
                 <p class="text-gray-50">
-                    Единых правил для всех версий абсолютных поединков не существует и никогда не существовало. По сути, они сводились к одному основополагающему принципу: минимум защитной экипировки и ограничений на используемую технику, максимум «реализма» поединков и свободы действий бойцов. Запрещались только те «приемы», которые прямо вели к тяжелым увечьям: нельзя было выдавливать глаза и ломать позвоночник сопернику, наносить ему удары в горло, пах и другие уязвимые места. </p>
-                <p>
-                    (Не разрешалось также надевать предметы, которые могли привести к травме: серьги, браслеты, цепи, булавки и т.п.) Весовые категории не предусматривались. Не ограничивалось время поединка: бой шел до полной сдачи одного из соперников. Костюм бойцы выбирали произвольно, это могли быть боксерские трусы, кимоно дзюдоиста и т.д. Защитная экипировка тоже выбиралась спортсменами индивидуально: например, можно было, по желанию, выступать в перчатках (сегодня специальные облегченные перчатки «без пальцев» в боях без правил обязательны).
+                    {{ $fighter->description }}
                 </p>
             </div>
             <table class="table table-striped border-indigo-400 my-4 table-fixed w-full bg-gray-800 max-w-[500px]" >
@@ -32,10 +30,25 @@
                     </tbody>
                 </table>
         </div>
-
         <figure class="flex flex-col align-items-center md:w-1/3 mx-auto">
-            <img class="fighter-about__image block" src="/images/boxing-{{ $num }}.jpg" width="360" height="414" alt="" >
+            <img class="fighter-about__image block"
+                 src="@if($fighter->gallery_images){{ asset($fighter->gallery_images[0]) }}@else/images/boxing-{{ $num }}.jpg @endif"
+                 width="360" height="414"
+                 alt="Фото бойца" >
             <figcaption class="fighter-about__caption text-left">{{ $fighter->name }}</figcaption>
         </figure>
+
+{{--        "/images/boxing-{{ $num }}.jpg"--}}
+
+{{--        <figure class="flex flex-col align-items-center md:w-1/3 mx-auto">--}}
+{{--            <img class="fighter-about__image block" src="{{ asset($fighter->avatar) }}" width="360" height="414" alt="" >--}}
+{{--            <figcaption class="fighter-about__caption text-left">{{ $fighter->name }}</figcaption>--}}
+{{--        </figure>--}}
+{{--        @foreach($fighter->gallery_images as $image)--}}
+{{--        <figure class="flex flex-col align-items-center md:w-1/3 mx-auto">--}}
+{{--            <img class="fighter-about__image block" src="{{ asset($image) }}" width="360" height="414" alt="" >--}}
+{{--            <figcaption class="fighter-about__caption text-left">{{ $fighter->name }}</figcaption>--}}
+{{--        </figure>--}}
+{{--        @endforeach--}}
     </div>
 </section>

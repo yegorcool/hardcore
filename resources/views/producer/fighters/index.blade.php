@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  px-lg-5 mx-auto sm:px-6 lg:px-8">
+    <section class="px-3">
         <div class="w-full ">
             <div class="row">
                 <div class="col-lg-6">
@@ -31,7 +31,7 @@
                         <th scope="col">Город</th>
                         <th scope="col">Рост, см</th>
                         <th scope="col" class="min-w-20">Вес, кг</th>
-                        <th scope="col">Описание</th>
+{{--                        <th scope="col">Описание</th>--}}
                         <th scope="col">Изменить</th>
                         <th scope="col">Удалить</th>
                     </tr>
@@ -45,7 +45,7 @@
                             <td>{{$fighter->city}}</td>
                             <td class="text-center min-w-20">{{$fighter->height}}</td>
                             <td class="text-center min-w-20">{{$fighter->weight}}</td>
-                            <td class="min-w-[300px] max-w-[500px]">{{$fighter->description}}</td>
+{{--                            <td class="min-w-[300px] max-w-[500px]">{{$fighter->description}}</td>--}}
                             <td><a href="{{ route('producer.fighters.edit', $fighter) }}"
                                    class="theme-btn bg-white/50 mx-2 text-sm">Редактировать</a></td>
                             <td><form action="{{ route('producer.fighters.destroy', $fighter) }}" method="post">

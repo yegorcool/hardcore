@@ -49,7 +49,13 @@
                                 <tr>
                                     <td>
                                         <div class="timetable-trainer">
-                                            <img src="/images/s1.jpg" alt="">
+                                            <div class="">
+                                                @if($game->members[0]->avatar)
+                                                    <img src="{{ asset($game->members[0]->avatar) }}" alt="Аватар бойца">
+                                                @else
+                                                    <i class="fa fa-user-alien"></i>
+                                                    @endif
+                                            </div>
                                             <a href="{{ route('guest.fighter', $game->member_one_id) }}">
                                                 <h5 class="hover:text-themeOrange">{{$game->members[0]->name}}</h5>
                                             </a>
