@@ -8,7 +8,9 @@
     <div class=" wrapper  min-h-[95vh]  lg:min-h-[90vh] ">
         <div class="heading__title-block min-h-[75vh]   flex flex-col justify-end md:justify-center items-center">
             <div
-                class="  lg:mr-56 py-10 lg:flex lg:flex-col justify-center items-center  mb-20 md:mb-0 @if( $fighter->hero_image )bg-black/50 @endif rounded-xl px-4">
+                class="  lg:mr-56 py-10 lg:flex lg:flex-col justify-center items-center  mb-20 md:mb-0
+{{--                @if( $fighter->hero_image )bg-black/30 @endif--}}
+                rounded-xl px-4">
                 <h2 class="heading__title mb-3">
                     {{ $fighter->name }}
                 </h2>
