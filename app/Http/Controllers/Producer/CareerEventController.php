@@ -101,7 +101,14 @@ class CareerEventController extends Controller
      */
     public function update(UpdateCareerEventRequest $request, CareerEvent $careerEvent)
     {
-       return 'UPDATE';
+        $fighter = User::query()
+            ->where('id', '=', $careerEvent->user_id)
+            ->first();
+
+        $data = $request->validated();
+        $careerEvent->update($data);
+
+        return redirect()->intended(route('producer.fighters.show', $fighter));
     }
 
     /**

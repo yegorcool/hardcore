@@ -8,9 +8,7 @@
 
     {{--History--}}
     @include('pages.fighter-single.blocks.history')
-    <div class="my-20">
-        {{--Skills--}}
-        @include('pages.fighter-single.blocks.skills')
-    </div>
-
+    {{--    <div class="my-20">--}}
+    {{--        @include('pages.fighter-single.blocks.skills')--}}
+    {{--    </div>--}}
 @endsection

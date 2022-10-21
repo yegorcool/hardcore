@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('title')
-    {{ __('Добавление этапа карьеры бойца') }}
+    {{ __('Редактирование этапа карьеры бойца') }}
 @endsection
 
 @section('titlebutton')
@@ -76,10 +76,9 @@
                         <x-input-error :messages="$errors->get('comment')" class="mt-2"/>
                     </div>
                     <div class="w-auto  md:ml-0 md:w-1/3 lg:x-1/4 lg:text-left">
-                        <p class="text-themeOrange text-2xl">Редактирование еще не готово</p>
-{{--                        <x-theme-button class="bg-themeRed">--}}
-{{--                            {{ __('Сохранить') }}--}}
-{{--                        </x-theme-button>--}}
+                        <x-theme-button class="bg-themeRed">
+                            {{ __('Сохранить') }}
+                        </x-theme-button>
                     </div>
                 </form>
             </div>
