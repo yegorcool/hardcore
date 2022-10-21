@@ -6,7 +6,7 @@
 
 @section('titlebutton')
     <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.report')  }}" class=""><i class="fa fa-plus mr-2"></i>
+        <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i class="fa fa-plus mr-2"></i>
             {{ __(' Вернуться к списку') }}
         </a>
     </div>

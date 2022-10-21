@@ -68,7 +68,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        @empt
+                        @empty
                             <p class="text-white">Список боев пустой</p>
                         @endforelse
                         </tbody>

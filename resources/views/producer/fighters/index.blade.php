@@ -41,7 +41,7 @@
                         <tr>
                             <th scope="row">{{$fighter->id}}</th>
                             <td class="min-w-20"><a href="{{ route('guest.fighter', $fighter) }}" class="hover:text-themeOrange">{{$fighter->name}}</a></td>
-                            <td>{{$fighter->email}}</td>
+                            <td><a href="{{ route('producer.fighters.show', $fighter) }}" class="hover:text-themeOrange">{{$fighter->email}}</a></td>
                             <td>{{$fighter->city}}</td>
                             <td class="text-center min-w-20">{{$fighter->height}}</td>
                             <td class="text-center min-w-20">{{$fighter->weight}}</td>
@@ -62,7 +62,7 @@
                     <tfoot class="bg-white/10"></tfoot>
                 </table>
             </div>
-            <div class="bg-black text-themeOrange "> {{ $fighters->links() }}</div>
+            <div class="bg-black text-themeOrange fighters__paginate"> {{ $fighters->links() }}</div>
         </div>
     </section>
 @endsection

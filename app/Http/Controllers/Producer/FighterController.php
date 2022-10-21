@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Producer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFighterRequest;
 use App\Http\Requests\UpdateFighterRequest;
+use App\Models\CareerEvent;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class FighterController extends Controller
      */
     public function index()
     {
-        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+        $fighters = User::where('role', '=', 'fighter')
+            ->orderBy('id', 'DESC')
+            ->paginate(50);
 
         return response()->view('producer.fighters.index', [
             'fighters' => $fighters,
@@ -71,8 +74,7 @@ class FighterController extends Controller
             $user->update(['hero_image' => 'storage/photos/' . $hero_image]);
         }
 
-        if($request->hasfile('gallery_images'))
-        {
+        if ($request->hasfile('gallery_images')) {
             foreach ($request->file('gallery_images') as $file) {
                 $img = $file->store('/', 'public');
                 $gallery_images[] = 'storage/photos/' . $img;
@@ -93,8 +95,14 @@ class FighterController extends Controller
      */
     public function show(User $fighter)
     {
+        $careerEvents = CareerEvent::query()
+            ->where('user_id', '=', $fighter->id)
+            ->orderByDesc('id')
+            ->get();
+
         return response()->view('producer.fighters.show', [
             'fighter' => $fighter,
+            'careerEvents' => $careerEvents,
         ]);
     }
 
@@ -116,14 +124,14 @@ class FighterController extends Controller
      *
      * @param \App\Http\Requests\UpdateFighterRequest $request
      * @param \App\Models\User $fighter
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateFighterRequest $request, User $fighter)
     {
         $data = $request->validated();
         $fighter->update($data);
 
-        return redirect()->intended(route('producer.report'));
+        return redirect()->intended(route('producer.fighters.index'));
     }
 
     /**

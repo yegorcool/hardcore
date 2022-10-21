@@ -49,12 +49,12 @@
                                 <tr>
                                     <td>
                                         <div class="timetable-trainer">
-                                            <div class="">
+                                            <div class="w-[50px] h-[50px] overflow-hidden">
                                                 @if($game->members[0]->avatar)
-                                                    <img src="{{ asset($game->members[0]->avatar) }}" alt="Аватар бойца">
+                                                    <img class="w-full h-full rounded-3xl" src="{{ asset($game->members[0]->avatar) }}" alt="Аватар бойца">
                                                 @else
                                                     <i class="fa fa-user-alien"></i>
-                                                    @endif
+                                                @endif
                                             </div>
                                             <a href="{{ route('guest.fighter', $game->member_one_id) }}">
                                                 <h5 class="hover:text-themeOrange">{{$game->members[0]->name}}</h5>
@@ -63,7 +63,13 @@
                                     </td>
                                     <td>
                                         <div class="timetable-trainer">
-                                            <img src="/images/s4.jpg" alt="">
+                                            <div class="w-[50px] h-[50px] overflow-hidden">
+                                                @if($game->members[0]->avatar)
+                                                    <img class="w-full h-full rounded-3xl" src="{{ asset($game->members[1]->avatar) }}" alt="Аватар бойца">
+                                                @else
+                                                    <i class="fa fa-user-alien"></i>
+                                                @endif
+                                            </div>
                                             <a href="{{ route('guest.fighter', $game->member_two_id) }}">
                                                 <h5 class="hover:text-themeOrange">{{$game->members[1]->name}}</h5>
                                             </a>

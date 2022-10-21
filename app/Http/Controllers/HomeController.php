@@ -15,7 +15,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+        $allFighters = User::where('role', '=', 'fighter');
+
+        $bestFighters = $allFighters->where('is_shown_on_welcome', '=', true)
+            ->whereJsonLength('gallery_images', '>', 0)
+            ->get();
+
+        $fighters = $allFighters->orderBy('id', 'DESC')->simplePaginate(50);
+
         $games = Game::query()
             ->with('members')
             ->orderByDesc('id')
@@ -23,6 +30,7 @@ class HomeController extends Controller
 
         return view('welcome', [
             'fighters' => $fighters,
+            'bestFighters' => $bestFighters,
             'games' => $games,
         ]);
     }

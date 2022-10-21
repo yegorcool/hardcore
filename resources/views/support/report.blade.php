@@ -22,6 +22,6 @@
                 </div>
             </div>
         </div>
-        @include('landing.blocks.team-area')
+        @include('landing.blocks.feature-area')
     </section>
 @endsection
