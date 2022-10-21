@@ -1,4 +1,4 @@
-<section class="history bg-gray-200 dark:bg-black py-20 px-4 md:px-8">
+<section class="history bg-gray-200 dark:bg-black py-20 px-4 md:px-8 overflow-hidden">
     <div class="history__wrapper">
         {{--        title-block--}}
         <div class="history__title-block section-title text-center mb-4">
@@ -17,7 +17,7 @@
                     <div class="timeline__badge relative"></div>
                     {{--date--}}
                     <div class="timeline__date">
-                        {{ $item->date_start->format('d.m.Y') }} - {{ $item->date_end->format('d.m.Y') }}
+                        {{ $item->date_start->format('d.m.Y') }} @if($item->date_end)- {{ $item->date_end->format('d.m.Y')}} @endif
                     </div>
                     {{--panel--}}
                     <div class="timeline__panel bg-themeWhite hover:bg-themeRed hover:text-[#ffffff] px-10 shadow-sm">

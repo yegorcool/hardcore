@@ -17,7 +17,7 @@
             <tr>
                 <th scope="row">{{$event->id}}</th>
                 <td>{{$event->date_start->format('d.m.Y')}}</td>
-                <td>{{$event->date_end->format('d.m.Y')}}</td>
+                <td>@if($event->date_end){{$event->date_end->format('d.m.Y')}}@else @endif</td>
                 <td class="min-w-20">{{$event->title}}</td>
                 {{--                            <td><a href="{{ route('producer.fighters.show', $fighter) }}" class="hover:text-themeOrange">{{$fighter->email}}</a></td>--}}
                 <td class="min-w-[300px] max-w-[500px]">{{$event->description}}</td>

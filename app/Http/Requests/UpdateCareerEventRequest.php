@@ -26,7 +26,7 @@ class UpdateCareerEventRequest extends FormRequest
         return [
             'user_id' => ['required', 'numeric'],
             'title' => ['required', 'string', 'max:255'],
-            'date_start' => ['required', 'date', 'before:date_end'],
+            'date_start' => ['required', 'date'],
             'date_end' => ['nullable', 'date', 'after:date_start'],
             'comment' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
