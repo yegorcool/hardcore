@@ -12,10 +12,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-4">
+        <div class="block md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 grid-flow-row-dense">
+            @foreach($bestFighters as $fighter)
+            <div class="">
+{{--            <div class="col-md-6 col-lg-4">--}}
                 <div class="team-item">
-                    <img src="/images/01.jpg" alt="thumb">
+                    {{--<img src="/images/02.jpg" alt="thumb">--}}
+                    <img src="{{ asset($fighter->gallery_images[0]) }}" alt="thumb">
                     <div class="team-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -26,50 +29,13 @@
                     </div>
                     <div class="team-content">
                         <div class="team-bio">
-                            <h5><a href="#">Иван Иванов</a></h5>
+                            <h5><a href="{{ asset( route('guest.fighter', $fighter)) }}">{{ $fighter->name }}</a></h5>
                             <span>Кулачный бой</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="team-item">
-                    <img src="/images/02.jpg" alt="thumb">
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        {{--<h6>Follow</h6>--}}
-                    </div>
-                    <div class="team-content">
-                        <div class="team-bio">
-                            <h5><a href="#">Иван Петров</a></h5>
-                            <span>Кулачный бой</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="team-item">
-                    <img src="/images/03.jpg" alt="thumb">
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        {{--<h6>Follow</h6>--}}
-                    </div>
-                    <div class="team-content">
-                        <div class="team-bio">
-                            <h5><a href="#">Иван Кулаков</a></h5>
-                            <span>MMA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

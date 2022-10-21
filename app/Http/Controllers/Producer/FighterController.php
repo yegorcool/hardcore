@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Producer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFighterRequest;
 use App\Http\Requests\UpdateFighterRequest;
+use App\Models\CareerEvent;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class FighterController extends Controller
      */
     public function index()
     {
-        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+        $fighters = User::where('role', '=', 'fighter')
+            ->orderBy('id', 'DESC')
+            ->paginate(50);
 
         return response()->view('producer.fighters.index', [
             'fighters' => $fighters,
@@ -40,8 +43,8 @@ class FighterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFighterRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\StoreFighterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreFighterRequest $request)
     {
@@ -56,56 +59,85 @@ class FighterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        if ($request->hasfile('avatar')) {
+            $avatar = $request->file('avatar')->store('/', 'public');
+            if (!$avatar) {
+                return response(['message' => 'Error file upload'], 500);
+            }
+            $user->update(['avatar' => 'storage/photos/' . $avatar]);
+        }
+        if ($request->hasfile('hero_image')) {
+            $hero_image = $request->file('hero_image')->store('/', 'public');
+            if (!$hero_image) {
+                return response(['message' => 'Error file upload'], 500);
+            }
+            $user->update(['hero_image' => 'storage/photos/' . $hero_image]);
+        }
+
+        if ($request->hasfile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $file) {
+                $img = $file->store('/', 'public');
+                $gallery_images[] = 'storage/photos/' . $img;
+            }
+            $user->update(['gallery_images' => $gallery_images]);
+        }
+
         event(new Registered($user));
 
-        return redirect()->intended(route('producer.report'));
+        return redirect()->intended(route('producer.fighters.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $fighter
+     * @param \App\Models\User $fighter
      * @return \Illuminate\Http\Response
      */
     public function show(User $fighter)
     {
+        $careerEvents = CareerEvent::query()
+            ->where('user_id', '=', $fighter->id)
+            ->orderByDesc('id')
+            ->get();
+
         return response()->view('producer.fighters.show', [
             'fighter' => $fighter,
+            'careerEvents' => $careerEvents,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $fighter
+     * @param \App\Models\User $fighter
      * @return \Illuminate\Http\Response
      */
     public function edit(User $fighter)
     {
-       return response()->view('producer.fighters.edit', [
-           'fighter' => $fighter,
-       ]);
+        return response()->view('producer.fighters.edit', [
+            'fighter' => $fighter,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFighterRequest  $request
-     * @param  \App\Models\User  $fighter
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\UpdateFighterRequest $request
+     * @param \App\Models\User $fighter
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateFighterRequest $request, User $fighter)
     {
         $data = $request->validated();
         $fighter->update($data);
 
-        return redirect()->intended(route('producer.report'));
+        return redirect()->intended(route('producer.fighters.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $fighter
+     * @param \App\Models\User $fighter
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $fighter)

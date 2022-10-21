@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Producer\CareerEventController;
 use App\Http\Controllers\Producer\FighterController;
 use App\Http\Controllers\Producer\GameController;
 use App\Http\Controllers\Producer\ReportController;
@@ -13,3 +14,4 @@ Route::middleware(['welcome'])->group(function () {
 });
 Route::resource('/fighters',FighterController::class);
 Route::resource('/games',GameController::class);
+Route::resource('/career_events',CareerEventController::class);

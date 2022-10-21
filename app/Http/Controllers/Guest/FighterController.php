@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\CareerEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -30,9 +31,16 @@ class FighterController extends Controller
      */
     public function show(User $fighter)
     {
+        $careerEvents = CareerEvent::query()
+            ->where('user_id', '=', $fighter->id)
+            ->orderByDesc('date_start')
+            ->get();
+
         $num = rand(1, 3); // для выбора рандомных фото @todo заменить на реальные фото из БД позже
+
         return response()->view('pages.fighter-single.index', [
             'fighter' => $fighter,
+            'careerEvents' => $careerEvents,
             'num' => $num,
         ]);
     }

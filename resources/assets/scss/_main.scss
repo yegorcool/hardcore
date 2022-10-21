@@ -12,3 +12,15 @@ body {
     color: #ffffff;
 
 }
+.fighters__paginate {
+     * {
+        background: black !important;
+         //color: #c0c0c0 !important;
+     }
+
+    a {
+        color: white;
+        //font-size: 20px;
+        background: black !important;
+    }
+}

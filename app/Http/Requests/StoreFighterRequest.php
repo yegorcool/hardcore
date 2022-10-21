@@ -35,6 +35,10 @@ class StoreFighterRequest extends FormRequest
             'height' => ['nullable', 'numeric'],
             'weight' => ['nullable', 'numeric'],
             'description' => ['nullable', 'string'],
+            'avatar' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
+            'hero_image' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
+            'gallery_images' => ['nullable'],
+            'gallery_images.*' => ['mimes:jpeg,jpg,png,bmp'],
         ];
     }
 }

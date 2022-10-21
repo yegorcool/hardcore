@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password',
         'height',
         'weight',
+        'avatar',
+        'hero_image',
+        'gallery_images',
+        'is_shown_on_welcome',
+        'gallery_images',
         'description',
     ];
 
@@ -47,6 +52,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_shown_on_welcome' => 'boolean',
+        'gallery_images' => 'array',
     ];
 
     /**

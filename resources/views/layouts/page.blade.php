@@ -13,12 +13,12 @@
 </head>
 <body class="font-sans antialiased home-3">
 
-<div class="min-h-screen bg-black relative">
+<div class=" min-h-screen bg-black relative">
 
     @include('landing.header')
 
     <!-- Page Content -->
-    <main class="pt-[85px] lg:pt-0 bg-black min-h-[calc(100vh-85px)] flex flex-col justify-between">
+    <main class=" pt-[85px] lg:pt-0 bg-black min-h-[calc(100vh-85px)] flex flex-col justify-between">
         <div class="container-fluid px-lg-5">
             <div class="container-fluid text-gray-100 font-semibold text-xl leading-tight mb-3 py-3 bg-black border-top border-bottom">
                 <div class="row">
@@ -39,9 +39,11 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            @include('widgets.alerts')
-            @yield('content')
+        <div class="container-fluid mx-auto px-lg-5">
+            <div class="xl:max-w-[1200px] mx-auto">
+                @include('widgets.alerts')
+                @yield('content')
+            </div>
         </div>
 
         @include('landing.footer')
