@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCareerEventRequest;
 use App\Http\Requests\UpdateCareerEventRequest;
 use App\Models\CareerEvent;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CareerEventController extends Controller
@@ -29,9 +30,15 @@ class CareerEventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $fighter = User::query()
+            ->where('id', '=',$request->query('fighter'))
+            ->first();
+
+        return response()->view('producer.career_events.create', [
+            'fighter' => $fighter,
+        ]);
     }
 
     /**
@@ -42,7 +49,18 @@ class CareerEventController extends Controller
      */
     public function store(StoreCareerEventRequest $request)
     {
-        //
+        $careereEvent = CareerEvent::create([
+            'title' => $request->title,
+            'user_id' => $request->user_id,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'comment' => $request->comment,
+            'description' => $request->description,
+        ]);
+
+        $careereEvent->save();
+
+        return redirect()->intended(route('producer.fighters.show', $careereEvent->user_id));
     }
 
     /**
@@ -64,7 +82,14 @@ class CareerEventController extends Controller
      */
     public function edit(CareerEvent $careerEvent)
     {
-        //
+        $fighter = User::query()
+            ->where('id', '=', $careerEvent->user_id)
+            ->first();
+
+        return response()->view('producer.career_events.edit', [
+            'fighter' => $fighter,
+            'careerEvent' => $careerEvent,
+        ]);
     }
 
     /**
@@ -76,7 +101,7 @@ class CareerEventController extends Controller
      */
     public function update(UpdateCareerEventRequest $request, CareerEvent $careerEvent)
     {
-        //
+       return 'UPDATE';
     }
 
     /**
@@ -87,6 +112,14 @@ class CareerEventController extends Controller
      */
     public function destroy(CareerEvent $careerEvent)
     {
-        //
+        $fighter = User::query()
+        ->where('id', '=', $careerEvent->user_id)
+        ->first();
+
+        $careerEvent->delete();
+
+        return redirect()->intended(route('producer.fighters.show', $fighter))->with('success', ['Этап успешно удален!']);
+
+
     }
 }

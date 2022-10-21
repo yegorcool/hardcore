@@ -32,7 +32,7 @@
                 </td>
             </tr>
         @empty
-            <p>No users</p>
+            <p class="text-gray-500 text-xl mb-2 pl-3">Ни одного этапа еще не добавлено...</p>
         @endforelse
         </tbody>
         <tfoot class="bg-white/10"></tfoot>

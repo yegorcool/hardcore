@@ -6,7 +6,7 @@
 @section('titlebutton')
     <div class="theme-btn  ">
         <a class="text-white hover:text-gray-100" href="{{ route('producer.report')  }}" class=""><i
-                class="fa fa-plus mr-2"></i>
+                class="fa fa-arrow-left mr-2"></i>
             {{ __(' Вернуться к списку') }}
         </a>
     </div>
@@ -86,17 +86,23 @@
                 <p class="block mt-1 w-full text-gray-900 text-xl ">{{$fighter->description}}</p>
             </div>
             <div class="flex ">
-                <button type="submit" class="w-1/4 inline-block theme-btn w-4/5 text-centre my-6">
+                <button type="submit" class="w-1/2 md:w-1/4 inline-block theme-btn w-4/5 text-centre my-6">
                     <i class="far fa-paper-plane mr-1"></i>
                     Изменить
                 </button>
             </div>
         </div>
-        <div class="p-4">
-            <div class="row border-b-2  mb-2">
-                <div class="col-lg-6">
+        <div class="p-2 md:p-4">
+            <div class="md:flex md:justify-between items-center border-b-2  mb-2">
+                <div class="mb-2 ">
                     <span class="site-title-tagline">Карьера</span>
                     <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Этапы карьеры</h3>
+                </div>
+                <div class="theme-btn mx-3 mb-2">
+                    <a class="text-white hover:text-gray-100" href="{{ route('producer.career_events.create', ['fighter' => $fighter]) }}" class=""><i
+                            class="fa fa-plus mr-2"></i>
+                        {{ __(' Добавить раздел карьеры') }}
+                    </a>
                 </div>
             </div>
             @include('producer.career_events.list')
