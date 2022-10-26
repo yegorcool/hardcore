@@ -97,7 +97,7 @@
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <div>
-                        <x-input-label for="hero_image" :value="__('Обложка личной странацы')"/>
+                        <x-input-label for="hero_image" :value="__('Обложка личной страницы')"/>
                         <x-text-input id="hero_image" class="block mt-1 w-full" type="file" name="hero_image" :value="old('hero_image')"/>
                         <x-input-error :messages="$errors->get('hero_image')" class="mt-2"/>
                     </div>

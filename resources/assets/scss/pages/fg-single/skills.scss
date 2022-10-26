@@ -1,0 +1,115 @@
+.skill {
+    position: relative;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    width: 160px;
+    height: 160px;
+}
+
+.skill__outer {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+                -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.skill__inner {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+                -0.5px -0.5px 0 rgba(255, 255, 255, 1),
+                0.5px 0.5px 0 rgba(0, 0, 0, 0.15),
+                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+.skill__title {
+    //border: green 1px solid;
+    //width: 50%;
+    margin: 0 auto;
+    display: block;
+    //position: absolute;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0.5;
+}
+.skill__shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.skill__circle {
+    fill: none;
+    z-index: 100;
+
+    //&--down {
+    //    stroke-width: 20px;
+    //    stroke: var(--circle-color-light);
+    //}
+
+    &--up {
+        stroke-width: 20px;
+        stroke: url(#skill__gradient);
+        stroke: url(linear-gradient(90deg, rgb(173, 0, 237), rgb(85, 0, 242) 80%));
+        stroke-dasharray:  472;
+        //animation: alternateCircle 100s linear forwards;
+        animation: alternateCircle 2s linear forwards;
+        animation-delay: 500ms;
+
+        animation-play-state: paused;
+
+    }
+}
+
+@keyframes alternateCircle {
+    from {
+        stroke-dashoffset: 472;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+//@include customBP(768px) {
+//    .skill__circle {
+//        r: 56px;
+//
+//        &--down {
+//            stroke-width: 8px;
+//            stroke: var(--circle-color-light);
+//        }
+//        &--up {
+//            stroke-width: 15px;
+//            stroke-dasharray: 352;
+//        }
+//    }
+//
+//    .skill__title {
+//        width: 50%;
+//        display: block;
+//        position: absolute;
+//        font-size: 14px;
+//        line-height: 30px;
+//        font-weight: 600;
+//        text-align: center;
+//        opacity: 0.5;
+//    }
+//
+//    @keyframes alternateCircle {
+//        from {
+//            stroke-dashoffset: 352;
+//        }
+//        to {
+//            stroke-dashoffset: 0;
+//        }
+//    }
+//}
+

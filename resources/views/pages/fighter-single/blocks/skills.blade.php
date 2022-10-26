@@ -1,96 +1,28 @@
-<section id="section-id-1621899640969" class="section title-1 p-20">
-    <div class="row-container">
-        <div class="section-title text-center"><h2 class="title-heading">SKI<span>LLS</span></h2>
-            <p class="title-subheading">I AM REALLY GOOD AT THE FOLLOWING TECHNICAL SKILLS</p></div>
-        <div class="row">
-            <div class="col-md-3 col-sm-6" id="column-wrap-id-1621899640965">
-                <div id="column-id-1621899640965" class="column">
-                    <div class="column-addons">
-                        <div id="addon-wrapper-1621900025672" class="addon-wrapper">
-                            <div id="addon-1621900025672" class="clearfix ">
-                                <div class="addon addon-pie-progress pie-progress-1">
-                                    <div class="addon-content text-center">
-                                        <div class="pie-chart" data-size="210" data-duration="1000"
-                                             data-percent="65" data-width="15" data-barcolor="#fc6f5c"
-                                             data-trackcolor="#333333">
-                                            <div class="chart-percent"><span>65%</span></div>
-                                            <canvas height="210" width="210"></canvas>
-                                        </div>
-                                        <h3 class="addon-title">Develop</h3>
-                                        <div class="addon-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<section class="container-fluid  bg-gray-100 px-lg-5 mx-auto sm:px-6 lg:px-8">
+    <div class="text-2xl w-1/2 min-h-[500px] flex justify-center items-center mx-auto relative">
+        <div class="skill relative">
+            <div class="skill__outer">
+                <div class="skill__inner flex justify-center items-center ">
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="skill__title text-center skill-percent"></div>
+                        <div class="skill__title text-center">Знание</div>
                     </div>
+
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6" id="column-wrap-id-1621899640966">
-                <div id="column-id-1621899640966" class="column">
-                    <div class="column-addons">
-                        <div id="addon-wrapper-1621899641186" class="addon-wrapper">
-                            <div id="addon-1621899641186" class="clearfix ">
-                                <div class="addon addon-pie-progress pie-progress-1">
-                                    <div class="addon-content text-center">
-                                        <div class="pie-chart" data-size="210" data-duration="1250"
-                                             data-percent="70" data-width="15" data-barcolor="#fc6f5c"
-                                             data-trackcolor="#333333">
-                                            <div class="chart-percent"><span>70%</span></div>
-                                            <canvas height="210" width="210"></canvas>
-                                        </div>
-                                        <h3 class="addon-title">Desginer</h3>
-                                        <div class="addon-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6" id="column-wrap-id-1621899640967">
-                <div id="column-id-1621899640967" class="column">
-                    <div class="column-addons">
-                        <div id="addon-wrapper-1621899641183" class="addon-wrapper">
-                            <div id="addon-1621899641183" class="clearfix ">
-                                <div class="addon addon-pie-progress pie-progress-1">
-                                    <div class="addon-content text-center">
-                                        <div class="pie-chart" data-size="210" data-duration="1500"
-                                             data-percent="85" data-width="15" data-barcolor="#fc6f5c"
-                                             data-trackcolor="#333333">
-                                            <div class="chart-percent"><span>85%</span></div>
-                                            <canvas height="210" width="210"></canvas>
-                                        </div>
-                                        <h3 class="addon-title">HTML5</h3>
-                                        <div class="addon-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6" id="column-wrap-id-1621899640968">
-                <div id="column-id-1621899640968" class="column">
-                    <div class="column-addons">
-                        <div id="addon-wrapper-1621899641189" class="addon-wrapper">
-                            <div id="addon-1621899641189" class="clearfix ">
-                                <div class="addon addon-pie-progress pie-progress-1">
-                                    <div class="addon-content text-center">
-                                        <div class="pie-chart" data-size="210" data-duration="1750"
-                                             data-percent="95" data-width="15" data-barcolor="#fc6f5c"
-                                             data-trackcolor="#333333">
-                                            <div class="chart-percent"><span>95%</span></div>
-                                            <canvas height="210" width="210"></canvas>
-                                        </div>
-                                        <h3 class="addon-title">CSS3</h3>
-                                        <div class="addon-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <svg class="skill__shape" viewBox="0 0 160 160" width="160" height="160"
+                 preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="skill__gradient" x1="0" y1="50%" x2="100%" y2="50%">
+                        <stop offset="30%" stop-color="#5500f2"></stop>
+                        <stop offset="100%" stop-color="#ad00ed"></stop>
+                    </linearGradient>
+                </defs>
+                {{--<circle class="skill__circle skill__circle--down" r="68" cx="80" cy="80"></circle>--}}
+                <circle class="skill__circle skill__circle--up" r="70" cx="80" cy="80"
+                        transform="rotate(270 80 80)"
+                        stroke-linecap="round"></circle>
+            </svg>
         </div>
     </div>
 </section>
