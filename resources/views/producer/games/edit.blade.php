@@ -84,15 +84,19 @@
 
                         <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                     </div>
+                    {{--File upload--}}
+                    <div>
+                        <x-input-label for="head_image" :value="__('Обложка страницы боя')"/>
+                        <input id="head_image" class="block mt-1 w-full" type="file" name="head_image" :value="$game->head_image" />
+                        <x-input-error :messages="$errors->get('head_image')" class="mt-2"/>
+                    </div>
 
                     <div class="w-auto  md:ml-0 md:w-1/3 lg:x-1/4 lg:text-left" >
                         <x-theme-button class="bg-themeRed" >
                             {{ __('Сохранить') }}
                         </x-theme-button>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </section>
