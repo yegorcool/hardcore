@@ -62,14 +62,21 @@ class FighterController extends Controller
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar')->store('/', 'public');
             if (!$avatar) {
-                return response(['message' => 'Error file upload'], 500);
+                return response(['message' => 'Ошибка при загрузке аватара'], 500);
             }
             $user->update(['avatar' => 'storage/photos/' . $avatar]);
+        }
+        if ($request->hasfile('portrait')) {
+            $portrait = $request->file('portrait')->store('/', 'public');
+            if (!$portrait) {
+                return response(['message' => 'Ошибка при загрузке портрета'], 500);
+            }
+            $user->update(['portrait' => 'storage/photos/' . $portrait]);
         }
         if ($request->hasfile('hero_image')) {
             $hero_image = $request->file('hero_image')->store('/', 'public');
             if (!$hero_image) {
-                return response(['message' => 'Error file upload'], 500);
+                return response(['message' => 'Ошибка при загрузке фона'], 500);
             }
             $user->update(['hero_image' => 'storage/photos/' . $hero_image]);
         }
@@ -78,6 +85,9 @@ class FighterController extends Controller
             foreach ($request->file('gallery_images') as $file) {
                 $img = $file->store('/', 'public');
                 $gallery_images[] = 'storage/photos/' . $img;
+            }
+            if (!$gallery_images) {
+                return response(['message' => 'Ошибка при загрузке фона'], 500);
             }
             $user->update(['gallery_images' => $gallery_images]);
         }

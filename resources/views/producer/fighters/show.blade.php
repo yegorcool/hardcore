@@ -69,15 +69,25 @@
                 </div>
             </div>
             <div class="border-b  py-2 lg:flex flex-wrap mb-2">
-                <div class="w-full lg:w-auto mr-4 mb-2">
+                <div class="w-full lg:w-auto min-w-[150px] mr-4 mb-2">
                     <x-input-label class=" inline-block" for="avatar" :value="__('Аватар')"/>
-                    <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->avatar) }}" alt="Аватар">
+                    @if($fighter->avatar)
+                        <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->avatar) }}" alt="Аватар">
+                    @endif
                 </div>
-                <div class="w-full lg:w-auto  mr-4 mb-2">
+                <div class="w-full lg:w-auto min-w-[150px] mr-4 mb-2">
+                    <x-input-label class="inline-block" for="portrait" :value="__('Портрет')"/>
+                    @if($fighter->portrait)
+                        <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->portrait) }}" alt="Портрет">
+                    @endif
+                </div>
+                <div class="w-full lg:w-auto min-w-[150px]  mr-4 mb-2">
                     <x-input-label class="inline-block" for="hero_image" :value="__('Фото фона')"/>
-                    <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->hero_image) }}" alt="Фото фона">
+                    @if($fighter->hero_image)
+                        <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->hero_image) }}" alt="Фото фона">
+                    @endif
                 </div>
-                <div class="w-full lg:w-auto  mr-4 mb-2">
+                <div class="w-full lg:w-auto min-w-[150px]  mr-4 mb-2">
                     <x-input-label class="inline-block" for="hero_image" :value="__('Галерея')"/>
                     @if($fighter->gallery_images)
                         <div class="flex flex-wrap">

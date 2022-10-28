@@ -88,17 +88,36 @@
                                     {{ __('Аватар') }}
                                 </div>
                                 <span id="output_edit_avatar">
-                                    <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->avatar) }}" alt="Аватар">
+                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar){{ asset($fighter->avatar) }} @else /images/avatar1.jpg @endif " alt="Аватар">
                                 </span>
                             </div>
                             <div>
                                 <x-input-label for="avatar_edit">
-                                    <span class="block mb-2">{{__('Заменить аватар: ')}}</span>
+                                    <span class="block mb-2">{{__('Заменить аватар: ')}}<span class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
                                     <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                                 </x-input-label>
                                 <x-text-input id="avatar_edit" class="hidden" type="file" name="avatar"
                                               :value="old('avatar')"/>
-                                <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                                <x-input-error :messages="$errors->get('avatar')" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="border-b  md:flex ">
+                            <div class="w-full lg:w-auto mr-4 mb-2">
+                                <div class="block font-medium text-lg text-gray-900 mb-2">
+                                    {{ __('Портрет') }}
+                                </div>
+                                <span id="output_edit_portrait">
+                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif " alt="Портрет">
+                                </span>
+                            </div>
+                            <div>
+                                <x-input-label for="portrait_edit">
+                                    <span class="block mb-2">{{__('Заменить портрет: ')}}<span class="text-base  font-normal text-gray-400">вертикальное фото в пропорции 2 : 3</span></span>
+                                    <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
+                                </x-input-label>
+                                <x-text-input id="portrait_edit" class="hidden" type="file" name="portrait"
+                                              :value="old('portrait')"/>
+                                <x-input-error :messages="$errors->get('portrait')" class="mt-2"/>
                             </div>
                         </div>
                         <div class="border-b  md:flex ">
@@ -107,7 +126,7 @@
                                     {{ __('Фото фона') }}
                                 </div>
                                 <span id="output_edit_hero">
-                                    <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->hero_image) }}"
+                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
                                          alt="Фото фона">
                                 </span>
                             </div>
@@ -184,7 +203,25 @@
             })(f);
             reader.readAsDataURL(f);
         }
-
+        function handlePortraitSelectSingle(evt) {
+            let file = evt.target.files;
+            let f = file[0]
+            if (!f.type.match('image.*')) {
+                alert("Только изображения....");
+            }
+            let reader = new FileReader();
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    let span = document.createElement('span');
+                    span.classList.add('preview-image')
+                    span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
+                        '" title="', theFile.name, '"/>'].join('');
+                    document.getElementById('output_edit_portrait').innerHTML = "";
+                    document.getElementById('output_edit_portrait').insertBefore(span, null);
+                };
+            })(f);
+            reader.readAsDataURL(f);
+        }
         function handleHeroSelectSingle(evt) {
             let file = evt.target.files;
             let f = file[0]
@@ -228,6 +265,7 @@
         }
 
         document.getElementById('avatar_edit').addEventListener('change', handleAvatarSelectSingle, false);
+        document.getElementById('portrait_edit').addEventListener('change', handlePortraitSelectSingle, false);
         document.getElementById('hero_image_edit').addEventListener('change', handleHeroSelectSingle, false);
         document.getElementById('gallery_images_edit').addEventListener('change', handleFileSelectMulti, false);
 

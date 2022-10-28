@@ -92,19 +92,27 @@
                     </div>
                     {{--File Upload--}}
                     <div>
-                        <x-input-label for="avatar_create" ><span class=" block mb-2">{{__('Аватар: ')}}</span>
+                        <x-input-label for="avatar_create" ><span class=" block mb-2">{{__('Аватар: ')}} <span class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
                             <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                         </x-input-label>
                         <x-text-input id="avatar_create" class="hidden" type="file" name="avatar" :value="old('avatar')"/>
-                        <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                        <x-input-error :messages="$errors->get('avatar')" class="mt-2"/>
                         <div class="row review-span"><span id="output-avatar" class="preview h-150"></span></div>
                     </div>
                     <div>
-                        <x-input-label for="hero_image_create" ><span class=" block mb-2">{{__('Обложка личной страницы: ')}}</span>
+                        <x-input-label for="portrait_create" ><span class=" block mb-2">{{__('Портрет: ')}} <span class="text-base font-normal text-gray-400">вертикальное фото в пропорции 2 : 3</span></span>
+                            <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
+                        </x-input-label>
+                        <x-text-input id="portrait_create" class="hidden" type="file" name="portrait" :value="old('portrait')"/>
+                        <x-input-error :messages="$errors->get('portrait')" class="mt-2"/>
+                        <div class="row review-span"><span id="output-portrait" class="preview h-150"></span></div>
+                    </div>
+                    <div>
+                        <x-input-label for="hero_image_create" ><span class=" block mb-2">{{__('Обложка личной страницы: ')}}<span class="text-base font-normal text-gray-400">горизонтальное фото 1920px по длинной стороне</span></span>
                             <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                         </x-input-label>
                         <x-text-input id="hero_image_create" class="hidden" type="file" name="hero_image" :value="old('hero_image')"/>
-                        <x-input-error :messages="$errors->get('hero_hero')" class="mt-2"/>
+                        <x-input-error :messages="$errors->get('hero_image')" class="mt-2"/>
                         <div class="row review-span"><span id="output-hero" class="preview h-150"></span></div>
                     </div>
 
@@ -145,6 +153,25 @@
                         '" title="', theFile.name, '"/>'].join('');
                     document.getElementById('output-avatar').innerHTML = "";
                     document.getElementById('output-avatar').insertBefore(span, null);
+                };
+            })(f);
+            reader.readAsDataURL(f);
+        }
+        function handlePortraitSelectSingle(evt) {
+            let file = evt.target.files;
+            let f = file[0]
+            if (!f.type.match('image.*')) {
+                alert("Только изображения....");
+            }
+            let reader = new FileReader();
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    let span = document.createElement('span');
+                    span.classList.add('preview-image')
+                    span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
+                        '" title="', theFile.name, '"/>'].join('');
+                    document.getElementById('output-portrait').innerHTML = "";
+                    document.getElementById('output-portrait').insertBefore(span, null);
                 };
             })(f);
             reader.readAsDataURL(f);
@@ -191,6 +218,7 @@
         }
 
         document.getElementById('avatar_create').addEventListener('change', handleAvatarSelectSingle, false);
+        document.getElementById('portrait_create').addEventListener('change', handlePortraitSelectSingle, false);
         document.getElementById('hero_image_create').addEventListener('change', handleHeroSelectSingle, false);
         document.getElementById('gallery_images_create').addEventListener('change', handleFileSelectMulti, false);
     </script>
