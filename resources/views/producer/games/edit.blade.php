@@ -86,8 +86,8 @@
                     </div>
                     {{--File upload--}}
                     <div>
-                        <x-input-label for="head_image" :value="__('Обложка страницы боя')"/>
-                        <input id="head_image" class="block mt-1 w-full" type="file" name="head_image" :value="$game->head_image" />
+                        <x-input-label for="head_image_edit" :value="__('Обложка страницы боя')"/>
+                        <input id="head_image_edit" class="block mt-1 w-full" type="file" name="head_image"/>
                         <x-input-error :messages="$errors->get('head_image')" class="mt-2"/>
                     </div>
 

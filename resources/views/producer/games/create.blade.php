@@ -5,7 +5,7 @@
 
 @section('titlebutton')
     <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.report')  }}" class=""><i class="fa fa-plus mr-2"></i>
+        <a class="text-white hover:text-gray-100" href="{{ route('producer.games.index')  }}" class=""><i class="fa fa-plus mr-2"></i>
             {{ __(' Вернуться к списку') }}
         </a>
     </div>
@@ -17,7 +17,7 @@
             <div class="row">
 
             </div>
-            <div class="my-4 lg:col-8">
+            <div class="my-4">
                 <form method="POST" action="{{ route('producer.games.store') }}" enctype="multipart/form-data">
                     @csrf
                     {{--Дата боя--}}
@@ -72,8 +72,8 @@
                     </div>
 {{--File upload--}}
                     <div>
-                        <x-input-label for="head_image" :value="__('Обложка страницы боя')"/>
-                        <input id="head_image" class="block mt-1 w-full" type="file" name="head_image" :value="old('head_image')"  />
+                        <x-input-label for="head_image_create" :value="__('Обложка страницы боя')"/>
+                        <input id="head_image_create" class="block mt-1 w-full" type="file" name="head_image"/>
                         <x-input-error :messages="$errors->get('head_image')" class="mt-2"/>
                     </div>
 

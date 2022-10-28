@@ -1,5 +1,5 @@
 import './bootstrap';
-import './modules/skills'
+// import './modules/skills'
 
 // import Alpine from 'alpinejs';
 //
