@@ -25,6 +25,7 @@ class Game extends Model
         'place',
         'city',
         'description',
+        'head_image',
     ];
 
     protected $casts = [

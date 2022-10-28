@@ -53,6 +53,11 @@ class GameController extends Controller
      */
     public function store(StoreGameRequest $request)
     {
+        $headImage = $request->file('head_image')->store('/', 'public');
+
+        if (!$headImage) {
+            return response(['message' => 'Ошибка загрузки фото'], 500);
+        }
         $game = Game::create([
             'member_one_id' => $request->member_one_id,
             'member_two_id' => $request->member_two_id,
@@ -60,6 +65,7 @@ class GameController extends Controller
             'city' => $request->city,
             'place' => $request->place,
             'description' => $request->description,
+            'head_image' => 'storage/photos/' . $headImage,
         ]);
 
         GameUser::create([
@@ -121,7 +127,8 @@ class GameController extends Controller
         $data = $request->validated();
         $game->update($data);
 
-        return redirect()->intended(route('producer.games.index'));    }
+        return redirect()->intended(route('producer.games.index'));
+    }
 
     /**
      * Remove the specified resource from storage.

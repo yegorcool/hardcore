@@ -50,12 +50,13 @@
     </main>
     <a href="#" id="scroll-top-page"><i class="far fa-long-arrow-up"></i></a>
 </div>
+@yield('js')
 
 {{--@include('layouts.assets.external-js')--}}
-<script src="js/wow.min.js"></script>
-<script>
-    new WOW().init();
-</script>
+{{--<script src="js/wow.min.js"></script>--}}
+{{--<script>--}}
+{{--    new WOW().init();--}}
+{{--</script>--}}
 
 </body>
 </html>
