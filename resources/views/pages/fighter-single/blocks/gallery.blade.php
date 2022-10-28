@@ -15,7 +15,7 @@
             </div>
             <div class="flex flex-wrap ">
                 @forelse($fighter->gallery_images as $image)
-                    <div class=" ">
+                    <div class="ml-3 mb-3 ">
                         <img class="block h-[400px] w-auto" src="{{ asset($image) }}" alt="">
                     </div>
                 @empty

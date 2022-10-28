@@ -4,7 +4,7 @@
 @endsection
 
 @section('titlebutton')
-    <div class="theme-btn  ">
+    <div class="theme-btn">
         <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i
                 class="fa fa-arrow-left mr-2"></i>
             {{ __(' Вернуться к списку') }}
@@ -16,10 +16,18 @@
     <section class="container-fluid  bg-gray-300 px-lg-5 mx-auto sm:px-6 lg:px-8">
         <div class="p-4">
             <div class="row border-b-2 mb-4">
-                <div class="col-lg-6">
+                <div class="col-8 col-lg-6">
                     <span class="site-title-tagline">Профиль</span>
                     <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Основные данные</h3>
                 </div>
+                <div class="col-4 col-lg-6 text-right ">
+                    <div class=" theme-btn text-sm bg-white/5 ">
+                        <a class="text-white hover:text-gray-100" href="{{ route('guest.fighter', $fighter)  }}" class=""><i class="far fa-paper-plane mr-1"></i>
+                            {{ __('Просмотр') }}
+                        </a>
+                    </div>
+                </div>
+
             </div>
             {{--ID--}}
             <div class="border-b py-1 mb-2">
