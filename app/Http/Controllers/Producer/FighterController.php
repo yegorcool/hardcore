@@ -7,6 +7,7 @@ use App\Http\Requests\StoreFighterRequest;
 use App\Http\Requests\UpdateFighterRequest;
 use App\Models\CareerEvent;
 use App\Models\Social;
+use App\Models\SocialUser;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -38,7 +39,13 @@ class FighterController extends Controller
      */
     public function create()
     {
-        return response()->view('producer.fighters.create');
+        $socialNetworks = Social::query()
+            ->whereNull('deleted_at')
+            ->get();
+
+        return response()->view('producer.fighters.create', [
+            'socialNetworks' => $socialNetworks,
+        ]);
     }
 
     /**
@@ -91,6 +98,25 @@ class FighterController extends Controller
                 return response(['message' => 'Ошибка при загрузке фона'], 500);
             }
             $user->update(['gallery_images' => $gallery_images]);
+        }
+
+        $networks = Social::query()
+            ->whereNull('deleted_at')
+            ->get()->pluck('lang_key', 'id')
+            ->toArray();
+
+        if (count($request->social_user) > 0) {
+            foreach ($request->social_user as $key => $value) {
+                if (in_array($key, $networks)) {
+                    if (!empty($value)) {
+                        SocialUser::create([
+                            'social_id' => array_search($key, $networks),
+                            'user_id' => $user->id,
+                            'link' => $value,
+                        ]);
+                    }
+                }
+            }
         }
 
         event(new Registered($user));

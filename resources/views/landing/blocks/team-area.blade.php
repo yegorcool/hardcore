@@ -18,13 +18,16 @@
 {{--            <div class="col-md-6 col-lg-4">--}}
                 <div class="team-item">
                     {{--<img src="/images/02.jpg" alt="thumb">--}}
-                    <img src="{{ asset($fighter->gallery_images[0]) }}" alt="thumb">
+                    <img src="{{ asset($fighter->portrait) }}" alt="thumb">
                     <div class="team-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        @foreach($fighter->socials as $network)
+                            <a href="{{ $network->pivot->link }}" target="_blank"><i class="fab fa-{{ $network->lang_key }}"></i></a>
+                        @endforeach
+{{--                        <a href="#"><i class="fab fa-facebook-f"></i></a>--}}
+{{--                        <a href="#"><i class="fab fa-twitter"></i></a>--}}
+{{--                        <a href="#"><i class="fab fa-instagram"></i></a>--}}
+{{--                        <a href="#"><i class="fab fa-linkedin"></i></a>--}}
+{{--                        <a href="#"><i class="fab fa-youtube"></i></a>--}}
                         {{--<h6>Follow</h6>--}}
                     </div>
                     <div class="team-content">

@@ -124,7 +124,25 @@
                         <x-input-error :messages="$errors->get('gallery_images')" class="mt-2"/>
                         <div class="row"><span id="output-gallery" class="preview h-150"></span></div>
                     </div>
+                    <div class="">
+                        <div class="md:flex md:justify-between items-center border-b-2  mb-2">
+                            <div class="mb-2 ">
+                                <h3 class=" text-gray-100 text-2xl font-bold leading-tight">{{ __('Социальные сети') }}</h3>
+                            </div>
+                        </div>
 
+                        <div class="my-4 border-b ">
+                            <ul>
+                                @foreach($socialNetworks as $network)
+                                    <li class="block font-medium text-base text-gray-900 mb-2">
+                                        <span><i class="inline-block min-w-[20px] mr-3 fab fa-{{$network->lang_key}}"></i></span>
+                                        <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
+                                        <x-text-input id="city" class="inline-block mt-1 w-1/2" type="text" name="social_user[{{ $network->lang_key }}]" :value="old('user_social[{{ $network->lang_key }}]')"/>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                     <div class="w-auto  md:ml-0 md:w-1/3 lg:x-1/4 lg:text-left">
                         <x-theme-button class="bg-themeRed">
                             {{ __('Сохранить') }}
