@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFighterRequest;
 use App\Http\Requests\UpdateFighterRequest;
 use App\Models\CareerEvent;
+use App\Models\Social;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -109,10 +110,12 @@ class FighterController extends Controller
             ->where('user_id', '=', $fighter->id)
             ->orderByDesc('id')
             ->get();
+        $socialNetworks = Social::query()->get();
 
         return response()->view('producer.fighters.show', [
             'fighter' => $fighter,
             'careerEvents' => $careerEvents,
+            'socialNetworks' => $socialNetworks,
         ]);
     }
 

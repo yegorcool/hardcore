@@ -91,4 +91,14 @@ class User extends Authenticatable
                 'member_id',
             ])->withTimestamps();
     }
+
+    public function socials() {
+        return $this->belongsToMany(Social::class, 'social_user', 'user_id', 'social_id')
+            ->withPivot([
+                'id',
+                'user_id',
+                'social_id',
+                'link',
+            ])->withTimestamps();
+    }
 }

@@ -22,7 +22,8 @@
                 </div>
                 <div class="col-4 col-lg-6 text-right ">
                     <div class=" theme-btn text-sm bg-white/5 ">
-                        <a class="text-white hover:text-gray-100" href="{{ route('guest.fighter', $fighter)  }}" class=""><i class="far fa-paper-plane mr-1"></i>
+                        <a class="text-white hover:text-gray-100" href="{{ route('guest.fighter', $fighter)  }}"
+                           class=""><i class="far fa-paper-plane mr-1"></i>
                             {{ __('Просмотр') }}
                         </a>
                     </div>
@@ -101,12 +102,35 @@
                 </div>
             </div>
             <!-- description -->
-            <div class="border-b  py-1 mb-2">
+            <div class="border-b  py-1 mb-4">
                 <x-input-label class="w-1/5 inline-block" for="description" :value="__('Описание')"/>
                 <p class="block mt-1 w-full text-gray-900 text-xl ">{{$fighter->description}}</p>
             </div>
+            <div class="">
+                <div class="md:flex md:justify-between items-center border-b-2  mb-2">
+                    <div class="mb-2 ">
+                        <h3 class=" text-gray-100 text-2xl font-bold leading-tight">{{ __('Социальные сети') }}</h3>
+                    </div>
+                </div>
+
+                <div class="my-4 border-b ">
+                    <ul>
+                        @foreach($fighter->socials as $network)
+                            <li class="block font-medium text-base text-gray-900 mb-2">
+                                <span><i class="mr-3 fab fa-{{$network->lang_key}}"></i></span>
+                                <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
+                                @if($network->pivot)
+                                    <span class="min-w-[150px]">{{ $network->pivot->link }}</span>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+            </div>
             <div class="flex ">
-                <a href="{{ route('producer.fighters.edit', $fighter) }}" class="w-1/2 md:w-1/4 inline-block theme-btn w-4/5 text-centre my-6 text-white bg-white/20">
+                <a href="{{ route('producer.fighters.edit', $fighter) }}"
+                   class="w-1/2 md:w-1/4 inline-block theme-btn w-4/5 text-centre my-6 text-white bg-white/20">
                     <i class="far fa-paper-plane mr-1"></i>
                     Изменить
                 </a>

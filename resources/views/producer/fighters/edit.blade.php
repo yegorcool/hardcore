@@ -83,7 +83,7 @@
                     {{--File Upload--}}
                     <div class="py-2  mb-2">
                         <div class="border-b  md:flex ">
-                            <div class="w-full lg:w-auto mr-4 mb-2">
+                            <div class="w-full md:w-auto mr-4 mb-2">
                                 <div class="block font-medium text-lg text-gray-900 mb-2">
                                     {{ __('Аватар') }}
                                 </div>
@@ -102,12 +102,12 @@
                             </div>
                         </div>
                         <div class="border-b  md:flex ">
-                            <div class="w-full lg:w-auto mr-4 mb-2">
+                            <div class="w-full md:w-auto mr-4 mb-2">
                                 <div class="block font-medium text-lg text-gray-900 mb-2">
                                     {{ __('Портрет') }}
                                 </div>
                                 <span id="output_edit_portrait">
-                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif " alt="Портрет">
+                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->portrait) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif " alt="Портрет">
                                 </span>
                             </div>
                             <div>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div class="border-b  md:flex ">
-                            <div class="w-full lg:w-auto  mr-4 mb-2">
+                            <div class="w-full md:w-auto  mr-4 mb-2">
                                 <div class="block font-medium text-lg text-gray-900 mb-2">
                                     {{ __('Фото фона') }}
                                 </div>
