@@ -126,7 +126,7 @@
                                     {{ __('Фото фона') }}
                                 </div>
                                 <span id="output_edit_hero">
-                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
+                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->hero_image) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
                                          alt="Фото фона">
                                 </span>
                             </div>

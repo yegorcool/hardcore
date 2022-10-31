@@ -72,9 +72,12 @@
                     </div>
 {{--File upload--}}
                     <div>
-                        <x-input-label for="head_image_create" :value="__('Обложка страницы боя')"/>
-                        <input id="head_image_create" class="block mt-1 w-full" type="file" name="head_image"/>
+                        <x-input-label for="head_image_create" ><span class=" block mb-2">{{__('Обложка страницы боя: ')}}<span class="text-base font-normal text-gray-400">горизонтальное фото 1920px по длинной стороне</span></span>
+                            <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
+                        </x-input-label>
+                        <input id="head_image_create" class="hidden" type="file" name="head_image"/>
                         <x-input-error :messages="$errors->get('head_image')" class="mt-2"/>
+                        <div class="row review-span"><span id="output-head" class="preview h-150"></span></div>
                     </div>
 
                     <div class="w-auto  md:ml-0 md:w-1/3 lg:x-1/4 lg:text-left">
@@ -86,4 +89,28 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
+    <script>
+        function handleHeadImageSelectSingle(evt) {
+            let file = evt.target.files;
+            let f = file[0]
+            if (!f.type.match('image.*')) {
+                alert("Только изображения....");
+            }
+            let reader = new FileReader();
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    let span = document.createElement('span');
+                    span.classList.add('preview-image')
+                    span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
+                        '" title="', theFile.name, '"/>'].join('');
+                    document.getElementById('output-head').innerHTML = "";
+                    document.getElementById('output-head').insertBefore(span, null);
+                };
+            })(f);
+            reader.readAsDataURL(f);
+        }
+        document.getElementById('head_image_create').addEventListener('change', handleHeadImageSelectSingle, false);
+    </script>
 @endsection

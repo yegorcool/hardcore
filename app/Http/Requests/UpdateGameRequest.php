@@ -38,6 +38,7 @@ class UpdateGameRequest extends FormRequest
             'city' => ['nullable', 'string', 'max:255'],
             'place' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'head_image' => ['required', 'mimes:jpeg,jpg,png,bmp'],
         ];
     }
 }
