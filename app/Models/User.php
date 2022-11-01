@@ -28,10 +28,10 @@ class User extends Authenticatable
         'height',
         'weight',
         'avatar',
+        'portrait',
         'hero_image',
         'gallery_images',
         'is_shown_on_welcome',
-        'gallery_images',
         'description',
     ];
 
@@ -84,6 +84,21 @@ class User extends Authenticatable
     }
 
     public function games() {
-        return $this->belongsToMany(Game::class, 'game_user', 'member_id', 'game_id');
+        return $this->belongsToMany(Game::class, 'game_user', 'member_id', 'game_id')
+            ->withPivot([
+                'id',
+                'game_id',
+                'member_id',
+            ])->withTimestamps();
+    }
+
+    public function socials() {
+        return $this->belongsToMany(Social::class, 'social_user', 'user_id', 'social_id')
+            ->withPivot([
+                'id',
+                'user_id',
+                'social_id',
+                'link',
+            ])->withTimestamps();
     }
 }

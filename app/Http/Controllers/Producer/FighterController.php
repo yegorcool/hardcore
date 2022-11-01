@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFighterRequest;
 use App\Http\Requests\UpdateFighterRequest;
 use App\Models\CareerEvent;
+use App\Models\Social;
+use App\Models\SocialUser;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -37,7 +39,13 @@ class FighterController extends Controller
      */
     public function create()
     {
-        return response()->view('producer.fighters.create');
+        $socialNetworks = Social::query()
+            ->whereNull('deleted_at')
+            ->get();
+
+        return response()->view('producer.fighters.create', [
+            'socialNetworks' => $socialNetworks,
+        ]);
     }
 
     /**
@@ -62,14 +70,21 @@ class FighterController extends Controller
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar')->store('/', 'public');
             if (!$avatar) {
-                return response(['message' => 'Error file upload'], 500);
+                return response(['message' => 'Ошибка при загрузке аватара'], 500);
             }
             $user->update(['avatar' => 'storage/photos/' . $avatar]);
+        }
+        if ($request->hasfile('portrait')) {
+            $portrait = $request->file('portrait')->store('/', 'public');
+            if (!$portrait) {
+                return response(['message' => 'Ошибка при загрузке портрета'], 500);
+            }
+            $user->update(['portrait' => 'storage/photos/' . $portrait]);
         }
         if ($request->hasfile('hero_image')) {
             $hero_image = $request->file('hero_image')->store('/', 'public');
             if (!$hero_image) {
-                return response(['message' => 'Error file upload'], 500);
+                return response(['message' => 'Ошибка при загрузке фона'], 500);
             }
             $user->update(['hero_image' => 'storage/photos/' . $hero_image]);
         }
@@ -79,7 +94,29 @@ class FighterController extends Controller
                 $img = $file->store('/', 'public');
                 $gallery_images[] = 'storage/photos/' . $img;
             }
+            if (!$gallery_images) {
+                return response(['message' => 'Ошибка при загрузке фона'], 500);
+            }
             $user->update(['gallery_images' => $gallery_images]);
+        }
+
+        $networks = Social::query()
+            ->whereNull('deleted_at')
+            ->get()->pluck('lang_key', 'id')
+            ->toArray();
+
+        if (count($request->social_user) > 0) {
+            foreach ($request->social_user as $key => $value) {
+                if (in_array($key, $networks)) {
+                    if (!empty($value)) {
+                        SocialUser::create([
+                            'social_id' => array_search($key, $networks),
+                            'user_id' => $user->id,
+                            'link' => $value,
+                        ]);
+                    }
+                }
+            }
         }
 
         event(new Registered($user));
@@ -99,10 +136,12 @@ class FighterController extends Controller
             ->where('user_id', '=', $fighter->id)
             ->orderByDesc('id')
             ->get();
+        $socialNetworks = Social::query()->get();
 
         return response()->view('producer.fighters.show', [
             'fighter' => $fighter,
             'careerEvents' => $careerEvents,
+            'socialNetworks' => $socialNetworks,
         ]);
     }
 

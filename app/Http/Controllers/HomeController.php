@@ -18,7 +18,7 @@ class HomeController extends Controller
         $allFighters = User::where('role', '=', 'fighter');
 
         $bestFighters = $allFighters->where('is_shown_on_welcome', '=', true)
-            ->whereJsonLength('gallery_images', '>', 0)
+            ->whereNotNull('portrait')
             ->get();
 
         $fighters = $allFighters->orderBy('id', 'DESC')->simplePaginate(50);

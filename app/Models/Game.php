@@ -35,6 +35,11 @@ class Game extends Model
     ];
 
     public function members() {
-        return $this->belongsToMany(User::class, 'game_user', 'game_id', 'member_id');
+        return $this->belongsToMany(User::class, 'game_user', 'game_id', 'member_id')
+            ->withPivot([
+                'id',
+                'game_id',
+                'member_id',
+            ])->withTimestamps();
     }
 }

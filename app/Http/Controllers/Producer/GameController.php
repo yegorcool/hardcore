@@ -125,7 +125,23 @@ class GameController extends Controller
     public function update(UpdateGameRequest $request, Game $game)
     {
         $data = $request->validated();
+        if ($request->hasfile('head_image')) {
+            $oldHeadImage = $game->head_image;
+            $headImage = $request->file('head_image')->store('/', 'public');
+            if (!$headImage) {
+                return response(['message' => 'Не удалось загрузить файл Обложки боя'], 500);
+            } else {
+                // если новая обложка загрузилась успешно, найти и удалить старый файл с диска
+                if ($oldHeadImage && file_exists(public_path($oldHeadImage))) {
+                    unlink(public_path($oldHeadImage));
+                }
+            }
+        }
         $game->update($data);
+        if (!empty($headImage)) {
+            $game->update(['head_image' => 'storage/photos/' . $headImage]);
+        }
+        $game->save();
 
         return redirect()->intended(route('producer.games.index'));
     }
