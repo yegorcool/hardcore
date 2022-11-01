@@ -194,7 +194,18 @@ class FighterController extends Controller
                 }
             }
         }
-
+        if ($request->hasfile('portrait')) {
+            $oldPortrait = $fighter->portrait;
+            $portrait = $request->file('portrait')->store('/', 'public');
+            if (!$portrait) {
+                return response(['message' => 'Ошибка при загрузке портрета'], 500);
+            } else {
+                // если новый портрет загрузился успешно, найти и удалить старый файл с диска
+                if ($oldPortrait && file_exists(public_path($oldPortrait))) {
+                    unlink(public_path($oldPortrait));
+                }
+            }
+        }
         if ($request->hasfile('hero_image')) {
             $oldHeroImage = $fighter->hero_image;
             $heroImage = $request->file('hero_image')->store('/', 'public');
@@ -234,12 +245,17 @@ class FighterController extends Controller
         if (!empty($avatar)) {
             $fighter->update(['avatar' => 'storage/photos/' . $avatar]);
         }
+        if (!empty($portrait)) {
+            $fighter->update(['portrait' => 'storage/photos/' . $portrait]);
+        }
         if (!empty($heroImage)) {
             $fighter->update(['hero_image' => 'storage/photos/' . $heroImage]);
         }
         if (!empty($galleryImages)) {
             $fighter->update(['gallery_images' => $galleryImages]);
         }
+
+        $fighter->save();
 
         $networks = Social::query()
             ->whereNull('deleted_at')
