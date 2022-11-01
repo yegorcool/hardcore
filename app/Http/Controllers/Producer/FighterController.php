@@ -109,11 +109,11 @@ class FighterController extends Controller
             foreach ($request->social_user as $key => $value) {
                 if (in_array($key, $networks)) {
                     if (!empty($value)) {
-                        SocialUser::create([
-                            'social_id' => array_search($key, $networks),
-                            'user_id' => $user->id,
-                            'link' => $value,
-                        ]);
+                        $user->socials()->attach(
+                            array_search($key, $networks),
+                            [
+                                'link' => $value,
+                            ]);
                     }
                 }
             }
@@ -153,8 +153,22 @@ class FighterController extends Controller
      */
     public function edit(User $fighter)
     {
+        $socialNetworks = Social::query()
+            ->whereNull('deleted_at')
+            ->get();
+
+        $socials = $fighter->socials;
+        $socialLinks = [];
+        if (count($socials) > 0) {
+            foreach ($socials as $item) {
+                $socialLinks[$item->lang_key] = $item->pivot->link;
+            }
+        }
+
         return response()->view('producer.fighters.edit', [
             'fighter' => $fighter,
+            'socialNetworks' => $socialNetworks,
+            'socialLinks' => $socialLinks,
         ]);
     }
 
@@ -226,6 +240,27 @@ class FighterController extends Controller
         if (!empty($galleryImages)) {
             $fighter->update(['gallery_images' => $galleryImages]);
         }
+
+        $networks = Social::query()
+            ->whereNull('deleted_at')
+            ->get()->pluck('lang_key', 'id')
+            ->toArray();
+        $new_links = [];
+
+        if (count($request->social_user) > 0) {
+            foreach ($request->social_user as $key => $value) {
+                if (in_array($key, $networks)) {
+                    if (!empty($value)) {
+                        $social_id = array_search($key, $networks);
+                        $new_links[$social_id] = [
+                            'link' => $value,
+                        ];
+                    }
+                }
+            }
+            $fighter->socials()->sync($new_links);
+        }
+
         $fighter->save();
 
         return redirect()->intended(route('producer.fighters.show', $fighter));

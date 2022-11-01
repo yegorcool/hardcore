@@ -68,13 +68,9 @@ class GameController extends Controller
             'head_image' => 'storage/photos/' . $headImage,
         ]);
 
-        GameUser::create([
-            'member_id' => $request->member_one_id,
-            'game_id' => $game->id,
-        ]);
-        GameUser::create([
-            'member_id' => $request->member_two_id,
-            'game_id' => $game->id,
+        $game->members()->attach([
+            $request->member_one_id,
+            $request->member_two_id,
         ]);
 
         $game->save();
@@ -141,6 +137,12 @@ class GameController extends Controller
         if (!empty($headImage)) {
             $game->update(['head_image' => 'storage/photos/' . $headImage]);
         }
+
+        $game->members()->sync([
+            $request->member_one_id,
+            $request->member_two_id,
+        ]);
+
         $game->save();
 
         return redirect()->intended(route('producer.games.index'));

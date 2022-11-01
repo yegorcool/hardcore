@@ -28,6 +28,7 @@
 {{--                        <a href="#"><i class="fab fa-instagram"></i></a>--}}
 {{--                        <a href="#"><i class="fab fa-linkedin"></i></a>--}}
 {{--                        <a href="#"><i class="fab fa-youtube"></i></a>--}}
+{{--                        <a href="#"><i class="fab fa-tiktok"></i></a>--}}
                         {{--<h6>Follow</h6>--}}
                     </div>
                     <div class="team-content">

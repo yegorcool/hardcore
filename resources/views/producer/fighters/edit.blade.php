@@ -5,7 +5,8 @@
 
 @section('titlebutton')
     <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i class="fa fa-plus mr-2"></i>
+        <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i
+                class="fa fa-plus mr-2"></i>
             {{ __(' Вернуться к списку') }}
         </a>
     </div>
@@ -28,21 +29,24 @@
                     </div>
                     <div class="lg:w-2/3">
                         <x-input-label for="name" :value="__('Имя')"/>
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="$fighter->name" required
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                      :value="$fighter->name" required
                                       autofocus/>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <!-- Email Address -->
                     <div class="lg:w-2/3 mt-2">
                         <x-input-label for="email" :value="__('Электронная почта')"/>
-                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="$fighter->email"
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                      :value="$fighter->email"
                                       required/>
                         <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                     </div>
                     <!-- City -->
                     <div class="lg:w-2/3 mt-2">
                         <x-input-label for="city" :value="__('Город')"/>
-                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="$fighter->city"/>
+                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city"
+                                      :value="$fighter->city"/>
                         <x-input-error :messages="$errors->get('city')" class="mt-2"/>
                     </div>
                     <!-- role -->
@@ -51,7 +55,8 @@
                         <select name="role" id="role">
                             <option value="">Выбрать</option>
                             @foreach(\App\Role\UserRole::getRoleList() as $key=>$role)
-                                <option value="{{ $key }}"@if($key == $fighter->role) selected @endif>{{$role}}</option>
+                                <option value="{{ $key }}"
+                                        @if($key == $fighter->role) selected @endif>{{$role}}</option>
                             @endforeach
                         </select>
                         <x-input-error :messages="$errors->get('role')" class="mt-2"/>
@@ -61,24 +66,55 @@
                         <div class="mt-2 w-1/2 mr-10">
                             <x-input-label for="height" :value="__('Рост')"/>
                             <x-text-input id="height" class="block mt-1"
-                                          type="number" step="1" min="50" max="280" name="height" :value="$fighter->height"/>
+                                          type="number" step="1" min="50" max="280" name="height"
+                                          :value="$fighter->height"/>
                             <x-input-error :messages="$errors->get('height')" class="mt-2"/>
                         </div>
                         <!-- weight -->
                         <div class="mt-2 w-1/2">
                             <x-input-label for="weight" :value="__('Вес')"/>
                             <x-text-input id="weight" class="block mt-1"
-                                          type="number" step="0.010" name="weight" min="5" max="250" :value="$fighter->weight"/>
+                                          type="number" step="0.010" name="weight" min="5" max="250"
+                                          :value="$fighter->weight"/>
                             <x-input-error :messages="$errors->get('weight')" class="mt-2"/>
                         </div>
                     </div>
                     <!-- description -->
                     <div class="lg:w-2/3 mt-2">
                         <x-input-label for="description" :value="__('Описание')"/>
-                        <textarea id="description" class="block mt-1 w-full" rows="5" cols="30" :value="old('description')" name="description">
+                        <textarea id="description" class="block mt-1 w-full" rows="5" cols="30"
+                                  :value="old('description')" name="description">
                             {{$fighter->description}}
                         </textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-2"/>
+                    </div>
+                    {{--Social Networks--}}
+                    <div class="">
+                        <div class="md:flex md:justify-between items-center border-b-2  mb-2">
+                            <div class="mb-2 ">
+                                <h3 class=" text-gray-100 text-2xl font-bold leading-tight">{{ __('Социальные сети') }}</h3>
+                            </div>
+                        </div>
+
+                        <div class="my-4 border-b ">
+                            <ul>
+                                @foreach($socialNetworks as $network)
+                                    <li class="block font-medium text-base text-gray-900 mb-2">
+                                        <span><i
+                                                class="inline-block min-w-[20px] mr-3 fab fa-{{$network->lang_key}}"></i></span>
+                                        <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
+
+                                        <input id="city"
+                                               class="inline-block mt-1 w-1/2"
+                                               type="text"
+                                               name="social_user[{{ $network->lang_key }}]"
+                                               value="@if(!array_key_exists($network->lang_key, $socialLinks))
+                                                        @else {{ $socialLinks[$network->lang_key] }}
+                                                        @endif   "/>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     {{--File Upload--}}
                     <div class="py-2  mb-2">
@@ -88,12 +124,15 @@
                                     {{ __('Аватар') }}
                                 </div>
                                 <span id="output_edit_avatar">
-                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->avatar){{ asset($fighter->avatar) }} @else /images/avatar1.jpg @endif " alt="Аватар">
+                                    <img class="w-auto h-[150px]  m-1"
+                                         src="@if($fighter->avatar){{ asset($fighter->avatar) }} @else /images/avatar1.jpg @endif "
+                                         alt="Аватар">
                                 </span>
                             </div>
                             <div>
                                 <x-input-label for="avatar_edit">
-                                    <span class="block mb-2">{{__('Заменить аватар: ')}}<span class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
+                                    <span class="block mb-2">{{__('Заменить аватар: ')}}<span
+                                            class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
                                     <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                                 </x-input-label>
                                 <x-text-input id="avatar_edit" class="hidden" type="file" name="avatar"
@@ -107,12 +146,15 @@
                                     {{ __('Портрет') }}
                                 </div>
                                 <span id="output_edit_portrait">
-                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->portrait) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif " alt="Портрет">
+                                    <img class="w-auto h-[150px]  m-1"
+                                         src="@if($fighter->portrait) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif "
+                                         alt="Портрет">
                                 </span>
                             </div>
                             <div>
                                 <x-input-label for="portrait_edit">
-                                    <span class="block mb-2">{{__('Заменить портрет: ')}}<span class="text-base  font-normal text-gray-400">вертикальное фото в пропорции 2 : 3</span></span>
+                                    <span class="block mb-2">{{__('Заменить портрет: ')}}<span
+                                            class="text-base  font-normal text-gray-400">вертикальное фото в пропорции 2 : 3</span></span>
                                     <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                                 </x-input-label>
                                 <x-text-input id="portrait_edit" class="hidden" type="file" name="portrait"
@@ -126,7 +168,8 @@
                                     {{ __('Фото фона') }}
                                 </div>
                                 <span id="output_edit_hero">
-                                    <img class="w-auto h-[150px]  m-1" src="@if($fighter->hero_image) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
+                                    <img class="w-auto h-[150px]  m-1"
+                                         src="@if($fighter->hero_image) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
                                          alt="Фото фона">
                                 </span>
                             </div>
@@ -161,10 +204,12 @@
                                 </div>
                             </div>
                             <div>
-                                <x-input-label for="gallery_images_edit" ><span class=" block mb-2">{{__('Заменить фото галереи: ')}}</span>
+                                <x-input-label for="gallery_images_edit"><span
+                                        class=" block mb-2">{{__('Заменить фото галереи: ')}}</span>
                                     <div class="preview-btn ml-2">{{__('Выберите файлы')}}</div>
                                 </x-input-label>
-                                <x-text-input id="gallery_images_edit" class="hidden" type="file" multiple name="gallery_images[]" :value="old('gallery_images')"/>
+                                <x-text-input id="gallery_images_edit" class="hidden" type="file" multiple
+                                              name="gallery_images[]" :value="old('gallery_images')"/>
                                 <x-input-error :messages="$errors->get('gallery_images')" class="mt-2"/>
                             </div>
                         </div>
@@ -203,6 +248,7 @@
             })(f);
             reader.readAsDataURL(f);
         }
+
         function handlePortraitSelectSingle(evt) {
             let file = evt.target.files;
             let f = file[0]
@@ -222,6 +268,7 @@
             })(f);
             reader.readAsDataURL(f);
         }
+
         function handleHeroSelectSingle(evt) {
             let file = evt.target.files;
             let f = file[0]

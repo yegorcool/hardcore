@@ -40,6 +40,8 @@ class UpdateFighterRequest extends FormRequest
             'hero_image' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
             'gallery_images' => ['nullable'],
             'gallery_images.*' => ['mimes:jpeg,jpg,png,bmp'],
+            'social_user' => ['nullable'],
+            'social_user.*' => ['nullable','url'],
         ];
     }
 }

@@ -41,7 +41,7 @@ class StoreFighterRequest extends FormRequest
             'gallery_images' => ['nullable'],
             'gallery_images.*' => ['mimes:jpeg,jpg,png,bmp'],
             'social_user' => ['nullable'],
-            'social_user.*' => ['nullable','string'],
+            'social_user.*' => ['nullable','url'],
         ];
     }
 }
