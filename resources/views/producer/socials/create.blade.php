@@ -15,27 +15,30 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-100 px-lg-5 mx-auto sm:px-6 lg:px-8">
-        <div class="w-full lg:w-2/3  ">
-            <div class="my-4 lg:col-8">
+    <section class="container-fluid  bg-gray-100 px-lg-5 py-2 mx-auto sm:px-6 lg:px-8 ">
+        <div class="w-full   ">
+            <div class="my-4 ">
                 <form method="POST" action="{{ route('producer.socials.store') }}" enctype="multipart/form-data">
                     @csrf
                     <!-- Title -->
-                    <div>
-                        <x-input-label for="title" :value="__('Название')"/>
-                        <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')"
+                    <div class="my-2 lg:w-2/3">
+                        <x-input-label for="title" :value="__('Название социальной')"/>
+                        <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" placeholder="Твиттер"
                                       required autofocus/>
                         <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                     </div>
                     <!-- Lang key -->
-                    <div>
-                        <x-input-label for="lang_key" :value="__('На латинице')"/>
-                        <x-text-input id="lang_key" class="block mt-1 w-full" type="text" name="lang_key" :value="old('lang_key')"
-                                      required />
+                    <div class="my-2">
+                        <x-input-label for="lang_key" :value="__('Имя иконки из Font-Awesome на латинице')"/>
+                            <div class="lg:flex items-center">
+                                <x-text-input id="lang_key" class=" lg:w-2/3 block mt-1 w-full" type="text" name="lang_key" :value="old('lang_key')"  placeholder="twitter"
+                                              required />
+                                <span class="theme-btn bg-white/10 text-sm py-1 hover:bg-gray-200 text-gray-400 lg:ml-6"><a class="hover:text-gray-100" href="https://fontawesome.com/search?f=brands&o=r" target="_blank">посмотреть названия иконок</a></span>
+                            </div>
                         <x-input-error :messages="$errors->get('lang_key')" class="mt-2"/>
                     </div>
                     <!-- Comment -->
-                    <div>
+                    <div class="my-2 lg:w-2/3">
                         <x-input-label for="comment-social" :value="__('Комментарий')"/>
                         <x-text-input id="comment-social" class="block mt-1 w-full" type="text" name="comment" :value="old('comment')"/>
                         <x-input-error :messages="$errors->get('comment')" class="mt-2"/>
