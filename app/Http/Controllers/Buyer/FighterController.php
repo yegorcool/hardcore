@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
 use App\Models\CareerEvent;
+use App\Models\Social;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,28 +17,31 @@ class FighterController extends Controller
      */
     public function index()
     {
-        //
+        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+
+        return response()->view('buyer.fighters.index', [
+            'fighters' => $fighters,
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\User $fighter
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(User $fighter)
     {
         $careerEvents = CareerEvent::query()
             ->where('user_id', '=', $fighter->id)
-            ->orderByDesc('date_start')
+            ->orderByDesc('id')
             ->get();
+        $socialNetworks = Social::query()->get();
 
-        $num = rand(1, 3); // для выбора рандомных фото @todo заменить на реальные фото из БД позже
-
-        return response()->view('pages.fighter-single.index', [
+        return response()->view('buyer.fighters.show', [
             'fighter' => $fighter,
             'careerEvents' => $careerEvents,
-            'num' => $num,
+            'socialNetworks' => $socialNetworks,
         ]);
     }
 }

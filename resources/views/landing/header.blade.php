@@ -24,34 +24,39 @@
                                     <li class="nav-item"><a class="nav-link"
                                                             href="{{ route(Auth::user()->role . '.fighters.index') }}">Бойцы</a>
                                     </li>
-    {{--                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a>--}}
-    {{--                                </li>--}}
+                                    {{--                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a>--}}
+                                    {{--                                </li>--}}
                                     <li class="nav-item"><a class="nav-link"
-                                                            href="{{ route(Auth::user()->role . '.games.index') }}">Турниры</a>
+                                                            href="{{ route(Auth::user()->role . '.games.index') }}">{{ __('Турниры') }}</a>
                                     </li>
                                 @elseif(Auth::user()->role === 'buyer')
-                                    {{-- @todo Придумать меню фанатов Временно оставляю им эти два пункта меню. --}}
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#team-area">Бойцы</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('buyer.fighters') }}">{{ __('Бойцы') }}</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('buyer.games') }}">{{ __('Турниры') }}</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="#">{{ __('Транзакции') }}</a>
+                                    </li>
                                 @endif
-{{--                                <li class="nav-item dropdown">--}}
-{{--                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>--}}
-{{--                                    <ul class="dropdown-menu fade-up">--}}
-{{--                                        <li><a class="dropdown-item" href="#">Hardcore FC</a></li>--}}
-{{--                                        <li><a class="dropdown-item" href="#">Hardcore MMA</a></li>--}}
-{{--                                        <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
+                                {{--                                <li class="nav-item dropdown">--}}
+                                {{--                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>--}}
+                                {{--                                    <ul class="dropdown-menu fade-up">--}}
+                                {{--                                        <li><a class="dropdown-item" href="#">Hardcore FC</a></li>--}}
+                                {{--                                        <li><a class="dropdown-item" href="#">Hardcore MMA</a></li>--}}
+                                {{--                                        <li><a class="dropdown-item" href="#">Hardcore Boxing</a></li>--}}
+                                {{--                                    </ul>--}}
+                                {{--                                </li>--}}
                                 <li class="nav-item">
                                     <a class="nav-link"
                                        href="{{ route(Auth::user()->role . '.report') }}">
                                         <i class="fa fa-bolt mr-2"></i>
-                                         Статистика
+                                        Статистика
                                     </a>
                                 </li>
                             @else
-                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#team-area">Бойцы</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{ route('welcome') }}/#team-area">Бойцы</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('welcome') }}/#timetable">Расписание</a>
+                                </li>
                             @endauth
 
                             <li class="nav-item lg:hidden border-top border-t-gray-100">

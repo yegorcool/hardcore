@@ -15,13 +15,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::query()
-            ->with('members')
-            ->orderByDesc('id')
-            ->get();
-        return response()->view('guest.games.index', [
-            'games' => $games,
-        ]);
+        //
     }
     /**
      * Display the specified resource.

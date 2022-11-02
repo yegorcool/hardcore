@@ -2,14 +2,14 @@
 @section('title')
     {{ __('Бойцы') }}
 @endsection
-@section('titlebutton')
-    <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('welcome')  }}" class="">
-            <i class="far fa-arrow-left mr-2"></i>
-            {{ __(' Вернуться на главную') }}
-        </a>
-    </div>
-@endsection
+{{--@section('titlebutton')--}}
+{{--    <div class="theme-btn  ">--}}
+{{--        <a class="text-white hover:text-gray-100" href="{{ route('buyer.fighters')  }}" class="">--}}
+{{--            <i class="far fa-arrow-left mr-2"></i>--}}
+{{--            {{ __(' Вернуться к списку') }}--}}
+{{--        </a>--}}
+{{--    </div>--}}
+{{--@endsection--}}
 @section('content')
     <section class="container-fluid  px-lg-5 mx-auto sm:px-6 lg:px-8">
         <div class="w-full ">
@@ -29,6 +29,7 @@
                         <th scope="col">Рост, см</th>
                         <th scope="col" class="min-w-20">Вес, кг</th>
                         <th scope="col">Описание</th>
+                        <th scope="col">Открыть</th>
                     </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -38,7 +39,9 @@
                             <td>{{$fighter->city}}</td>
                             <td class="text-center min-w-20">{{$fighter->height}}</td>
                             <td class="text-center min-w-20">{{$fighter->weight}}</td>
-                            <td class="min-w-[300px] max-w-[500px]">{{$fighter->description}}</td>
+                            <td class="min-w-[300px] max-w-[500px]">{{mb_strimwidth($fighter->description,0, 40, "...")}}</td>
+                            <td><a href="{{ route('buyer.fighter', $fighter) }}"
+                                   class="theme-btn bg-white/50 mx-2 text-sm">Профиль</a></td>
                         </tr>
                     @empty
                         <p>No users</p>

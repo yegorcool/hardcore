@@ -19,7 +19,6 @@
                 <td>{{$event->date_start->format('d.m.Y')}}</td>
                 <td>@if($event->date_end){{$event->date_end->format('d.m.Y')}}@else @endif</td>
                 <td class="min-w-20">{{$event->title}}</td>
-                {{--                            <td><a href="{{ route('producer.fighters.show', $fighter) }}" class="hover:text-themeOrange">{{$fighter->email}}</a></td>--}}
                 <td class="min-w-[300px] max-w-[500px]">{{$event->description}}</td>
                 <td><a href="{{ route('producer.career_events.edit', $event) }}"
                        class="theme-btn bg-white/50 mx-2 text-sm">Редактировать</a></td>
