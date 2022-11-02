@@ -44,9 +44,9 @@
                             </td>
                             <td>{{$game->place}}</td>
                             <td>{{$game->city}}</td>
-                            <td class="min-w-[300px] max-w-[500px]">{{$game->description}}</td>
+                            <td class="min-w-[300px] max-w-[500px]">{{mb_strimwidth($game->description,0, 30, "...")}}</td>
                             <td>
-                                <a href="{{ route('guest.game', $game) }}" class="theme-btn">Подробнее</a>
+                                <a href="#" class="theme-btn">Подробнее</a>
                             </td>
                         </tr>
                     @empty
