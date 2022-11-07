@@ -34,7 +34,7 @@
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('buyer.games') }}">{{ __('Турниры') }}</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">{{ __('Транзакции') }}</a>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('buyer.transactions') }}">{{ __('Транзакции') }}</a>
                                     </li>
                                 @endif
                                 {{--                                <li class="nav-item dropdown">--}}

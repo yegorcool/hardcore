@@ -35,7 +35,7 @@
                     <tbody class="table-group-divider">
                     @forelse($fighters as $fighter )
                         <tr>
-                            <td class="min-w-20"><a href="{{ route('guest.fighter', $fighter) }}" class="font-bold text-gray-50 hover:text-themeOrange">{{$fighter->name}}</a></td>
+                            <td class="min-w-20"><a href="{{ route('buyer.fighter', $fighter) }}" class="font-bold text-gray-50 hover:text-themeOrange">{{$fighter->name}}</a></td>
                             <td>{{$fighter->city}}</td>
                             <td class="text-center min-w-20">{{$fighter->height}}</td>
                             <td class="text-center min-w-20">{{$fighter->weight}}</td>
