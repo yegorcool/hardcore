@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTransactionRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreTransactionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +25,32 @@ class StoreTransactionRequest extends FormRequest
      */
     public function rules()
     {
+        $buyers = User::query()
+            ->where('deleted_at', '=', null)
+            ->where('role', '=', 'buyer')
+            ->get()
+            ->pluck('id');
+
+        $fighters = User::query()
+            ->where('deleted_at', '=', null)
+            ->where('role', '=', 'fighter')
+            ->get()
+            ->pluck('id');
+
+//        @todo сделать какой-то список
+        $topics = ['Победа', 'День рождения', 'Поддержать'];
+//        @todo тоже сделать какой-то список
+        $status = ['новый', 'в процессе', 'оплачен', 'возвращен'];
+
+
         return [
-            //
+//            'datetime' => ['required', 'date'],
+            'buyer_id' => ['required', 'numeric', Rule::in($buyers)],
+            'fighter_id' => ['required', 'numeric', Rule::in($fighters)],
+            'topic' => ['required', 'string', 'max:255', Rule::in($topics)],
+            'amount' => ['required', 'numeric'],
+            'status'  => ['required', 'string'],
+            'comment' => ['nullable', 'string'],
         ];
     }
 }

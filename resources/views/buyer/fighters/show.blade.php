@@ -174,31 +174,29 @@
                 </div>
             </div>
             <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-                <div class="theme-btn  w-full">
+                <a href="{{ route('buyer.transactions.create', ['recipient' => $fighter, 'topic' => 'Поддержать']) }}" class="theme-btn  w-full">
                     <div class="service-icon">
                         <i class="flaticon-sports"></i>
                     </div>
                     Поддержать бойца
-                </div>
+                </a>
             </div>
             <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-
-                <div class="theme-btn  w-full">
+                <a href="{{ route('buyer.transactions.create', ['recipient' => $fighter, 'topic' => 'Победа']) }}" class="theme-btn  w-full">
                     <div class="service-icon">
                         <i class="flaticon-award-1"></i>
                     </div>
                     Поздравить <br> с победой
-                </div>
+                </a>
             </div>
             <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-                <div class="theme-btn  w-full">
+                <a href="{{ route('buyer.transactions.create', ['recipient' => $fighter, 'topic' => 'День рождения']) }}" class="theme-btn  w-full">
                     <div class="service-icon">
                         <i class="flaticon-money-bag"></i>
                     </div>
                     Поздравить <br> c Днём Рождения
-                </div>
+                </a>
             </div>
-
         </div>
     </section>
 @endsection

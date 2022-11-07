@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Transaction;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
@@ -24,6 +26,52 @@ class TransactionController extends Controller
         return response()->view('buyer.transactions.index', [
             'transactions' => $transactions,
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        if (!$request->get('recipient')) {
+            return redirect()->back()->withErrors(['message' => 'Ошибка платежа. Не указан получатель']);
+        } else {
+            $recipient_id = $request->get('recipient');
+            $recipient = User::query()
+                ->where('id', '=', $recipient_id)
+                ->first();
+        }
+        $topic = $request->get('topic') ?: 'Поддержать';
+
+        $buyer = auth()->user();
+        return response()->view('buyer.transactions.create', [
+            'buyer' => $buyer,
+            'recipient' => $recipient,
+            'topic' => $topic,
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreTransactionRequest $request)
+    {
+        $transaction = Transaction::create([
+            'datetime' => now(),
+            'buyer_id' => $request->buyer_id,
+            'fighter_id' => $request->fighter_id,
+            'topic' => $request->topic,
+            'amount' => $request->amount,
+            'status' => $request->status,
+            'comment' => $request->comment,
+        ]);
+        return response()->redirectTo(route('buyer.transaction', $transaction))->withSuccess(['message' => 'Спсибо за ваш платеж! ']);
     }
 
     /**

@@ -15,4 +15,4 @@ Route::middleware(['welcome'])->group(function () {
 
 Route::resource('/fighters',FighterController::class)->only(['index', 'show'])->name('index', 'fighters')->name('show', 'fighter');
 Route::resource('/games',GameController::class)->only(['index', 'show'])->name('index', 'games')->name('show', 'game');;
-Route::resource('/transactions',TransactionController::class)->only(['index', 'show'])->name('index', 'transactions')->name('show', 'transaction');;
+Route::resource('/transactions',TransactionController::class)->name('index', 'transactions')->name('show', 'transaction');;
