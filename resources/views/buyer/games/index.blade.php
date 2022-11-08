@@ -31,13 +31,13 @@
                         <tr>
                             <td>{{$game->datetime->format('d.m.Y H:i')}}</td>
                             <td class="min-w-20">
-                                <a href="{{ route('guest.fighter', $game->member_one_id) }}"
+                                <a href="{{ route('buyer.fighter', $game->member_one_id) }}"
                                    class="hover:text-themeOrange">
                                     {{$game->members[0]->name}}, {{$game->members[0]->city}}
                                 </a>
                             </td>
                             <td class="min-w-20">
-                                <a href="{{ route('guest.fighter', $game->member_two_id) }}"
+                                <a href="{{ route('buyer.fighter', $game->member_two_id) }}"
                                    class="hover:text-themeOrange">
                                     {{$game->members[1]->name}}, {{$game->members[1]->city}}
                                 </a>

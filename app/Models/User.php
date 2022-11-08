@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -100,5 +101,21 @@ class User extends Authenticatable
                 'social_id',
                 'link',
             ])->withTimestamps();
+    }
+
+    /**
+     * Get the Transactions that were paid by user.
+     */
+    public function paidTransactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'buyer_id', 'id');
+    }
+
+    /**
+     * Get the Transactions that were received by user.
+     */
+    public function receivedTransactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'fighter_id', 'id');
     }
 }
