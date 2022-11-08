@@ -114,7 +114,7 @@ class User extends Authenticatable
     /**
      * Get the Transactions that were received by user.
      */
-    public function preceivedTransactions(): HasMany
+    public function receivedTransactions(): HasMany
     {
         return $this->hasMany(Transaction::class, 'fighter_id', 'id');
     }

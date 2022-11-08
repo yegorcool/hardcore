@@ -71,7 +71,7 @@ class TransactionController extends Controller
             'status' => $request->status,
             'comment' => $request->comment,
         ]);
-        return response()->redirectTo(route('buyer.transaction', $transaction))->withSuccess(['message' => 'Спсибо за ваш платеж! ']);
+        return response()->redirectTo(route('buyer.transaction', $transaction))->withSuccess(['message' => 'Спасибо за ваш платеж! ']);
     }
 
     /**

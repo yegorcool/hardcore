@@ -166,12 +166,12 @@
         </div>
         <div class="sm:flex flex-wrap justify-between lg:block col-lg-3 py-4">
             <div class="p-3 w-full sm:w-1/2 lg:w-[90%] mb-4">
-                <div class="theme-btn w-full">
+                <a href="{{ route('buyer.videos.create', ['recipient' => $fighter]) }}" class="theme-btn w-full">
                     <div class="service-icon">
                         <i class="flaticon-play-button"></i>
                     </div>
                     Записать видео
-                </div>
+                </a>
             </div>
             <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
                 <a href="{{ route('buyer.transactions.create', ['recipient' => $fighter, 'topic' => 'Поддержать']) }}" class="theme-btn  w-full">
