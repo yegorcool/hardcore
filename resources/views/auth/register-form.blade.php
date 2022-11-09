@@ -54,7 +54,7 @@
         </label>
     </div>
     <div class="" >
-        <x-theme-button class="bg-themeRed" >
+        <x-theme-button class="theme-btn bg-themeRed" >
             {{ __('Зарегистрироваться') }}
         </x-theme-button>
     </div>

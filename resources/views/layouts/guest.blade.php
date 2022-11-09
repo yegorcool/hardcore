@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        @include('layouts.assets.external-css')
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -14,8 +15,11 @@
         @vite(['resources/assets/scss/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased bg-gray-800">
+        <div class="font-sans text-gray-900 antialiased bg-gray-800"
+        style="background: url('/images/slider-3.jpg') center center/cover no-repeat fixed;">
             {{ $slot }}
         </div>
+        @include('layouts.assets.external-js')
     </body>
 </html>
+
