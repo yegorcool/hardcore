@@ -41,7 +41,7 @@
         @endif
     </div>
 
-    <x-theme-button class="bg-themeRed">
+    <x-theme-button class="theme-btn bg-themeRed">
         {{ __('Войти') }}
     </x-theme-button>
 

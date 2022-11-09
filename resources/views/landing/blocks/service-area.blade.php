@@ -29,7 +29,7 @@
                             Помоги новичку,<br/>напиши историю легенды
                         </p>
                         <div class="service-arrow">
-                            <a href="#" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
+                            <a href="{{ route('register') }}" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                             Персональное видео-обращение<br/> любому бойцу
                         </p>
                         <div class="service-arrow">
-                            <a href="#" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
+                            <a href="{{ route('register') }}" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                             Без боли не бывает победы. Раздели победу с легендой.
                         </p>
                         <div class="service-arrow">
-                            <a href="#" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
+                            <a href="{{ route('register') }}" class="theme-btn">Попробовать <span class="far fa-arrow-right"></span></a>
                         </div>
                     </div>
                 </div>
