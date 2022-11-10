@@ -13,7 +13,7 @@
         }
     & + .label-sum {
         transition: none;
-        background: transparent;
+        background: rgba(255,255,255, 0.3);
         color: var(--theme-red-color);
         font-size: 20px;
     }

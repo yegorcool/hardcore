@@ -2,7 +2,7 @@
     @csrf
     <input type="hidden" name="role" value="buyer">
     <div class="flex justify-center mb-2">
-        <h3 class="text-2xl items-center"  id=registerLabel">Зарегистрироваться</h3>
+        <h3 class="text-2xl items-center  text-gray-100"  id=registerLabel">Зарегистрироваться</h3>
         {{--                <img src="/hardcore-fight-icon.png" width="40" height="40"  alt="" class="inline-block">--}}
     </div>
     <!-- Name -->

@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-100 px-lg-5 mx-auto sm:px-6 lg:px-8">
+    <section class="container-fluid bg-black shadow-xl shadow-white/30 text-gray-400  px-lg-5 mx-auto sm:px-6 lg:px-8">
         <div class="w-full  ">
             <div class="row">
 
@@ -55,7 +55,7 @@
                     <!-- role -->
                     <div  class="lg:w-2/3 mt-2">
                         <x-input-label for="role" :value="__('Роль')"/>
-                        <select name="role" id="role">
+                        <select name="role" id="role" class="mt-1  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
                             <option value="">Выбрать</option>
                             @foreach(\App\Role\UserRole::getRoleList() as $key=>$role)
                                 <option value="{{ $key }}" @if($key == 'fighter') selected @endif>{{$role}}</option>
@@ -85,7 +85,7 @@
                     <!-- description -->
                     <div  class="lg:w-2/3 mt-2">
                         <x-input-label for="description" :value="__('Описание')"/>
-                        <textarea id="description" class="block mt-1 w-full" rows="3" cols="30" name="description"
+                        <textarea id="description" class="block mt-1 w-full shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" rows="3" cols="30" name="description"
                                   :value="old('description')" required
                         ></textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-2"/>
@@ -135,10 +135,10 @@
                         <div class="my-4 border-b ">
                             <ul>
                                 @foreach($socialNetworks as $network)
-                                    <li class="block font-medium text-base text-gray-900 mb-2">
-                                        <span><i class="inline-block min-w-[20px] mr-3 fab fa-{{$network->lang_key}}"></i></span>
-                                        <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
-                                        <input id="city" class="inline-block mt-1 w-1/2" type="text" name="social_user[{{ $network->lang_key }}]" value="{{ old('user_social['. $network->lang_key .']') }}" placeholder="https:// ..."/>
+                                    <li class="block font-medium text-base text-gray-400 mb-2">
+                                        <span><i class="text-gray-100 inline-block min-w-[20px] mr-3 fab fa-{{$network->lang_key}}"></i></span>
+                                        <span class="text-gray-100 inline-block min-w-[150px]">{{ $network->title }}</span>
+                                        <input id="city" class="bg inline-block mt-1 w-1/2 placeholder:text-gray-300  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" type="text" name="social_user[{{ $network->lang_key }}]" value="{{ old('user_social['. $network->lang_key .']') }}" placeholder="https:// ..."/>
                                     </li>
                                 @endforeach
                             </ul>

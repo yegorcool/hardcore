@@ -38,6 +38,13 @@
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('buyer.videos.index') }}">{{ __('Видео') }}</a>
                                     </li>
+                                @elseif(Auth::user()->role === 'fighter')
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('fighter.videos') }}">{{ __('Видео') }}</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('fighter.transactions') }}">{{ __('Транзакции') }}</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('fighter.profile', auth()->user()) }}">{{ __('Профиль') }}</a>
+                                    </li>
                                 @endif
                                 {{--                                <li class="nav-item dropdown">--}}
                                 {{--                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Лиги</a>--}}

@@ -41,7 +41,7 @@
     </div>
     <div class="sm:flex flex-wrap justify-between lg:block col-lg-3 py-4">
         <div class="p-3 w-full sm:w-1/2 lg:w-[90%] mb-4">
-            <a href="{{ route('register') }}" class="theme-btn w-full">
+            <a @guest href="{{ route('register') }}" @endguest class="theme-btn text-white w-full">
                 <div class="service-icon">
                     <i class="flaticon-play-button"></i>
                 </div>
@@ -49,7 +49,7 @@
             </a>
         </div>
         <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-            <a href="{{ route('register') }}" class="theme-btn  w-full">
+            <a @guest href="{{ route('register') }}" @endguest class="theme-btn text-white w-full">
                 <div class="service-icon">
                     <i class="flaticon-sports"></i>
                 </div>
@@ -57,7 +57,7 @@
             </a>
         </div>
         <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-            <a href="{{ route('register') }}" class="theme-btn  w-full">
+            <a @guest href="{{ route('register') }}" @endguest class="theme-btn text-white w-full">
                 <div class="service-icon">
                     <i class="flaticon-award-1"></i>
                 </div>
@@ -65,7 +65,7 @@
             </a>
         </div>
         <div class="p-3  sm:w-1/2 lg:w-[90%] mb-4">
-            <a href="{{ route('register') }}" class="theme-btn  w-full">
+            <a @guest href="{{ route('register') }}" @endguest class="theme-btn text-white w-full">
                 <div class="service-icon">
                     <i class="flaticon-money-bag"></i>
                 </div>

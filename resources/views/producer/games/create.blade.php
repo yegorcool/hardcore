@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-100 px-lg-5 mx-auto sm:px-6 lg:px-8">
+    <section class="container-fluid  bg-black shadow-xl shadow-white/30 text-gray-400  px-lg-5 mx-auto sm:px-6 lg:px-8">
         <div class="w-full lg:w-2/3  ">
             <div class="row">
 
@@ -30,7 +30,7 @@
                     {{--Боец 1--}}
                     <div class="mt-4">
                         <x-input-label for="member_one_id" :value="__('Имя первого участника')"/>
-                        <select name="member_one_id" id="member_one">
+                        <select name="member_one_id" id="member_one" class="mt-1  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
                             <option value="">Выбрать</option>
                             @foreach($fighters as $key=>$name)
                                 <option value="{{ $key }}">{{$name}}</option>
@@ -41,7 +41,7 @@
                     {{--Боец 2--}}
                     <div class="mt-4">
                         <x-input-label for="member_two_id" :value="__('Имя второго участника')"/>
-                        <select name="member_two_id" id="member_two">
+                        <select name="member_two_id" id="member_two" class="mt-1  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
                             <option value="">Выбрать</option>
                             @foreach($fighters as $key=>$name)
                                 <option value="{{ $key }}">{{$name}}</option>
@@ -65,7 +65,7 @@
                     <!-- description -->
                     <div class="mb-4">
                         <x-input-label for="description" :value="__('Описание')"/>
-                        <textarea id="description" class="block mt-1 w-full" rows="3" cols="30" name="description"
+                        <textarea id="description" class="block mt-1 w-full mt-1  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" rows="3" cols="30" name="description"
                                   :value="old('description')"
                         >{{old('description')}}</textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-2"/>

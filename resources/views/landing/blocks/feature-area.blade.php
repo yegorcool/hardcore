@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 col-lg-4">
-                <a href="{{ route('register') }}" class="feature-item">
+                <a @guest href="{{ route('register') }}" @endguest class="feature-item">
                     <div class="feature-icon">
                         <i class="flaticon-sports"></i>
                     </div>
@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-lg-4">
-                <a href="{{ route('register') }}" class="feature-item active">
+                <a @guest href="{{ route('register') }}" @endguest class="feature-item active">
                     <div class="feature-icon">
                         <i class="flaticon-play-button"></i>
                     </div>
@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-lg-4">
-                <a href="{{ route('register') }}" class="feature-item">
+                <a @guest href="{{ route('register') }}" @endguest class="feature-item">
                     <div class="feature-icon">
                         <i class="flaticon-muscle"></i>
                     </div>

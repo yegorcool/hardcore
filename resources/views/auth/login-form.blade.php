@@ -1,7 +1,7 @@
 <form method="POST" action="{{ route('login') }}">
     @csrf
     <div class="flex justify-center mb-2">
-        <h3 class="text-2xl items-center">{{ __('Вход') }}</h3>
+        <h3 class="text-2xl text-gray-100 items-center">{{ __('Вход') }}</h3>
         {{--                <img src="/hardcore-fight-icon.png" width="40" height="40"  alt="" class="inline-block">--}}
     </div>
     <!-- Email Address -->

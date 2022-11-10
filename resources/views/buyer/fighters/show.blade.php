@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-300 px-lg-2 mx-auto sm:px-6 lg:px-8 row">
+    <section class="container-fluid  bg-black shadow-xl shadow-white/30 text-gray-400  px-lg-2 mx-auto sm:px-6 lg:px-8 row">
         <div class="col-lg-9">
             <div class="p-4">
                 <div class="row border-b-2 mb-4">
@@ -25,40 +25,40 @@
                 {{--ID--}}
                 <div class="border-b py-1 mb-2">
                     <x-input-label class="w-1/5 inline-block" for="fighterId" :value="__('ID бойца: ')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->id }}</span>
+                    <span class=" text-xl ">{{ $fighter->id }}</span>
                 </div>
                 {{--Имя--}}
                 <div class="border-b py-1 mb-2">
                     <x-input-label class="w-1/5 inline-block" for="name" :value="__('Имя')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->name }}</span>
+                    <span class=" text-xl ">{{ $fighter->name }}</span>
                 </div>
                 <!-- Email Address -->
                 <div class="border-b  py-1 mb-2">
                     <x-input-label class="w-1/5 inline-block" for="email" :value="__('Электронная почта')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->email }}</span>
+                    <span class=" text-xl ">{{ $fighter->email }}</span>
                 </div>
                 <div class="border-b lg:flex  py-1 mb-2">
                     <!-- City -->
                     <div class=" w-full lg:w-1/2 mr-10">
                         <x-input-label class="w-2/5 inline-block" for="city" :value="__('Город')"/>
-                        <span class="text-gray-900 text-xl ">{{ $fighter->city }}</span>
+                        <span class=" text-xl ">{{ $fighter->city }}</span>
                     </div>
                     <!-- role -->
                     <div class=" w-full lg:w-1/2">
                         <x-input-label class="w-2/5 inline-block" for="role" :value="__('Роль')"/>
-                        <span class="text-gray-900 text-xl ">{{ $fighter->role }}</span>
+                        <span class=" text-xl ">{{ $fighter->role }}</span>
                     </div>
                 </div>
                 <div class="border-b  py-1 lg:flex mb-2">
                     <!-- height -->
                     <div class="  w-full lg:w-1/2 mr-10">
                         <x-input-label class="w-2/5 inline-block" for="height" :value="__('Рост')"/>
-                        <span class="text-gray-900 text-xl ">{{ $fighter->height }} см</span>
+                        <span class=" text-xl ">{{ $fighter->height }} см</span>
                     </div>
                     <!-- weight -->
                     <div class=" w-full lg:w-1/2">
                         <x-input-label class="w-2/5 inline-block" for="weight" :value="__('Вес')"/>
-                        <span class="text-gray-900 text-xl ">{{ $fighter->weight }} кг</span>
+                        <span class=" text-xl ">{{ $fighter->weight }} кг</span>
                     </div>
                 </div>
                 <div class="border-b  py-2 lg:flex flex-wrap mb-2">
@@ -96,7 +96,7 @@
                 <!-- description -->
                 <div class="border-b  py-1 mb-4">
                     <x-input-label class="w-1/5 inline-block" for="description" :value="__('Описание')"/>
-                    <p class="block mt-1 w-full text-gray-900 text-xl ">{{$fighter->description}}</p>
+                    <p class="block mt-1 w-full  text-xl ">{{$fighter->description}}</p>
                 </div>
                 <div class="">
                     <div class="md:flex md:justify-between items-center border-b-2  mb-2">
@@ -108,7 +108,7 @@
                     <div class="my-4 border-b ">
                         <ul>
                             @foreach($fighter->socials as $network)
-                                <li class="block font-medium text-base text-gray-900 mb-2">
+                                <li class="block font-medium text-base  mb-2">
                                     <span><i class="mr-3 fab fa-{{$network->lang_key}}"></i></span>
                                     <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
                                     @if($network->pivot)
