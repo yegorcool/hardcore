@@ -3,7 +3,7 @@
         <x-auth-card>
             <x-slot name="logo">
                 <a href="/">
-                    <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
+                    <x-hardcore-fc-logo class="w-56 h-16 fill-gray-50  text-gray-50"/>
                 </a>
             </x-slot>
             @include('auth.register-form')

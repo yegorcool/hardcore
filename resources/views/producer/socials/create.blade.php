@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-100 px-lg-5 py-2 mx-auto sm:px-6 lg:px-8 ">
+    <section class="container-fluid  bg-black shadow-xl shadow-white/30 text-gray-400 px-lg-5 py-2 mx-auto sm:px-6 lg:px-8 ">
         <div class="w-full   ">
             <div class="my-4 ">
                 <form method="POST" action="{{ route('producer.socials.store') }}" enctype="multipart/form-data">

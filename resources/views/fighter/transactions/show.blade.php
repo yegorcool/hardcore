@@ -5,7 +5,7 @@
 
 @section('titlebutton')
     <div class="theme-btn mt-3 md:mt-0">
-        <a class="text-white hover:text-gray-100" href="{{ route('buyer.transactions')  }}" class=""><i
+        <a class="text-white hover:text-gray-100" href="{{ route('fighter.transactions')  }}" class=""><i
                 class="fa fa-arrow-left mr-2"></i>
             {{ __(' К списку платежей ') }}
         </a>
@@ -19,51 +19,43 @@
                 <div class="md:flex border-b-2 mb-4">
                     <div class=" md:w-3/4 mb-2">
                         <span class="site-title-tagline">{{ __('Транзакция') }}</span>
-                        <h3 class=" text-black text-2xl font-bold leading-tight">{{ __('Основные данные платежа') }}</h3>
-                    </div>
-                    <div class="md:w-1/4 text-right mb-2">
-                        <div class=" theme-btn text-sm bg-white/5 ">
-                            <a class="text-white hover:text-gray-100" href="{{ route('buyer.fighter', $transaction->recipient)  }}"
-                               class=""><i class="far fa-paper-plane mr-1"></i>
-                                {{ __('В профиль бойца') }}
-                            </a>
-                        </div>
+                        <h3 class=" text-gray-100 text-2xl font-bold leading-tight">{{ __('Основные данные платежа') }}</h3>
                     </div>
                 </div>
                 {{--Имя получателя--}}
                 <div class="border-b py-1 mb-2">
                     <x-input-label class="w-1/5 inline-block" for="name" :value="__('Кому: ')"/>
-                    <span class=" text-xl ">{{ $transaction->recipient->name }}</span>
+                    <span class="text-xl ">{{ $transaction->buyer->name }}</span>
                 </div>
                 <!-- Дата платежа -->
                 <div class="border-b  py-1 mb-2">
                     <x-input-label class="w-1/5 inline-block" :value="__('Дата платежа: ')"/>
-                    <span class=" text-xl ">{{$transaction->datetime->format('d.m.Y H:i')}}</span>
+                    <span class="text-xl ">{{$transaction->datetime->format('d.m.Y H:i')}}</span>
                 </div>
                 <div class="border-b lg:flex  py-1 mb-2">
                     <!-- amount -->
                     <div class=" w-full lg:w-1/2 mr-10">
                         <x-input-label class="w-2/5 inline-block" for="city" :value="__('Сумма: ')"/>
-                        <span class=" text-xl ">{{ $transaction->amount }} руб.</span>
+                        <span class="text-2xl font-bold">{{ $transaction->amount }} руб.</span>
                     </div>
                     <!-- status -->
                     <div class=" w-full lg:w-1/2">
                         <x-input-label class="w-2/5 inline-block" for="role" :value="__('Статус: ')"/>
-                        <span class=" text-xl ">{{$transaction->status}}</span>
+                        <span class="text-xl ">{{$transaction->status}}</span>
                     </div>
                 </div>
                 <div class="border-b  py-1 lg:flex mb-2">
                     <!-- topic -->
                     <div class="  w-full lg:w-1/2 mr-10">
                         <x-input-label class="w-2/5 inline-block" :value="__('Назначение: ')"/>
-                        <span class=" text-xl ">{{ $transaction->topic }}</span>
+                        <span class="text-xl ">{{ $transaction->topic }}</span>
                     </div>
 
                 </div>
                 <!-- description -->
                 <div class="border-b  py-1 mb-4">
                     <x-input-label class="w-1/5 inline-block" :value="__('Комментарий: ')"/>
-                    <p class="block mt-1 w-full  text-xl ">{{$transaction->comment}}</p>
+                    <p class="block mt-1 w-full text-xl ">{{$transaction->comment}}</p>
                 </div>
             </div>
         </div>

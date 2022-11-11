@@ -46,7 +46,7 @@
                             <td>{{$game->city}}</td>
                             <td class="min-w-[300px] max-w-[500px]">{{mb_strimwidth($game->description,0, 30, "...")}}</td>
                             <td>
-                                <a href="#" class="theme-btn">Подробнее</a>
+                                <a href="#" class="theme-btn mr-2">Подробнее</a>
                             </td>
                         </tr>
                     @empty

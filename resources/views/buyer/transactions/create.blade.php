@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid  bg-gray-300 px-lg-2 mx-auto sm:px-6 lg:px-8 row">
+    <section class="container-fluid  bg-black shadow-xl shadow-white/30 text-gray-400 px-lg-2 mx-auto sm:px-6 lg:px-8 row">
         <div class="col-lg-9">
             <form method="POST" action="{{ route('buyer.transactions.store') }}" enctype="multipart/form-data">
                 @csrf
@@ -31,7 +31,7 @@
                     </div>
                     {{--Имя получателя--}}
                     <div class="border-b py-1 mb-2">
-                        <label class="md:w-2/5 inline-block font-medium w-1/3 text-lg text-gray-900 mb-2" for="name">
+                        <label class="md:w-2/5 inline-block font-medium w-1/3 text-lg text-gray-100 mb-2" for="name">
                             @if($topic == 'Победа')
                                 {{__('Поздравить с победой  ')}}
                             @elseif($topic == 'День рождения')
@@ -39,10 +39,10 @@
                             @else
                                 {{__('Поддержить бойца  ')}}
                             @endif</label>
-                        <h4 class="text-gray-900 text-2xl inline-block">{{ $recipient->name }}</h4>
+                        <h4 class="text-gray-400 text-2xl inline-block">{{ $recipient->name }}</h4>
                     </div>
                     <div class="mt-2 w-full flex items-center ">
-                        <div class="font-medium w-1/3 text-lg text-gray-900 mb-2">
+                        <div class="font-medium w-1/3 text-lg text-gray-100 mb-2">
                             {{ __('Выбрать сумму ') }}
                         </div>
                         <div class=" w-2/3 flex  items-center">

@@ -5,7 +5,7 @@
             <x-auth-card>
                 <x-slot name="logo">
                     <a href="/">
-                        <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
+                        <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-200"/>
                     </a>
                 </x-slot>
                 @include('auth.login-form')
