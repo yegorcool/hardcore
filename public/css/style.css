@@ -578,6 +578,7 @@ theme button
 ====================== */
 
 .theme-btn {
+    margin: 0 8px;
     display: inline-block;
     vertical-align:top;
     font-size: 16px;

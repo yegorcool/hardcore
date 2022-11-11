@@ -4,7 +4,13 @@
 @endsection
 
 @section('titlebutton')
-    <div class="theme-btn">
+    <div class="theme-btn inline-block bg-white/30 mr-3 my-1">
+        <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.edit', $fighter) }}" class=""><i
+                class="far fa-paper-plane mr-1"></i>
+            {{ __(' Изменить') }}
+        </a>
+    </div>
+    <div class="theme-btn inline-block my-1">
         <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i
                 class="fa fa-arrow-left mr-2"></i>
             {{ __(' Вернуться к списку') }}
@@ -13,62 +19,61 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid bg-black shadow-xl shadow-white/30 text-gray-400  px-lg-5 mx-auto sm:px-6 lg:px-8">
-        <div class="p-4">
-            <div class="row border-b-2 mb-4">
-                <div class="col-8 col-lg-6">
+    <section class="container-fluid bg-black text-gray-400 ">
+        <div class="py-4">
+            <div class="md:flex  justify-between items-center border-b-2 mb-4">
+                <div class="w-2/3 lg:w-1/2">
                     <span class="site-title-tagline">Профиль</span>
                     <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Основные данные</h3>
                 </div>
-                <div class="col-4 col-lg-6 text-right ">
-                    <div class=" theme-btn text-sm bg-white/5 ">
+                    <div class=" theme-btn text-sm bg-white/10 ">
                         <a class="text-white hover:text-gray-100" href="{{ route('guest.fighter', $fighter)  }}"
                            class=""><i class="far fa-paper-plane mr-1"></i>
                             {{ __('Просмотр') }}
                         </a>
                     </div>
-                </div>
 
             </div>
             {{--ID--}}
             <div class="border-b py-1 mb-2">
                 <x-input-label class="w-1/5 inline-block" for="fighterId" :value="__('ID бойца: ')"/>
-                <span class="text-gray-900 text-xl ">{{ $fighter->id }}</span>
+                <span class="text-xl ">{{ $fighter->id }}</span>
             </div>
             {{--Имя--}}
             <div class="border-b py-1 mb-2">
                 <x-input-label class="w-1/5 inline-block" for="name" :value="__('Имя')"/>
-                <span class="text-gray-900 text-xl ">{{ $fighter->name }}</span>
+                <span class="text-xl ">{{ $fighter->name }}</span>
             </div>
             <!-- Email Address -->
             <div class="border-b  py-1 mb-2">
                 <x-input-label class="w-1/5 inline-block" for="email" :value="__('Электронная почта')"/>
-                <span class="text-gray-900 text-xl ">{{ $fighter->email }}</span>
+                <span class="text-xl ">{{ $fighter->email }}</span>
             </div>
             <div class="border-b lg:flex  py-1 mb-2">
                 <!-- City -->
                 <div class=" w-full lg:w-1/2 mr-10">
                     <x-input-label class="w-2/5 inline-block" for="city" :value="__('Город')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->city }}</span>
+                    <span class="text-xl ">{{ $fighter->city }}</span>
                 </div>
                 <!-- role -->
                 <div class=" w-full lg:w-1/2">
                     <x-input-label class="w-2/5 inline-block" for="role" :value="__('Роль')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->role }}</span>
+                    <span class="text-xl ">{{ $fighter->role }}</span>
                 </div>
             </div>
             <div class="border-b  py-1 lg:flex mb-2">
                 <!-- height -->
                 <div class="  w-full lg:w-1/2 mr-10">
                     <x-input-label class="w-2/5 inline-block" for="height" :value="__('Рост')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->height }} см</span>
+                    <span class="text-xl ">{{ $fighter->height }} см</span>
                 </div>
                 <!-- weight -->
                 <div class=" w-full lg:w-1/2">
                     <x-input-label class="w-2/5 inline-block" for="weight" :value="__('Вес')"/>
-                    <span class="text-gray-900 text-xl ">{{ $fighter->weight }} кг</span>
+                    <span class="text-xl ">{{ $fighter->weight }} кг</span>
                 </div>
             </div>
+            <!-- Photos -->
             <div class="border-b  py-2 lg:flex flex-wrap mb-2">
                 <div class="w-full lg:w-auto min-w-[150px] mr-4 mb-2">
                     <x-input-label class=" inline-block" for="avatar" :value="__('Аватар')"/>
@@ -104,7 +109,7 @@
             <!-- description -->
             <div class="border-b  py-1 mb-4">
                 <x-input-label class="w-1/5 inline-block" for="description" :value="__('Описание')"/>
-                <p class="block mt-1 w-full text-gray-900 text-xl ">{{$fighter->description}}</p>
+                <p class="block mt-1 w-full text-xl ">{{$fighter->description}}</p>
             </div>
             <div class="">
                 <div class="md:flex md:justify-between items-center border-b-2  mb-2">
@@ -116,9 +121,9 @@
                 <div class="my-4 border-b ">
                     <ul>
                         @foreach($fighter->socials as $network)
-                            <li class="block font-medium text-base text-gray-900 mb-2">
-                                <span><i class="mr-3 fab fa-{{$network->lang_key}}"></i></span>
-                                <span class="inline-block min-w-[150px]">{{ $network->title }}</span>
+                            <li class="block font-medium text-base mb-2">
+                                <span><i class="text-gray-100 mr-3 fab fa-{{$network->lang_key}}"></i></span>
+                                <span class="text-gray-100 inline-block min-w-[150px]">{{ $network->title }}</span>
                                 @if($network->pivot)
                                     <span class="min-w-[150px]">{{ $network->pivot->link }}</span>
                                 @endif
@@ -128,21 +133,14 @@
                 </div>
 
             </div>
-            <div class="flex ">
-                <a href="{{ route('producer.fighters.edit', $fighter) }}"
-                   class="w-1/2 md:w-1/4 inline-block theme-btn w-4/5 text-centre my-6 text-white bg-white/20">
-                    <i class="far fa-paper-plane mr-1"></i>
-                    Изменить
-                </a>
-            </div>
         </div>
-        <div class="p-2 md:p-4">
+        <div class="py-2 md:py-4">
             <div class="md:flex md:justify-between items-center border-b-2  mb-2">
                 <div class="mb-2 ">
                     <span class="site-title-tagline">Карьера</span>
                     <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Этапы карьеры</h3>
                 </div>
-                <div class="theme-btn mx-3 mb-2">
+                <div class="theme-btn mb-2 mr-2">
                     <a class="text-white hover:text-gray-100"
                        href="{{ route('producer.career_events.create', ['fighter' => $fighter]) }}" class=""><i
                             class="fa fa-plus mr-2"></i>

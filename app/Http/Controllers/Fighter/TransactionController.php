@@ -18,7 +18,7 @@ class TransactionController extends Controller
         $transactions = Transaction::query()
             ->where('fighter_id', '=', auth()->id())
             ->with('buyer')
-            ->get();
+            ->paginate(30);
 
         return response()->view('fighter.transactions.index', [
             'transactions' => $transactions,

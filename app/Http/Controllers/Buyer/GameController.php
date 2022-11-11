@@ -18,7 +18,8 @@ class GameController extends Controller
         $games = Game::query()
             ->with('members')
             ->orderByDesc('id')
-            ->get();
+            ->paginate(30);
+
         return response()->view('buyer.games.index', [
             'games' => $games,
         ]);

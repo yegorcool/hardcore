@@ -21,7 +21,7 @@ class TransactionController extends Controller
         $transactions = Transaction::query()
             ->where('buyer_id', '=', auth()->id())
             ->with('recipient')
-            ->get();
+            ->paginate(30);
 
         return response()->view('buyer.transactions.index', [
             'transactions' => $transactions,
