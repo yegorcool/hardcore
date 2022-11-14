@@ -8,12 +8,12 @@
     "src": "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app.2df01e0a.js",
+    "file": "assets/app.d225c007.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/assets/scss/app.scss": {
-    "file": "assets/app.1644db67.css",
+    "file": "assets/app.3d8b0165.css",
     "src": "resources/assets/scss/app.scss",
     "isEntry": true
   }
