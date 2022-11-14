@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="min-h-screen">
-        <x-auth-card>
+        <x-auth.card>
             <x-slot name="logo">
                 <a href="/">
                     <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
@@ -8,7 +8,7 @@
             </x-slot>
 
             <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')"/>
+            <x-auth.session-status class="mb-4" :status="session('status')"/>
             @include('auth.login-form')
 
             <div class="login-footer">
@@ -17,6 +17,6 @@
                        href="{{ route('register') }}">{{ __('Зарегистрироваться') }}</a>
                 </p>
             </div>
-        </x-auth-card>
+        </x-auth.card>
     </div>
 </x-guest-layout>

@@ -21,7 +21,7 @@
 @section('content')
     <section class="container-fluid bg-black text-gray-400 ">
         <div class="py-4">
-            <div class="md:flex  justify-between items-center border-b-2 mb-4">
+            <div class="md:flex  justify-between items-center border-b-2 pb-4 mb-2">
                 <div class="w-2/3 lg:w-1/2">
                     <span class="site-title-tagline">Профиль</span>
                     <h3 class=" text-gray-100 text-2xl font-bold leading-tight">Основные данные</h3>
@@ -36,65 +36,65 @@
             </div>
             {{--ID--}}
             <div class="border-b py-1 mb-2">
-                <x-input-label class="w-1/5 inline-block" for="fighterId" :value="__('ID бойца: ')"/>
+                <x-form.input-label class="w-1/5 inline-block" for="fighterId" :value="__('ID бойца: ')"/>
                 <span class="text-xl ">{{ $fighter->id }}</span>
             </div>
             {{--Имя--}}
             <div class="border-b py-1 mb-2">
-                <x-input-label class="w-1/5 inline-block" for="name" :value="__('Имя')"/>
+                <x-form.input-label class="w-1/5 inline-block" for="name" :value="__('Имя')"/>
                 <span class="text-xl ">{{ $fighter->name }}</span>
             </div>
             <!-- Email Address -->
             <div class="border-b  py-1 mb-2">
-                <x-input-label class="w-1/5 inline-block" for="email" :value="__('Электронная почта')"/>
+                <x-form.input-label class="w-1/5 inline-block" for="email" :value="__('Электронная почта')"/>
                 <span class="text-xl ">{{ $fighter->email }}</span>
             </div>
             <div class="border-b lg:flex  py-1 mb-2">
                 <!-- City -->
                 <div class=" w-full lg:w-1/2 mr-10">
-                    <x-input-label class="w-2/5 inline-block" for="city" :value="__('Город')"/>
+                    <x-form.input-label class="w-2/5 inline-block" for="city" :value="__('Город')"/>
                     <span class="text-xl ">{{ $fighter->city }}</span>
                 </div>
                 <!-- role -->
                 <div class=" w-full lg:w-1/2">
-                    <x-input-label class="w-2/5 inline-block" for="role" :value="__('Роль')"/>
+                    <x-form.input-label class="w-2/5 inline-block" for="role" :value="__('Роль')"/>
                     <span class="text-xl ">{{ $fighter->role }}</span>
                 </div>
             </div>
             <div class="border-b  py-1 lg:flex mb-2">
                 <!-- height -->
                 <div class="  w-full lg:w-1/2 mr-10">
-                    <x-input-label class="w-2/5 inline-block" for="height" :value="__('Рост')"/>
+                    <x-form.input-label class="w-2/5 inline-block" for="height" :value="__('Рост')"/>
                     <span class="text-xl ">{{ $fighter->height }} см</span>
                 </div>
                 <!-- weight -->
                 <div class=" w-full lg:w-1/2">
-                    <x-input-label class="w-2/5 inline-block" for="weight" :value="__('Вес')"/>
+                    <x-form.input-label class="w-2/5 inline-block" for="weight" :value="__('Вес')"/>
                     <span class="text-xl ">{{ $fighter->weight }} кг</span>
                 </div>
             </div>
             <!-- Photos -->
             <div class="border-b  py-2 lg:flex flex-wrap mb-2">
                 <div class="w-full lg:w-auto min-w-[150px] mr-4 mb-2">
-                    <x-input-label class=" inline-block" for="avatar" :value="__('Аватар')"/>
+                    <x-form.input-label class=" inline-block" for="avatar" :value="__('Аватар')"/>
                     @if($fighter->avatar)
                         <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->avatar) }}" alt="Аватар">
                     @endif
                 </div>
                 <div class="w-full lg:w-auto min-w-[150px] mr-4 mb-2">
-                    <x-input-label class="inline-block" for="portrait" :value="__('Портрет')"/>
+                    <x-form.input-label class="inline-block" for="portrait" :value="__('Портрет')"/>
                     @if($fighter->portrait)
                         <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->portrait) }}" alt="Портрет">
                     @endif
                 </div>
                 <div class="w-full lg:w-auto min-w-[150px]  mr-4 mb-2">
-                    <x-input-label class="inline-block" for="hero_image" :value="__('Фото фона')"/>
+                    <x-form.input-label class="inline-block" for="hero_image" :value="__('Фото фона')"/>
                     @if($fighter->hero_image)
                         <img class="w-auto h-[150px]  m-1" src="{{ asset($fighter->hero_image) }}" alt="Фото фона">
                     @endif
                 </div>
                 <div class="w-full lg:w-auto min-w-[150px]  mr-4 mb-2">
-                    <x-input-label class="inline-block" for="hero_image" :value="__('Галерея')"/>
+                    <x-form.input-label class="inline-block" for="hero_image" :value="__('Галерея')"/>
                     @if($fighter->gallery_images)
                         <div class="flex flex-wrap">
                             @forelse($fighter->gallery_images as $image)
@@ -108,7 +108,7 @@
             </div>
             <!-- description -->
             <div class="border-b  py-1 mb-4">
-                <x-input-label class="w-1/5 inline-block" for="description" :value="__('Описание')"/>
+                <x-form.input-label class="w-1/5 inline-block" for="description" :value="__('Описание')"/>
                 <p class="block mt-1 w-full text-xl ">{{$fighter->description}}</p>
             </div>
             <div class="">

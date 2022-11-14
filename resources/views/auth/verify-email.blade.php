@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="min-h-screen">
-        <x-auth-card>
+        <x-auth.card>
             <x-slot name="logo">
                 <a href="/">
                     <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
@@ -36,6 +36,6 @@
                     </button>
                 </form>
             </div>
-        </x-auth-card>
+        </x-auth.card>
     </div>
 </x-guest-layout>

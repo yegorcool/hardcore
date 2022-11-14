@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="min-h-screen">
-        <x-auth-card>
+        <x-auth.card>
             <x-slot name="logo">
                 <a href="/">
                     <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
@@ -16,20 +16,20 @@
 
                 <!-- Password -->
                 <div>
-                    <x-input-label for="password" :value="__('Пароль')"/>
+                    <x-form.input-label for="password" :value="__('Пароль')"/>
 
-                    <x-text-input id="password" class="block mt-1 w-full"
+                    <x-form.text-input id="password" class="block mt-1 w-full"
                                   type="password"
                                   name="password"
                                   required autocomplete="current-password"/>
 
-                    <x-input-error :messages="$errors->get('password')" class="mt-2"/>
+                    <x-form.input-error :messages="$errors->get('password')" class="mt-2"/>
                 </div>
 
                 <x-theme-button class="bg-themeRed">
                     {{ __('Подтвердить') }}
                 </x-theme-button>
             </form>
-        </x-auth-card>
+        </x-auth.card>
     </div>
 </x-guest-layout>

@@ -13,45 +13,43 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid bg-black shadow-2xl shadow-white/30 text-gray-400 px-lg-5 mx-auto sm:px-6 lg:px-8">
-        <div class="w-full">
-            <div class="row"></div>
-            <div class="my-4">
+    <section class="container-fluid bg-black text-gray-400 mx-auto ">
+        <div class="py-4">
                 <form method="POST" action="{{ route('fighter.profile.update', $fighter) }}"
                       enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$fighter->id}}">
                     @method('PUT')
                     <div class="w-1/3">
-                        <x-input-label class="inline-block" for="fighterId" :value="__('ID бойца: ')"/>
+                        <x-form.input-label class="inline-block" for="fighterId" :value="__('ID бойца: ')"/>
                         <span class="font-semibold">{{ $fighter->id }}</span>
-                        <x-input-error :messages="$errors->get('id')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('id')" class="mt-2"/>
                     </div>
                     <div class="lg:w-2/3">
-                        <x-input-label for="name" :value="__('Имя')"/>
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                        <x-form.input-label for="name" :value="__('Имя')"/>
+                        <x-form.text-input id="name" class="block mt-1 w-full" type="text" name="name"
                                       :value="$fighter->name" required
                                       autofocus/>
-                        <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <!-- Email Address -->
                     <div class="lg:w-2/3 mt-2">
-                        <x-input-label for="email" :value="__('Электронная почта')"/>
-                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                        <x-form.input-label for="email" :value="__('Электронная почта')"/>
+                        <x-form.text-input id="email" class="block mt-1 w-full" type="email" name="email"
                                       :value="$fighter->email"
                                       required/>
-                        <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('email')" class="mt-2"/>
                     </div>
                     <!-- City -->
                     <div class="lg:w-2/3 mt-2">
-                        <x-input-label for="city" :value="__('Город')"/>
-                        <x-text-input id="city" class="block mt-1 w-full" type="text" name="city"
+                        <x-form.input-label for="city" :value="__('Город')"/>
+                        <x-form.text-input id="city" class="block mt-1 w-full" type="text" name="city"
                                       :value="$fighter->city"/>
-                        <x-input-error :messages="$errors->get('city')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('city')" class="mt-2"/>
                     </div>
                     <!-- role -->
                     <div class="lg:w-2/3 mt-2">
-                        <x-input-label for="role" :value="__('Роль')"/>
+                        <x-form.input-label for="role" :value="__('Роль')"/>
                         <select name="role" id="role" class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-600 ">
                             <option class="hover:bg-gray-700" value="">Выбрать</option>
                             @foreach(\App\Role\UserRole::getRoleList() as $key=>$role)
@@ -59,34 +57,34 @@
                                         @if($key == $fighter->role) selected @endif>{{$role}}</option>
                             @endforeach
                         </select>
-                        <x-input-error :messages="$errors->get('role')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
                     </div>
                     <div class=" lg:flex">
                         <!-- height -->
                         <div class="mt-2 w-1/2 mr-10">
-                            <x-input-label for="height" :value="__('Рост')"/>
-                            <x-text-input id="height" class="block mt-1"
+                            <x-form.input-label for="height" :value="__('Рост')"/>
+                            <x-form.text-input id="height" class="block mt-1"
                                           type="number" step="1" min="50" max="280" name="height"
                                           :value="$fighter->height"/>
-                            <x-input-error :messages="$errors->get('height')" class="mt-2"/>
+                            <x-form.input-error :messages="$errors->get('height')" class="mt-2"/>
                         </div>
                         <!-- weight -->
                         <div class="mt-2 w-1/2">
-                            <x-input-label for="weight" :value="__('Вес')"/>
-                            <x-text-input id="weight" class="block mt-1"
+                            <x-form.input-label for="weight" :value="__('Вес')"/>
+                            <x-form.text-input id="weight" class="block mt-1"
                                           type="number" step="0.010" name="weight" min="5" max="250"
                                           :value="$fighter->weight"/>
-                            <x-input-error :messages="$errors->get('weight')" class="mt-2"/>
+                            <x-form.input-error :messages="$errors->get('weight')" class="mt-2"/>
                         </div>
                     </div>
                     <!-- description -->
                     <div class="lg:w-2/3 mt-2">
-                        <x-input-label for="description" :value="__('Описание')"/>
+                        <x-form.input-label for="description" :value="__('Описание')"/>
                         <textarea id="description"
                                   class="block mt-1 w-full shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-600"
                                   rows="5" cols="30"
                                   name="description">{{$fighter->description}}</textarea>
-                        <x-input-error :messages="$errors->get('description')" class="mt-2"/>
+                        <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
                     </div>
                     {{--Social Networks--}}
                     <div class="py-2">
@@ -129,14 +127,14 @@
                                 </span>
                             </div>
                             <div>
-                                <x-input-label for="avatar_edit">
+                                <x-form.input-label for="avatar_edit">
                                     <span class="block pb-2">{{__('Заменить аватар: ')}}<span
                                             class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
                                     <div class="preview-btn ml-2 mt-3">{{__('Выберите файл')}}</div>
-                                </x-input-label>
-                                <x-text-input id="avatar_edit" class="hidden" type="file" name="avatar"
+                                </x-form.input-label>
+                                <x-form.text-input id="avatar_edit" class="hidden" type="file" name="avatar"
                                               :value="old('avatar')"/>
-                                <x-input-error :messages="$errors->get('avatar')" class="mt-2"/>
+                                <x-form.input-error :messages="$errors->get('avatar')" class="mt-2"/>
                             </div>
                         </div>
                         <div class="border-b py-3 md:flex ">
@@ -151,14 +149,14 @@
                                 </span>
                             </div>
                             <div>
-                                <x-input-label for="portrait_edit" class="block">
+                                <x-form.input-label for="portrait_edit" class="block">
                                     <span class="block mb-2">{{__('Заменить портрет: ')}}<span
                                             class="text-base  font-normal text-gray-400">вертикальное фото в пропорции 2 : 3</span></span>
                                     <div class="preview-btn ml-2 mt-3">{{__('Выберите файл')}}</div>
-                                </x-input-label>
-                                <x-text-input id="portrait_edit" class="hidden" type="file" name="portrait"
+                                </x-form.input-label>
+                                <x-form.text-input id="portrait_edit" class="hidden" type="file" name="portrait"
                                               :value="old('portrait')"/>
-                                <x-input-error :messages="$errors->get('portrait')" class="mt-2"/>
+                                <x-form.input-error :messages="$errors->get('portrait')" class="mt-2"/>
                             </div>
                         </div>
                         <div class="border-b  py-3 md:flex ">
@@ -173,13 +171,13 @@
                                 </span>
                             </div>
                             <div>
-                                <x-input-label for="hero_image_edit"><span
+                                <x-form.input-label for="hero_image_edit"><span
                                         class=" block mb-2">{{__('Заменить фото фона: ')}}</span>
                                     <div class="preview-btn ml-2 mt-3">{{__('Выберите файл')}}</div>
-                                </x-input-label>
-                                <x-text-input id="hero_image_edit" class="hidden" type="file" name="hero_image"
+                                </x-form.input-label>
+                                <x-form.text-input id="hero_image_edit" class="hidden" type="file" name="hero_image"
                                               :value="old('hero_image')"/>
-                                <x-input-error :messages="$errors->get('hero_hero')" class="mt-2"/>
+                                <x-form.input-error :messages="$errors->get('hero_hero')" class="mt-2"/>
                                 <div class="row review-span"><span id="output-hero" class="preview h-150"></span></div>
                             </div>
                         </div>
@@ -203,13 +201,13 @@
                                 </div>
                             </div>
                             <div>
-                                <x-input-label for="gallery_images_edit"><span
+                                <x-form.input-label for="gallery_images_edit"><span
                                         class=" block mb-2">{{__('Заменить фото галереи: ')}}</span>
                                     <div class="preview-btn ml-2">{{__('Выберите файлы')}}</div>
-                                </x-input-label>
-                                <x-text-input id="gallery_images_edit" class="hidden" type="file" multiple
+                                </x-form.input-label>
+                                <x-form.text-input id="gallery_images_edit" class="hidden" type="file" multiple
                                               name="gallery_images[]" :value="old('gallery_images')"/>
-                                <x-input-error :messages="$errors->get('gallery_images')" class="mt-2"/>
+                                <x-form.input-error :messages="$errors->get('gallery_images')" class="mt-2"/>
                             </div>
                         </div>
                     </div>
@@ -223,7 +221,6 @@
                 </form>
 
             </div>
-        </div>
     </section>
 @endsection
 @section('js')
