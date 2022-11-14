@@ -20,9 +20,9 @@
     <!-- Page Content -->
     <main class=" pt-[85px] lg:pt-0 bg-black min-h-[calc(100vh-85px)] flex flex-col justify-between">
         <div class="container-fluid px-lg-5">
-            <div class="container-fluid text-gray-100 font-semibold text-xl leading-tight mb-3 py-3 bg-black border-top border-bottom">
-                <div class="row">
-                    <div class="col">
+            <div class="container-fluid   text-gray-100 font-semibold text-xl leading-tight mb-3 py-3 bg-black border-top border-bottom">
+                <div class="flex flex-wrap items-center justify-between">
+                    <div class="mb-2 md:mb-0">
                         <h1 class="mb-2 text-gray-100 text-3xl ">@yield('title')</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-black p-0 mb-0">
@@ -32,7 +32,7 @@
                         </nav>
                     </div>
                     @hasSection('titlebutton')
-                        <div class="col-auto align-self-center">
+                        <div class="flex justify-center items-center">
                             @yield('titlebutton')
                         </div>
                     @endIf

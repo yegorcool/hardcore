@@ -17,7 +17,9 @@ class FighterController extends Controller
      */
     public function index()
     {
-        $fighters = User::where('role', '=', 'fighter')->orderBy('id', 'DESC')->simplePaginate(50);
+        $fighters = User::where('role', '=', 'fighter')
+            ->orderBy('id', 'DESC')
+            ->paginate(50);
 
         return response()->view('buyer.fighters.index', [
             'fighters' => $fighters,

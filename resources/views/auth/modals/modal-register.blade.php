@@ -2,7 +2,7 @@
 <div class="modal fade bg-black/80" id="registerModal" tabindex="-1" aria-labelledby="registerLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body modal-content bg-transparent border-none">
-            <x-auth-card>
+            <x-auth.card>
                 <x-slot name="logo">
                     <a href="/">
                         <x-hardcore-fc-logo class="w-56 h-16 fill-current text-gray-400"/>
@@ -19,7 +19,7 @@
                         </a>
                     </p>
                 </div>
-            </x-auth-card>
+            </x-auth.card>
         </div>
     </div>
 </div>

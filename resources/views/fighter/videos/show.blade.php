@@ -13,9 +13,9 @@
 @endsection
 
 @section('content')
-    <section class="container-fluid bg-black shadow-xl shadow-white/30 text-gray-400 px-lg-2 mx-auto sm:px-6 lg:px-8 row">
+    <section class="container-fluid bg-black text-gray-400 mx-auto">
         <div class="w-full">
-            <div class="p-4">
+            <div class="py-4">
                 <div class="md:flex border-b-2 mb-4">
                     <div class=" md:w-3/4 mb-2">
                         <span class="site-title-tagline">{{ __('Медиа') }}</span>
@@ -24,19 +24,19 @@
                 </div>
                 {{--Имя получателя--}}
                 <div class="border-b py-1 mb-2">
-                    <x-input-label class="w-1/5 inline-block" for="name" :value="__('От кого : ')"/>
+                    <x-form.input-label class="w-1/5 inline-block" for="name" :value="__('От кого : ')"/>
                     <span class=" text-xl ">{{ $video->videoMaker->name }}</span>
                 </div>
                 <!-- Дата платежа -->
                 <div class="border-b  py-1 mb-2">
-                    <x-input-label class="w-1/5 inline-block" :value="__('Дата загрузки: ')"/>
+                    <x-form.input-label class="w-1/5 inline-block" :value="__('Дата загрузки: ')"/>
                     <span class=" text-xl ">{{$video->created_at->format('d.m.Y H:i')}}</span>
                 </div>
 
                 <div class="border-b  py-1 lg:flex mb-2">
                     <!-- topic -->
                     <div class="  w-full lg:w-1/2 mr-10">
-                        <x-input-label class="w-2/5 inline-block" :value="__('Название: ')"/>
+                        <x-form.input-label class="w-2/5 inline-block" :value="__('Название: ')"/>
                         <span class=" text-xl ">{{ $video->title }}</span>
                     </div>
 
@@ -53,7 +53,7 @@
                 </div>
                 <!-- description -->
                 <div class="border-b  py-1 mb-4">
-                    <x-input-label class="w-1/5 inline-block" :value="__('Комментарий: ')"/>
+                    <x-form.input-label class="w-1/5 inline-block" :value="__('Комментарий: ')"/>
                     <p class="block mt-1 w-full  text-xl ">{{$video->comment}}</p>
                 </div>
             </div>
