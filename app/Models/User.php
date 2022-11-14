@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -117,5 +118,33 @@ class User extends Authenticatable
     public function receivedTransactions(): HasMany
     {
         return $this->hasMany(Transaction::class, 'fighter_id', 'id');
+    }
+
+    /**
+     * Get the Producers who work fighter with.
+     */
+    public function producersOfFighter(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'producer_fighter', 'fighter_id', 'producer_id')
+            ->withPivot([
+                'id',
+                'producer_id',
+                'fighter_id',
+                'comment',
+            ])->withTimestamps();
+    }
+
+    /**
+     * Get the Fighters who work producer with.
+     */
+    public function fightersOfProducer(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'producer_fighter', 'producer_id', 'fighter_id')
+            ->withPivot([
+                'id',
+                'producer_id',
+                'fighter_id',
+                'comment',
+            ])->withTimestamps();
     }
 }
