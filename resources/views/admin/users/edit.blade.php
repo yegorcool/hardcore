@@ -48,8 +48,8 @@
             </div>
             <!-- role -->
             <div class="lg:w-2/3 mt-2">
-                <x-form.input-label for="role" :value="__('Роль')"/>
-                <select name="role" id="role"
+                <x-form.input-label for="roleSelector" :value="__('Роль')"/>
+                <select name="role" id="roleSelector"
                         class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
                     <option value="">Выбрать</option>
                     @foreach(\App\Role\UserRole::getRoleList() as $key=>$role)
@@ -59,7 +59,26 @@
                 </select>
                 <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
             </div>
-               <!-- description -->
+            <!-- producer for fighter -->
+            <div class="lg:w-2/3 mt-2 hidden" id="chooseProducer">
+                @if(!empty($producersOfFighter) && count($producersOfFighter) === 1)
+                <x-form.input-label for="selectProducer" :value="__('Продюсер')"/>
+                <select name="producer_id" id="selectProducer"
+                        class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
+                    <option value="">Выбрать</option>
+                    @foreach($producers as $key => $producer)
+                        <option value="{{ $key }}"
+                                @if($key == array_key_first($producersOfFighter)) selected @endif>{{$producer->name}}</option>
+                    @endforeach
+                </select>
+                <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
+                @else
+                    <span>У бойца несколько продюсеров ({{ count($producersOfFighter) }})</span>
+{{--@todo сделать мультиселект --}}
+                @endif
+            </div>
+
+            <!-- description -->
             <div class="lg:w-2/3 mt-2">
                 <x-form.input-label for="description" :value="__('Описание')"/>
                 <textarea id="description"
@@ -104,5 +123,36 @@
             </div>
         </form>
     </x-form.section>
+@endsection
+
+@section('js')
+    <script>
+        const selectRole = document.getElementById('roleSelector');
+        const selectProducer = document.getElementById('chooseProducer');
+        let role = '{{ $user->role }}';
+
+        function showField() {
+            if (role === 'fighter') {
+                selectProducer.classList.remove('hidden')
+            }
+        }
+        showField();
+
+        function showFieldForSelected() {
+            Object.values(selectRole.options).forEach((option) => {
+                if (option.selected) {
+                    role = option.value;
+                    if (role === 'fighter') {
+                        selectProducer.classList.remove('hidden')
+                    } else {
+                        selectProducer.classList.add('hidden')
+                    }
+                }
+            })
+        }
+        showField();
+
+        selectRole.addEventListener('change', showFieldForSelected, false);
+    </script>
 @endsection
 

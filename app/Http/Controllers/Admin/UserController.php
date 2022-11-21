@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateFighterRequest;
 use App\Models\CareerEvent;
 use App\Models\Social;
 use App\Models\User;
@@ -81,6 +82,17 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $users = User::query()
+            ->with([
+                'fightersOfProducer',
+                'producersOfFighter',
+            ])
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        $fighters = $users->where('role', '=', 'fighter');
+        $producers = $users->where('role', '=', 'producer');
+
         $socialNetworks = Social::query()
             ->whereNull('deleted_at')
             ->get();
@@ -100,11 +112,16 @@ class UserController extends Controller
             ])
             ->orderBy('id', 'DESC')
         ->first();
+        $producersOfFighter = $user->producersOfFighter->pluck('name', 'id')->toArray();
 
         return response()->view('admin.users.edit', [
             'user' => $user,
             'socialNetworks' => $socialNetworks,
             'socialLinks' => $socialLinks,
+            'producers' => $producers,
+            'fighters' => $fighters,
+            'producersOfFighter' => $producersOfFighter,
+            'role' => $user->role,
         ]);
     }
 
@@ -115,7 +132,7 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateFighterRequest $request, User $user)
     {
         return 'Будем редактировать';
     }

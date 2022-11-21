@@ -18,6 +18,7 @@
               enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$fighter->id}}">
+            <input type="hidden" name="producer_id" value="{{auth()->id()}}">
             @method('PUT')
             <div class="w-1/3">
                 <x-form.input-label class="inline-block" for="fighterId" :value="__('ID бойца: ')"/>

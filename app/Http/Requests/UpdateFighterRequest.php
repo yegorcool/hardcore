@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Role\UserRole;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -26,8 +27,13 @@ class UpdateFighterRequest extends FormRequest
     public function rules()
     {
         $roles = array_keys(UserRole::getRoleList());
+        $producers = User::query()
+            ->whereNull('deleted_at')
+            ->where('role', '=', 'producer')
+            ->pluck('id')->toArray();
 
         return [
+            'producer_id' => ['required_if:role,fighter', 'numeric', Rule::in($producers)],
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', Rule::in($roles)],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],

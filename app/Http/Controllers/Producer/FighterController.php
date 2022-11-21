@@ -119,6 +119,10 @@ class FighterController extends Controller
             }
         }
 
+        $user->producersOfFighter()->attach([
+            $request->producer_id,
+        ]);
+        $user->save();
         event(new Registered($user));
 
         return redirect()->intended(route('producer.fighters.index'));
