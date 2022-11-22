@@ -1,11 +1,11 @@
 {
-  "resources/assets/images/el-white.svg": {
-    "file": "assets/el-white.fb0bffa0.svg",
-    "src": "resources/assets/images/el-white.svg"
-  },
   "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf": {
     "file": "assets/font.590917bd.ttf",
     "src": "resources/assets/fonts/TTSquaresCondensed-BoldItalic/font.ttf"
+  },
+  "resources/assets/images/el-white.svg": {
+    "file": "assets/el-white.fb0bffa0.svg",
+    "src": "resources/assets/images/el-white.svg"
   },
   "resources/js/app.js": {
     "file": "assets/app.d225c007.js",
@@ -13,7 +13,7 @@
     "isEntry": true
   },
   "resources/assets/scss/app.scss": {
-    "file": "assets/app.3d8b0165.css",
+    "file": "assets/app.7a2fe23b.css",
     "src": "resources/assets/scss/app.scss",
     "isEntry": true
   }

@@ -21,6 +21,7 @@ class ProfileController extends Controller
     {
         $fighter = User::query()
             ->where('id', '=', $id)
+            ->with('producersOfFighter')
             ->first();
 
         $careerEvents = CareerEvent::query()

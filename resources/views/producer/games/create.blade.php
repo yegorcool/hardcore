@@ -3,14 +3,15 @@
     {{ __('Добавление боя') }}
 @endsection
 
-@section('titlebutton')
-    <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.games.index')  }}" class=""><i
-                class="fa fa-plus mr-2"></i>
-            {{ __(' Вернуться к списку') }}
-        </a>
-    </div>
-@endsection
+{{--Добавление боя отдали суппорту--}}
+{{--@section('titlebutton')--}}
+{{--    <div class="theme-btn  ">--}}
+{{--        <a class="text-white hover:text-gray-100" href="{{ route('producer.games.index')  }}" class=""><i--}}
+{{--                class="fa fa-plus mr-2"></i>--}}
+{{--            {{ __(' Вернуться к списку') }}--}}
+{{--        </a>--}}
+{{--    </div>--}}
+{{--@endsection--}}
 
 @section('content')
     <x-form.section>
@@ -65,9 +66,7 @@
                 <x-form.input-label for="description" :value="__('Описание')"/>
                 <textarea id="description"
                           class="block mt-1 w-full mt-1  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500"
-                          rows="3" cols="30" name="description"
-                          :value="old('description')"
-                >{{old('description')}}</textarea>
+                          rows="3" cols="30" name="description" >{{old('description')}}</textarea>
                 <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
             </div>
             {{--File upload--}}

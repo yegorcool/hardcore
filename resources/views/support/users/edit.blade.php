@@ -1,11 +1,11 @@
 @extends('layouts.page')
 @section('title')
-    {{ __('Редактирование данных бойца') }}
+    {{ __('Редактирование данных пользователя') }}
 @endsection
 
 @section('titlebutton')
     <div class="theme-btn  ">
-        <a class="text-white hover:text-gray-100" href="{{ route('producer.fighters.index')  }}" class=""><i
+        <a class="text-white hover:text-gray-100" href="{{ route('support.users.index')  }}" class=""><i
                 class="fa fa-plus mr-2"></i>
             {{ __(' Вернуться к списку') }}
         </a>
@@ -14,22 +14,20 @@
 
 @section('content')
     <x-form.section>
-        <form method="POST" action="{{ route('producer.fighters.update', $fighter) }}"
+        <form method="POST" action="{{ route('support.users.update', $user) }}"
               enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id" value="{{$fighter->id}}">
-            <input type="hidden" name="role" value="{{$fighter->role}}">
-            <input type="hidden" name="producer_id" value="{{auth()->id()}}">
+            <input type="hidden" name="id" value="{{$user->id}}">
             @method('PUT')
             <div class="w-1/3">
                 <x-form.input-label class="inline-block" for="fighterId" :value="__('ID бойца: ')"/>
-                <span class="font-semibold text-xl">{{ $fighter->id }}</span>
+                <span class="font-semibold text-xl">{{ $user->id }}</span>
                 <x-form.input-error :messages="$errors->get('id')" class="mt-2"/>
             </div>
             <div class="lg:w-2/3">
                 <x-form.input-label for="name" :value="__('Имя')"/>
                 <x-form.text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                   :value="$fighter->name" required
+                                   :value="$user->name" required
                                    autofocus/>
                 <x-form.input-error :messages="$errors->get('name')" class="mt-2"/>
             </div>
@@ -37,7 +35,7 @@
             <div class="lg:w-2/3 mt-2">
                 <x-form.input-label for="email" :value="__('Электронная почта')"/>
                 <x-form.text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                   :value="$fighter->email"
+                                   :value="$user->email"
                                    required/>
                 <x-form.input-error :messages="$errors->get('email')" class="mt-2"/>
             </div>
@@ -45,8 +43,39 @@
             <div class="lg:w-2/3 mt-2">
                 <x-form.input-label for="city" :value="__('Город')"/>
                 <x-form.text-input id="city" class="block mt-1 w-full" type="text" name="city"
-                                   :value="$fighter->city"/>
+                                   :value="$user->city"/>
                 <x-form.input-error :messages="$errors->get('city')" class="mt-2"/>
+            </div>
+            <!-- role -->
+            <div class="lg:w-2/3 mt-2">
+                <x-form.input-label for="edit-user-role" :value="__('Роль')"/>
+                <select name="role" id="edit-user-role"
+                        class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
+                    <option value="">Выбрать</option>
+                    @foreach(\App\Role\UserRole::getRoleList() as $key=>$role)
+                        <option value="{{ $key }}"
+                                @if($key == $user->role) selected @endif>{{$role}}</option>
+                    @endforeach
+                </select>
+                <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
+            </div>
+            <!-- producer for fighter -->
+            <div class="lg:w-2/3 mt-2 hidden" id="chooseProducer">
+                @if(count($producersOfFighter) <= 1)
+                <x-form.input-label for="selectProducer" :value="__('Продюсер')"/>
+                <select name="producer_id" id="selectProducer"
+                        class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
+                    <option value="">Выбрать</option>
+                    @foreach($producers as $key => $producer)
+                        <option value="{{ $key }}"
+                                @if(!empty($producersOfFighter) && $key == array_key_first($producersOfFighter)) selected @endif>{{$producer}}</option>
+                    @endforeach
+                </select>
+                <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
+                @else
+                    <span>У бойца несколько продюсеров ({{ count($producersOfFighter) }})</span>
+                    {{--@todo сделать мультиселект --}}
+                @endif
             </div>
             <div class=" lg:flex">
                 <!-- height -->
@@ -54,7 +83,7 @@
                     <x-form.input-label for="height" :value="__('Рост')"/>
                     <x-form.text-input id="height" class="block mt-1"
                                        type="number" step="1" min="50" max="280" name="height"
-                                       :value="$fighter->height"/>
+                                       :value="$user->height"/>
                     <x-form.input-error :messages="$errors->get('height')" class="mt-2"/>
                 </div>
                 <!-- weight -->
@@ -62,7 +91,7 @@
                     <x-form.input-label for="weight" :value="__('Вес')"/>
                     <x-form.text-input id="weight" class="block mt-1"
                                        type="number" step="0.010" name="weight" min="5" max="250"
-                                       :value="$fighter->weight"/>
+                                       :value="$user->weight"/>
                     <x-form.input-error :messages="$errors->get('weight')" class="mt-2"/>
                 </div>
             </div>
@@ -72,7 +101,7 @@
                 <textarea id="description"
                           class="block mt-1 w-full shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500"
                           rows="5" cols="30"
-                          :value="old('description')" name="description">{{$fighter->description}}</textarea>
+                          :value="old('description')" name="description">{{$user->description}}</textarea>
                 <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
             </div>
             {{--Social Networks--}}
@@ -95,7 +124,7 @@
                                        class="inline-block mt-1 w-1/2 shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500"
                                        type="text"
                                        name="social_user[{{ $network->lang_key }}]"
-                                       value="@if(!array_key_exists($network->lang_key, $socialLinks))@else {{ $socialLinks[$network->lang_key] }}@endif "/>
+                                       value="@if(!array_key_exists($network->lang_key, $socialLinks))@else {{ $socialLinks[$network->lang_key] }}@endif   "/>
                             </li>
                         @endforeach
                     </ul>
@@ -109,14 +138,14 @@
                             {{ __('Аватар') }}
                         </div>
                         <span id="output_edit_avatar">
-                                    <img class="w-auto h-[150px]  m-1"
-                                         src="@if($fighter->avatar){{ asset($fighter->avatar) }} @else /images/avatar1.jpg @endif "
+                            <img class="w-auto h-[150px]  m-1"
+                                         src="@if($user->avatar){{ asset($user->avatar) }} @else /images/avatar1.jpg @endif "
                                          alt="Аватар">
-                                </span>
+                        </span>
                     </div>
-                    <div>
+                <div>
                         <x-form.input-label for="avatar_edit">
-                                    <span class="block mb-2">{{__('Заменить аватар: ')}}<span
+                            <span class="block mb-2">{{__('Заменить аватар: ')}}<span
                                             class="text-base  font-normal text-gray-400">квадратное фото max 250px * 250px</span></span>
                             <div class="preview-btn ml-2">{{__('Выберите файл')}}</div>
                         </x-form.input-label>
@@ -131,10 +160,10 @@
                             {{ __('Портрет') }}
                         </div>
                         <span id="output_edit_portrait">
-                                    <img class="w-auto h-[150px]  m-1"
-                                         src="@if($fighter->portrait) {{ asset($fighter->portrait) }} @else /images/portrait1.jpg @endif "
+                            <img class="w-auto h-[150px]  m-1"
+                                         src="@if($user->portrait) {{ asset($user->portrait) }} @else /images/portrait1.jpg @endif "
                                          alt="Портрет">
-                                </span>
+                        </span>
                     </div>
                     <div>
                         <x-form.input-label for="portrait_edit">
@@ -154,7 +183,7 @@
                         </div>
                         <span id="output_edit_hero">
                                     <img class="w-auto h-[150px]  m-1"
-                                         src="@if($fighter->hero_image) {{ asset($fighter->hero_image) }} @else /images/slider-3.jpg @endif "
+                                         src="@if($user->hero_image) {{ asset($user->hero_image) }} @else /images/slider-3.jpg @endif "
                                          alt="Фото фона">
                                 </span>
                     </div>
@@ -176,9 +205,9 @@
                             {{ __('Галерея') }}
                         </div>
                         <div id="output_edit_gallery" class="flex flex-wrap">
-                            @if($fighter->gallery_images)
+                            @if($user->gallery_images)
                                 <div class="flex flex-wrap">
-                                    @forelse($fighter->gallery_images as $image)
+                                    @forelse($user->gallery_images as $image)
                                         <img class="w-auto h-[150px] m-1" src="{{ asset($image) }}"
                                              alt="Фото фона">
                                     @empty
@@ -210,7 +239,30 @@
 @endsection
 @section('js')
     <script>
-       function handleAvatarSelectSingle(evt) {
+        const editUserRole = document.getElementById('edit-user-role');
+        const selectProducer = document.getElementById('chooseProducer');
+        let role = '{{ $user->role }}';
+        function showField() {
+            if (role === 'fighter') {
+                selectProducer.classList.remove('hidden')
+            }
+        }
+        showField();
+        function showFieldForSelected() {
+            Object.values(editUserRole.options).forEach((option) => {
+                if (option.selected) {
+                    role = option.value;
+                    if (role === 'fighter') {
+                        selectProducer.classList.remove('hidden')
+                    } else {
+                        selectProducer.classList.add('hidden')
+                    }
+                }
+            })
+        }
+        editUserRole.addEventListener('change', showFieldForSelected, false);
+
+        function handleAvatarSelectSingle(evt) {
             let file = evt.target.files;
             let f = file[0]
             if (!f.type.match('image.*')) {

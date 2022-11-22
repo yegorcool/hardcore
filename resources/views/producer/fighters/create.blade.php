@@ -16,6 +16,7 @@
     <x-form.section>
         <form method="POST" action="{{ route('producer.fighters.store') }}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="producer_id" value="{{auth()->id()}}">
             <!-- Name -->
             <div class="lg:w-2/3">
                 <x-form.input-label for="name" :value="__('Имя')"/>
@@ -81,8 +82,7 @@
             <div  class="lg:w-2/3 mt-2">
                 <x-form.input-label for="description" :value="__('Описание')"/>
                 <textarea id="description" class="block mt-1 w-full shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" rows="3" cols="30" name="description"
-                          :value="old('description')" required
-                ></textarea>
+                          required>{{ old('description') }}</textarea>
                 <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
             </div>
             {{--File Upload--}}
@@ -133,7 +133,7 @@
                             <li class="block font-medium text-base text-gray-400 mb-2">
                                 <span><i class="text-gray-100 inline-block min-w-[20px] mr-3 fab fa-{{$network->lang_key}}"></i></span>
                                 <span class="text-gray-100 inline-block min-w-[150px]">{{ $network->title }}</span>
-                                <input id="city" class="bg inline-block mt-1 w-1/2 placeholder:text-gray-300  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" type="text" name="social_user[{{ $network->lang_key }}]" value="{{ old('user_social['. $network->lang_key .']') }}" placeholder="https:// ..."/>
+                                <input id="city" class="bg inline-block mt-1 w-1/2 placeholder:text-gray-300  shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500" type="url" name="social_user[{{ $network->lang_key }}]" value="{{ old('user_social['. $network->lang_key .']') }}" placeholder="https:// ..."/>
                             </li>
                         @endforeach
                     </ul>
