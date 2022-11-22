@@ -257,6 +257,12 @@ class UserController extends Controller
             $user->socials()->sync($new_links);
         }
 
+        if ($request->producer_id) {
+            $user->producersOfFighter()->sync([
+                $request->producer_id,
+            ]);
+        }
+
         $user->save();
 
         return redirect()->intended(route('support.users.show', $user));

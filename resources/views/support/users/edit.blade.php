@@ -18,7 +18,6 @@
               enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{$user->id}}">
-            <input type="hidden" name="producer_id" value="{{auth()->id()}}">
             @method('PUT')
             <div class="w-1/3">
                 <x-form.input-label class="inline-block" for="fighterId" :value="__('ID бойца: ')"/>
@@ -62,14 +61,14 @@
             </div>
             <!-- producer for fighter -->
             <div class="lg:w-2/3 mt-2 hidden" id="chooseProducer">
-                @if(!empty($producersOfFighter) && count($producersOfFighter) === 1)
+                @if(count($producersOfFighter) <= 1)
                 <x-form.input-label for="selectProducer" :value="__('Продюсер')"/>
                 <select name="producer_id" id="selectProducer"
                         class="shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500">
                     <option value="">Выбрать</option>
                     @foreach($producers as $key => $producer)
                         <option value="{{ $key }}"
-                                @if($key == array_key_first($producersOfFighter)) selected @endif>{{$producer}}</option>
+                                @if(!empty($producersOfFighter) && $key == array_key_first($producersOfFighter)) selected @endif>{{$producer}}</option>
                     @endforeach
                 </select>
                 <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
