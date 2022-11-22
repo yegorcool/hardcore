@@ -82,16 +82,17 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $users = User::query()
-            ->with([
-                'fightersOfProducer',
-                'producersOfFighter',
-            ])
+        $fighters = User::query()
+            ->where('role', '=', 'fighter')
             ->orderBy('id', 'DESC')
-            ->get();
+            ->pluck('name', 'id')
+            ->toArray();
 
-        $fighters = $users->where('role', '=', 'fighter');
-        $producers = $users->where('role', '=', 'producer');
+        $producers = User::query()
+            ->where('role', '=', 'producer')
+            ->orderBy('id', 'DESC')
+            ->pluck('name', 'id')
+            ->toArray();
 
         $socialNetworks = Social::query()
             ->whereNull('deleted_at')

@@ -68,7 +68,7 @@
                     <option value="">Выбрать</option>
                     @foreach($producers as $key => $producer)
                         <option value="{{ $key }}"
-                                @if($key == array_key_first($producersOfFighter)) selected @endif>{{$producer->name}}</option>
+                                @if($key == array_key_first($producersOfFighter)) selected @endif>{{$producer}}</option>
                     @endforeach
                 </select>
                 <x-form.input-error :messages="$errors->get('role')" class="mt-2"/>
@@ -84,9 +84,7 @@
                 <textarea id="description"
                           class="block mt-1 w-full shadow-sm bg-white/5 border-b-gray-200 text-gray-200 focus:border-white focus:bg-gray-500"
                           rows="5" cols="30"
-                          :value="old('description')" name="description">
-                            {{$user->description}}
-                        </textarea>
+                          :value="old('description')" name="description">{{$user->description}}</textarea>
                 <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
             </div>
             {{--Social Networks--}}

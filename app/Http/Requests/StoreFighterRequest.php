@@ -33,7 +33,7 @@ class StoreFighterRequest extends FormRequest
             ->pluck('id')->toArray();
 
         return [
-            'producer_id' => ['required_if:role,fighter', 'numeric', Rule::in($producers)],
+            'producer_id' => ['required_if:role,fighter', 'nullable', 'numeric', Rule::in($producers)],
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', Rule::in($roles)],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

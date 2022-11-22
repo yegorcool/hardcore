@@ -7,7 +7,7 @@ use App\Role\UserRole;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateFighterRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,21 +33,12 @@ class UpdateFighterRequest extends FormRequest
             ->pluck('id')->toArray();
 
         return [
-            'producer_id' => ['required_if:role,fighter', 'nullable', 'numeric', Rule::in($producers)],
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', Rule::in($roles)],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->id)],
-            'city' => ['nullable', 'string', 'max:255'],
-            'height' => ['nullable', 'numeric'],
-            'weight' => ['nullable', 'numeric'],
+            'producer_id' => ['required_if:role,fighter', 'nullable', 'numeric', Rule::in($producers)],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'description' => ['nullable', 'string'],
             'avatar' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
-            'portrait' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
-            'hero_image' => ['nullable', 'mimes:jpeg,jpg,png,bmp'],
-            'gallery_images' => ['nullable'],
-            'gallery_images.*' => ['mimes:jpeg,jpg,png,bmp'],
-            'social_user' => ['nullable'],
-            'social_user.*' => ['nullable','url'],
         ];
     }
 }

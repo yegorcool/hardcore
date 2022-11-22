@@ -68,8 +68,7 @@
                 <div class="lg:w-2/3">
                     <x-form.input-label for="description" :value="__('Описание')"/>
                     <textarea id="description" class="bg-black block mt-1 w-full" rows="5" cols="30" name="description"
-                              :value="" required
-                    >{{ $careerEvent->description }}</textarea>
+                              required>{{ $careerEvent->description }}</textarea>
                     <x-form.input-error :messages="$errors->get('description')" class="mt-2"/>
                 </div>
                 <!-- Comment -->

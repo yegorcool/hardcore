@@ -33,6 +33,13 @@
                                     <li class="nav-item"><a class="nav-link"
                                                             href="{{ route(Auth::user()->role . '.users.index') }}">{{ __('Пользователи') }}</a>
                                     </li>
+                                @elseif(Auth::user()->role === 'support')
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{{ route(Auth::user()->role . '.users.index') }}">{{ __('Пользователи') }}</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{{ route(Auth::user()->role . '.games.index') }}">{{ __('Турниры') }}</a>
+                                    </li>
                                 @elseif(Auth::user()->role === 'buyer')
                                     <li class="nav-item"><a class="nav-link" href="{{ route('buyer.fighters') }}">{{ __('Бойцы') }}</a>
                                     </li>
